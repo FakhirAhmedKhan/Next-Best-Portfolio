@@ -1,9 +1,6 @@
-import HeaderSection from "./Navbar";
+import React from "react";
 
 export default function HeadPage() {
-  return (
-    <div>
-      <HeaderSection />
-    </div>
-  );
+	// Minimal page — header is intended to be used as a layout component.
+	return null;
 }

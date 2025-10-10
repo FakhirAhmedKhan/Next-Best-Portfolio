@@ -1,29 +1,13 @@
-"use client";
 import React from "react";
+import Link from "next/link";
 
-export const DesktopNavigation = ({
-  navItems,
-  activeSection,
-  onItemClick,
-}: {
-  navItems: { name: string; id: string }[];
-  activeSection: string;
-  onItemClick: (id: string) => void;
-}) => {
+export const DesktopNavigation = ({ navItems, activeSection, onItemClick }) => {
   return (
-    <nav className="hidden md:flex gap-8">
+    <nav className="hidden md:flex items-center gap-4">
       {navItems.map((item) => (
-        <button
-          key={item.id}
-          onClick={() => onItemClick(item.id)}
-          className={`text-sm font-medium transition-colors ${
-            activeSection === item.id
-              ? "text-fuchsia-600 dark:text-fuchsia-400"
-              : "text-gray-700 dark:text-gray-300 hover:text-fuchsia-500"
-          }`}
-        >
-          {item.name}
-        </button>
+        <Link key={item.id} href={item.href} className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${activeSection === item.id ? "text-white bg-gradient-to-r from-fuchsia-500 via-pink-500 to-violet-500" : "text-gray-700 dark:text-gray-300 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"}`} onClick={(e) => { if (typeof onItemClick === 'function') onItemClick(item.href); }}>
+          {item.label}
+        </Link>
       ))}
     </nav>
   );

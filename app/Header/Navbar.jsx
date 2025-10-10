@@ -1,15 +1,21 @@
 "use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Logo } from "./components/Logo";
-import { DesktopNavigation } from "./components/DesktopNavigation";
 import { CtaBtnDek } from "./components/ctaBtnDek";
-import { MobileMenu } from "./components/MobileManu";
 import { ProgressBar } from "./components/ProgressBar";
+import { DesktopNavigation } from "./components/DesktopNavigation";
+import { MobileMenu } from "./components/MobileManu";
 import { useLogic } from "./components/Logic";
 
+// navItems are provided by useLogic hook
+
 export default function HeadSection() {
-  const { navItems, isMenuOpen, setIsMenuOpen, activeSection, scrolled, scrollToSection } =
-    useLogic();
+  const { navItems, scrolled, isMenuOpen, setIsMenuOpen, onItemClick } = useLogic();
+
+  // Note: useLogic already manages scroll listener for header background
 
   return (
     <motion.header
@@ -22,23 +28,24 @@ export default function HeadSection() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-        <Logo scrollToSection={scrollToSection} />
-        <DesktopNavigation
-          navItems={navItems}
-          activeSection={activeSection}
-          onItemClick={scrollToSection}
-        />
-        <CtaBtnDek />
+        <Logo onItemClick={() => onItemClick("/home")} />
+
+        {/* Desktop Menu */}
+        <DesktopNavigation navItems={navItems} onItemClick={onItemClick} />
+
+        {/* CTA button if needed */}
+        <CtaBtnDek onItemClick={() => onItemClick("/contact")} />
+
+        {/* Mobile Hamburger Menu */}
+        <button className="md:hidden px-3 py-2 rounded-md text-gray-700 dark:text-gray-300" onClick={() => setIsMenuOpen((prev) => !prev)}>
+          {isMenuOpen ? "✕" : "☰"}
+        </button>
       </div>
 
-      <MobileMenu
-        isOpen={isMenuOpen}
-        setIsOpen={setIsMenuOpen}
-        navItems={navItems}
-        activeSection={activeSection}
-        onItemClick={scrollToSection}
-      />
+      {/* Mobile Menu */}
+      <MobileMenu navItems={navItems} isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} onItemClick={onItemClick} />
 
+      {/* Optional scroll progress bar */}
       <ProgressBar />
     </motion.header>
   );

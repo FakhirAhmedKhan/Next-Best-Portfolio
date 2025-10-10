@@ -7,11 +7,11 @@ export const metadata = {
   description: "A minimal multi-page Next.js portfolio",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }, navItems: any) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-        <HeadSection navItems={navItems} />
+        <HeadSection />
         <main className="pt-20">{children}</main>
       </body>
     </html>

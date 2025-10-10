@@ -1,22 +1,36 @@
 import { useState, useEffect, useMemo } from "react";
 
-export const useLogic = () => {
+export const useProjectsLogic = () => {
   const [projects, setProjects] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/projectsData.json"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const projectData = data.projects || [];
-        setProjects(projectData);
-      })
-      .catch((err) => {
+    let mounted = true;
+    const url = "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/projectsData.json";
+
+    (async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Failed to fetch projects: ${res.status}`);
+        const data = await res.json();
+        if (!mounted) return;
+        setProjects(data.projects ?? []);
+      } catch (err) {
+        if (!mounted) return;
+        setError(err);
         console.error("Error fetching projects:", err);
-      });
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const categories = useMemo(() => {
@@ -25,9 +39,7 @@ export const useLogic = () => {
   }, [projects]);
 
   const filteredProjects = useMemo(() => {
-    return activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+    return activeCategory === "All" ? projects : projects.filter((p) => p.category === activeCategory);
   }, [projects, activeCategory]);
 
   const visibleProjects = useMemo(() => {
@@ -41,5 +53,7 @@ export const useLogic = () => {
     setActiveCategory,
     visibleProjects,
     setVisibleCount,
+    loading,
+    error,
   };
 };
