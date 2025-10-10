@@ -1,5 +1,4 @@
 "use client"
-import { motion } from "framer-motion";
 import { Animated } from "./components/Animated";
 import { Badge } from "./components/Badge";
 import { TypingEffect } from "./components/TypingEffect";

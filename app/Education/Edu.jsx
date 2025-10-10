@@ -1,10 +1,9 @@
-
 "use client";
 import { Header } from "./components/header";
 import { MainCard } from "./components/MainCard";
 import { Animated } from "./components/Animated";
 
-export default function Education() {
+export default function EducationSection() {
 
   return (
 

@@ -3,7 +3,7 @@ import { EndMessage } from "./components/EndMessage";
 import { EmailMe } from "./components/EmailMe";
 import { FooterHeading } from "./components/Heading";
 
-export default function Footer() {
+export default function FooterSection() {
   return (
     <footer
       id="contact"
