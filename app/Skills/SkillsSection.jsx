@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogic } from "./logic";
+import { useLogic } from "./components/logic";
 import { Animated } from "./components/Animated";
 import { Header } from "./components/Header";
 import { SkillsGrid } from "./components/SkillsGrid";

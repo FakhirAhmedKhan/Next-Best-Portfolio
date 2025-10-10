@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from 'lucide-react';
 
-export const Logo = () => {
+export const Logo = ({ scrollToSection }) => {
   return (
     <motion.div
       className="flex items-center gap-2"
@@ -13,7 +13,7 @@ export const Logo = () => {
         href="#home"
         onClick={(e) => {
           e.preventDefault();
-          scrollToSection("home");
+          if (typeof scrollToSection === "function") scrollToSection("home");
         }}
         className="flex items-center gap-2 group"
       >

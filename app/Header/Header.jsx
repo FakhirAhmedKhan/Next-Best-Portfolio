@@ -21,7 +21,7 @@ export default function HeaderSection() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-        <Logo />
+        <Logo scrollToSection={scrollToSection} />
 
         <DesktopNavigation
           navItems={navItems}
@@ -29,9 +29,7 @@ export default function HeaderSection() {
           onItemClick={scrollToSection}
         />
 
-        <CtaBtnDek
-          onItemClick={scrollToSection}
-        />
+        <CtaBtnDek onItemClick={scrollToSection} />
 
 
       </div>

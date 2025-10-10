@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogic } from "./useLogic";
+import { useLogic } from "./components/logic";
 import { CategoryFilters } from "./components/CategoryFilters";
 import { Animated } from "./components/Animated";
 import { Header } from "./components/Header";
