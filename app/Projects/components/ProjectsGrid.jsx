@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Eye } from "lucide-react";
 
-export const ProjectsGrid = () => {
+export const ProjectsGrid = ({ projects }) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: {
@@ -25,6 +25,7 @@ export const ProjectsGrid = () => {
       },
     },
   };
+
   return (
     <motion.div
       variants={staggerContainer}
@@ -33,7 +34,7 @@ export const ProjectsGrid = () => {
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
     >
       <AnimatePresence mode="popLayout">
-        {visibleProjects.map((project, idx) => (
+        {projects.map((project, idx) => (
           <motion.article
             key={`${project.title}-${idx}`}
             variants={cardVariants}
@@ -43,22 +44,17 @@ export const ProjectsGrid = () => {
             layout
             className="group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200 dark:border-gray-700"
           >
-            {/* Image Container */}
             <div className="relative h-56 overflow-hidden bg-gradient-to-br from-fuchsia-100 to-pink-100 dark:from-gray-700 dark:to-gray-600">
               <img
                 src={project.imageUrl}
                 alt={project.title}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
-
-              {/* Category Badge */}
               <div className="absolute top-4 left-4">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/90 dark:bg-gray-900/90 text-fuchsia-600 dark:text-fuchsia-400 backdrop-blur-sm">
                   {project.category}
                 </span>
               </div>
-
-              {/* Quick View Button */}
               <motion.div
                 className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 initial={false}
@@ -70,19 +66,16 @@ export const ProjectsGrid = () => {
               </motion.div>
             </div>
 
-            {/* Content */}
             <div className="p-6 space-y-4">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
                 {project.title}
               </h3>
-
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3">
                 {project.description}
               </p>
 
-              {/* Links */}
               {project.links && project.links.length > 0 && (
-                <div className="flex gap-3 pt-4 border-t bg-gray-900 border-gray-200 dark:border-gray-700">
+                <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                   {project.links.map(({ url, icon, label }) => (
                     <motion.a
                       key={label}
@@ -112,5 +105,5 @@ export const ProjectsGrid = () => {
         ))}
       </AnimatePresence>
     </motion.div>
-  )
-}
+  );
+};

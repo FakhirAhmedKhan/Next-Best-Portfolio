@@ -1,60 +1,45 @@
-import React from 'react'
+"use client";
 import { motion } from "framer-motion";
+import { Logo } from "./components/Logo";
+import { DesktopNavigation } from "./components/DesktopNavigation";
+import { CtaBtnDek } from "./components/CtaBtnDek";
+import { MobileMenu } from "./components/MobileMenu";
+import { ProgressBar } from "./components/ProgressBar";
+import { useLogic } from "./components/Logic";
 
-export const Header = () => {
+export default function HeaderSection() {
+  const { navItems, isMenuOpen, setIsMenuOpen, activeSection, scrolled, scrollToSection } =
+    useLogic();
+
   return (
-    <motion.div
-      className="text-center mb-20"
-      initial={{ opacity: 0, y: -40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg"
+          : "bg-transparent"
+        }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
     >
-      {/* Badge */}
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-fuchsia-200 dark:border-fuchsia-800 shadow-lg mb-6"
-      >
-        <Code2 className="w-4 h-4 text-fuchsia-600 dark:text-fuchsia-400" />
-        <span className="text-sm font-semibold bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
-          Tech Stack
-        </span>
-      </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+        <Logo scrollToSection={scrollToSection} />
+        <DesktopNavigation
+          navItems={navItems}
+          activeSection={activeSection}
+          onItemClick={scrollToSection}
+        />
+        <CtaBtnDek />
+      </div>
 
-      {/* Title */}
-      <h2 className="text-5xl sm:text-7xl font-bold bg-gradient-to-r from-fuchsia-600 via-pink-600 to-violet-600 bg-clip-text text-transparent mb-6">
-        Skills & Toolkit
-      </h2>
+      <MobileMenu
+        isOpen={isMenuOpen}
+        setIsOpen={setIsMenuOpen}
+        navItems={navItems}
+        activeSection={activeSection}
+        onItemClick={scrollToSection}
+      />
 
-      {/* Subtitle */}
-      <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Technologies and tools I use to bring ideas to life
-      </p>
-
-      {/* Stats */}
-      <motion.div
-        className="flex flex-wrap justify-center gap-6 mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-      >
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <Sparkles className="w-4 h-4 text-fuchsia-600 dark:text-fuchsia-400" />
-          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-            {skills.length}+ Skills
-          </span>
-        </div>
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <Zap className="w-4 h-4 text-violet-600 dark:text-violet-400" />
-          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-            Always Learning
-          </span>
-        </div>
-      </motion.div>
-    </motion.div>
-  )
+      <ProgressBar />
+    </motion.header>
+  );
 }

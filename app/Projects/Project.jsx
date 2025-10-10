@@ -9,6 +9,7 @@ import { LoadMoreButton } from "./components/LoadMoreButton";
 
 export default function ProjectSection() {
   const {
+    projects,
     categories,
     activeCategory,
     setActiveCategory,
@@ -28,9 +29,15 @@ export default function ProjectSection() {
           categories={categories}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
+          setVisibleCount={setVisibleCount}
         />
+
         <ProjectsGrid projects={visibleProjects} />
-        <LoadMoreButton onLoadMore={() => setVisibleCount((v) => v + 3)} />
+        <LoadMoreButton
+          hasMore={visibleProjects.length < projects.length}
+          onLoadMore={() => setVisibleCount((v) => v + 3)}
+        />
+
       </div>
     </section>
   );

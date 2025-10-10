@@ -1,27 +1,18 @@
+"use client";
 import { useState, useEffect } from "react";
 
-export const useLogic = () => {
+export const useSkillsLogic = () => {
   const [skills, setSkills] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/skillsIcons.json"
-    )
+    fetch("https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/skillsIcons.json")
       .then((res) => res.json())
       .then((data) => {
-        const skillsData = data.skills || [];
-        setSkills(skillsData);
+        setSkills(data.skills || []);
       })
-      .catch((err) => {
-        console.error("Error fetching skills:", err);
-      });
+      .catch((err) => console.error("Error fetching skills:", err));
   }, []);
 
-  // ✅ Must return data so your UI can use it
-  return {
-    skills,
-    hoveredIndex,
-    setHoveredIndex,
-  };
+  return { skills, hoveredIndex, setHoveredIndex };
 };

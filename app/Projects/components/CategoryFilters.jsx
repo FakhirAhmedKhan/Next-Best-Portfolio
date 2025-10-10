@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion";
 
-export const CategoryFilters = () => {
+export const CategoryFilters = ({ categories, activeCategory, onCategoryChange, setVisibleCount }) => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -19,7 +19,7 @@ export const CategoryFilters = () => {
           <motion.button
             key={cat}
             onClick={() => {
-              setActiveCategory(cat);
+              onCategoryChange(cat);
               setVisibleCount(6);
             }}
             className={`relative px-6 py-3 rounded-full font-semibold transition-all duration-300 ${isActive

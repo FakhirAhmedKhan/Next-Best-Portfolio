@@ -1,4 +1,4 @@
-import HeaderSection from "./Header";
+import HeaderSection from "./Navbar";
 
 export default function HeadPage() {
   return (

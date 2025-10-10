@@ -35,6 +35,7 @@ export const useLogic = () => {
   }, [filteredProjects, visibleCount]);
 
   return {
+    projects,
     categories,
     activeCategory,
     setActiveCategory,

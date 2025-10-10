@@ -1,23 +1,13 @@
-import React from 'react'
-import { motion } from "framer-motion";
-import { Mail } from 'lucide-react';
+"use client";
+import React from "react";
 
-
-export const CtaBtnDek = ({ onItemClick }) => {
+export const CtaBtnDek = () => {
   return (
-    <motion.a
+    <a
       href="#contact"
-      onClick={(e) => {
-        e.preventDefault();
-        onItemClick("contact");
-      }}
-      className="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white font-semibold shadow-lg hover:shadow-xl transition-shadow"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white text-sm font-medium shadow hover:opacity-90 transition"
     >
-      <Mail className="w-4 h-4" />
-      <span>Let's Talk</span>
-    </motion.a>
-
-  )
-}
+      Contact Me
+    </a>
+  );
+};
