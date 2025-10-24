@@ -1,6 +1,7 @@
 import "./globals.css";
 import React from "react";
 import HeadSection from "./header/Navbar";
+import FooterPage from "./footer/page";
 
 export const metadata = {
   title: "My Portfolio",
@@ -12,8 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
         <HeadSection />
-        <main className="pt-20">{children}</main>
+        <main>{children}</main>
       </body>
+      <footer>
+        <FooterPage />
+      </footer>
     </html>
   );
 }
