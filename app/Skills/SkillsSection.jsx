@@ -1,26 +1,25 @@
-"use client";
+'use client';
 import React from "react";
-import { SkillsGrid } from "./components/SkillsGrid";
-import { useSkillsLogic } from "./components/logic"; // ✅ correct import path
-import { Animated } from "./components/Animated";
-import { Header } from "./components/Header";
+import { Card } from "./components/SkillsGrid";
 import { Bottomdecoration } from "./components/Bottomdecoration";
+import { HeadIng } from "@/UI/Head";
+import { Badge } from "@/UI/Badge";
+import { Zap } from "lucide-react";
 
 export default function SkillsSection() {
-  const { skills, hoveredIndex, setHoveredIndex } = useSkillsLogic();
 
   return (
     <section id="skills" className="relative min-h-screen py-20 px-4 overflow-hidden">
-      <Animated />
+
       <div className="relative max-w-7xl mx-auto">
-        <Header skills={skills} />
-        <SkillsGrid
-          skills={skills}
-          hoveredIndex={hoveredIndex}
-          setHoveredIndex={setHoveredIndex}
-        />
+
+        <HeadIng Tittle="Skills & Toolkit" Pragaphic="Technologies and tools I use to bring ideas to life" />
+        <div className="flex justify-center items-center mb-6">
+          <Badge Icon={Zap} BageName="Always Learning" className="px-4 py-2 text-sm" />
+        </div>
+        <Card />
         <Bottomdecoration />
       </div>
-    </section>
+    </section >
   );
 }
