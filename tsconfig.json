@@ -21,7 +21,13 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".", // ✅ project root
+    "paths": {
+      "@/*": [
+        "./*"
+      ] // ✅ allows @/ to map to root
+    }
   },
   "include": [
     "next-env.d.ts",
