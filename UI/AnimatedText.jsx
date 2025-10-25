@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { child, container, hover } from './home/components/motionConfige';
+import { child, container, hover } from '../app/home/components/motionConfige';
 
 export const AnimatedText = ({ text }) => {
   const characters = text.split('');

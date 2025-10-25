@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/education/components/EducationTimeline.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,23 +1,34 @@
-import "./globals.css";
-import React from "react";
-import HeadSection from "./header/Navbar";
-import FooterPage from "./footer/page";
+// app/layout.tsx
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { AppProvider } from '@/Hook/useAppLogic';
+import HeadSection from '@/app/header/Navbar';
+import FooterPage from '@/app/footer/footer';
 
-export const metadata = {
-  title: "My Portfolio",
-  description: "A minimal multi-page Next.js portfolio",
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'Modern portfolio website',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-        <HeadSection />
-        <main>{children}</main>
+      <body className={`${inter.className} antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100`}>
+        <AppProvider>
+          <HeadSection />
+          {children}
+          <footer>
+            <FooterPage />
+          </footer>
+        </AppProvider>
       </body>
-      <footer>
-        <FooterPage />
-      </footer>
     </html>
   );
 }
