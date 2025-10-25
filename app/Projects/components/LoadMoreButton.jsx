@@ -1,15 +1,23 @@
+"use client";
+import { useAppContext } from "@/Hook/useAppLogic";
 import { motion } from "framer-motion";
 
-export const LoadMoreButton = ({ onLoadMore, hasMore }) => (
-  hasMore && (
+export const LoardProject = () => {
+  const { visibleProjects, filteredProjects, showMore } = useAppContext();
+
+  const hasMore = visibleProjects.length < filteredProjects.length;
+
+  if (!hasMore) return null;
+
+  return (
     <motion.div
-      className="flex justify-center"
+      className="flex justify-center mt-10"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
     >
       <motion.button
-        onClick={onLoadMore}
+        onClick={() => showMore(3)}
         className="group relative px-8 py-4 rounded-full font-bold text-white overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -27,5 +35,5 @@ export const LoadMoreButton = ({ onLoadMore, hasMore }) => (
         </span>
       </motion.button>
     </motion.div>
-  )
-);
+  );
+};

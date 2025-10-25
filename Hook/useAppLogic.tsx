@@ -55,7 +55,7 @@ interface AppContextType extends AppData {
   hoveredIndex: number | null;
   setHoveredIndex: (index: number | null) => void;
   iconMap: Record<string, any>;
-  
+
   // Project filtering
   activeCategory: string;
   categories: string[];
@@ -63,7 +63,7 @@ interface AppContextType extends AppData {
   filteredProjects: Project[];
   showMore: (count?: number) => void;
   changeCategory: (category: string) => void;
-  
+
   // Navigation
   navItems: NavItem[];
   activeSection: string;
@@ -139,14 +139,14 @@ const setCache = (key: string, data: any): void => {
 const fetchWithTimeout = async (url: string, timeout = 5000): Promise<any> => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
-  
+
   try {
-    const response = await fetch(url, { 
+    const response = await fetch(url, {
       signal: controller.signal,
       next: { revalidate: 3600 } // Cache for 1 hour in Next.js
     });
     clearTimeout(id);
-    
+
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return await response.json();
   } catch (err) {
@@ -290,15 +290,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // 🔹 PROJECT FILTERING
   // ============================================
   const categories = useMemo(() => {
-    if (!data.projects.length) return ['All'];
+    if (!data?.projects?.length) return ['SAAS'];
     const cats = Array.from(new Set(data.projects.map((p) => p.category)));
     return ['All', ...cats.sort()];
   }, [data.projects]);
 
+  useEffect(() => {
+    if (data?.projects?.length) {
+      const hasSAAS = data.projects.some(p => p.category === 'SAAS');
+      setActiveCategory(hasSAAS ? 'SAAS' : 'All');
+    }
+  }, [data.projects]);
+
   const filteredProjects = useMemo(() => {
-    return activeCategory === 'All'
-      ? data.projects
-      : data.projects.filter((p) => p.category === activeCategory);
+    if (!data?.projects) return [];
+    if (activeCategory === 'All') return data.projects;
+    return data.projects.filter((p) => p.category === activeCategory);
   }, [data.projects, activeCategory]);
 
   const visibleProjects = useMemo(() => {
@@ -313,6 +320,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setActiveCategory(category);
     setVisibleCount(3);
   }, []);
+
 
   // ============================================
   // 🔹 CONTEXT VALUE

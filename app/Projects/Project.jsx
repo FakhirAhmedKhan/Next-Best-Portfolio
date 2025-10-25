@@ -1,42 +1,23 @@
-"use client";
-
-import { useProjectsLogic } from "./components/logic";
-import { CategoryFilters } from "./components/CategoryFilters";
-import { Animated } from "./components/Animated";
-import { Header } from "./components/Header";
-import { ProjectsGrid } from "./components/ProjectsGrid";
-import { LoadMoreButton } from "./components/LoadMoreButton";
+import { CategoryFilter } from "./components/CategoryFilters";
+import { LoardProject } from "./components/LoadMoreButton";
+import { ProjectView } from "./components/ProjectsGrid";
+import { HeadIng } from "@/UI/Head";
 
 export default function ProjectSection() {
-  const {
-    projects,
-    categories,
-    activeCategory,
-    setActiveCategory,
-    visibleProjects,
-    setVisibleCount,
-  } = useProjectsLogic();
 
   return (
     <section
       id="projects"
       className="relative min-h-screen py-20 px-4 overflow-hidden"
     >
-      <Animated />
       <div className="relative max-w-7xl mx-auto">
-        <Header />
-        <CategoryFilters
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
-          setVisibleCount={setVisibleCount}
-        />
+        <HeadIng Tittle="Did you See" Pragaphic=" Explore my latest projects showcasing creativity, innovation, and technical expertis" />
 
-        <ProjectsGrid projects={visibleProjects} />
-        <LoadMoreButton
-          hasMore={visibleProjects.length < projects.length}
-          onLoadMore={() => setVisibleCount((v) => v + 3)}
-        />
+        <CategoryFilter />
+
+        <ProjectView />
+
+        <LoardProject />
 
       </div>
     </section>

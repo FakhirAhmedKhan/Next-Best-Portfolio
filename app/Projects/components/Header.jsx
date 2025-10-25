@@ -22,8 +22,7 @@ export const Header = () => {
       </h2>
 
       <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Explore my latest projects showcasing creativity, innovation, and
-        technical expertise
+       e
       </p>
     </motion.div>
   )
