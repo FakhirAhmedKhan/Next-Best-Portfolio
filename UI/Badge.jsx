@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const Badge = ({ Icon, BageName, className = "" }) => {
+export const Badge = ({ Icon, BageName, className = "", value }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20, scale: 0.9 }}
@@ -41,6 +41,12 @@ export const Badge = ({ Icon, BageName, className = "" }) => {
           {/* Icon Glow */}
           <div className="absolute inset-0 rounded-full bg-fuchsia-500/0 group-hover:bg-fuchsia-500/30 blur-md transition-all duration-300" />
         </motion.div>
+      )}
+
+      {value && (
+        <span className="relative z-10 text-sm font-semibold text-gray-700 dark:text-gray-300">
+          {value}
+        </span>
       )}
 
       {/* Text with Enhanced Gradient */}
