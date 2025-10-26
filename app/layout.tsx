@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { AppProvider } from '@/Hook/useAppLogic';
 import HeadSection from '@/app/header/Navbar';
 import FooterPage from '@/app/footer/components/footer';
+import { Animated } from '@/UI/Animated';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <AppProvider>
           <HeadSection />
           {children}
+          <Animated />
           <footer>
             <FooterPage />
           </footer>

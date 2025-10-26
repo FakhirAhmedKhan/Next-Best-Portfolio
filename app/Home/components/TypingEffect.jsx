@@ -22,15 +22,14 @@ export const TypingEffect = () => {
         </div>
         <div className="relative inline-block">
           <motion.div
-            className="absolute -inset-4 bg-gradient-to-r from-fuchsia-600 via-pink-600 to-violet-600 rounded-2xl blur-2xl opacity-30"
+            className="absolute -inset-4 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 rounded-2xl blur-2xl opacity-30"
             animate={pulseAnimation}
           />
-          <span className="relative bg-gradient-to-r from-fuchsia-600 via-pink-600 to-violet-600 bg-clip-text text-transparent">
+          <span className="relative text-gray-100 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 bg-clip-text ">
             <ReactTyped
               strings={["Fakhir Ahmed Khan"]}
               typeSpeed={100}
-              showCursor={true}
-              cursorChar="|"
+              showCursor={false}
               loop={false}
             />
           </span>

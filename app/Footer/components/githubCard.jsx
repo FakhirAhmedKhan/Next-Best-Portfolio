@@ -44,7 +44,7 @@ export default function GitHubCalendar({ onDataLoaded, data }) {
   };
 
   return (
-    <section className="relative mt-5 text-center overflow-hidden">
+    <section className="relative mt-5 text-center overflow-hidden ">
 
       {loading && (
         <motion.div
@@ -97,7 +97,7 @@ export default function GitHubCalendar({ onDataLoaded, data }) {
           className="relative mx-auto max-w-6xl"
         >
           {/* Glass Card Container */}
-          <div className="backdrop-blur-2xl p-10 rounded-3xl border border-white/10 relative">
+          <div className=" p-10 rounded-3xl relative bg-blur">
             <motion.div
               className="relative"
               initial={{ opacity: 0 }}
