@@ -4,137 +4,10 @@ import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAppContext } from "@/Hook/useAppLogic";
 import Image from "next/image";
+import { badgeVariants, buttonVariants, cardHoverVariants, cardVariants, containerVariants, imageVariants, overlayVariants } from "@/UI/motionConfige";
 
 export const ProjectView = () => {
   const { visibleProjects } = useAppContext();
-
-  // Container animation
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  // Individual card animation
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        duration: 0.6,
-      },
-    },
-  };
-
-  // Hover animation for cards
-  const cardHoverVariants = {
-    rest: {
-      scale: 1,
-      y: 0,
-      rotateX: 0,
-      rotateY: 0,
-    },
-    hover: {
-      scale: 1.05,
-      y: -10,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-  };
-
-  // Image animation
-  const imageVariants = {
-    rest: {
-      scale: 1,
-      filter: "brightness(1)",
-    },
-    hover: {
-      scale: 1.15,
-      filter: "brightness(1.1)",
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Overlay animation
-  const overlayVariants = {
-    rest: {
-      opacity: 0,
-      y: 20,
-    },
-    hover: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  // Button animation
-  const buttonVariants = {
-    rest: {
-      scale: 1,
-      boxShadow: "0 0 0px rgba(168, 85, 247, 0)",
-    },
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 10px 30px rgba(168, 85, 247, 0.5)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    tap: {
-      scale: 0.95,
-      transition: {
-        duration: 0.1,
-      },
-    },
-  };
-
-  // Badge animation
-  const badgeVariants = {
-    rest: {
-      scale: 1,
-      rotate: 0,
-    },
-    hover: {
-      scale: 1.1,
-      rotate: [0, -5, 5, -5, 0],
-      transition: {
-        rotate: {
-          duration: 0.5,
-          repeat: Infinity,
-          repeatDelay: 2,
-        },
-        scale: {
-          duration: 0.2,
-        },
-      },
-    },
-  };
 
   return (
     <motion.div
@@ -175,6 +48,7 @@ export const ProjectView = () => {
             <Image
               width={964}
               height={964}
+              variants={imageVariants}              
               src={project.imageUrl}
               alt={project.title}
               className="w-full h-auto rounded-lg object-cover"

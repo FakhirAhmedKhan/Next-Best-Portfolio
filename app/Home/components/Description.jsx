@@ -1,5 +1,4 @@
 "use client"
-
 import { AnimatedText } from "../../../UI/AnimatedText";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";

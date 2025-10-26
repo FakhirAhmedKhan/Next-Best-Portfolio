@@ -1,25 +1,15 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { useHomeData } from "./Fetching";
+import { useAppContext } from "@/Hook/useAppLogic";
 
 export const SocialLinks = () => {
-  const { socialLinks = [], loading } = useHomeData(); // ✅ Default value prevents crash
+  const { socialLinks, loading } = useAppContext();
 
-  // ✅ Optional: handle loading state gracefully
   if (loading) {
     return (
       <div className="flex justify-center items-center py-8 text-gray-500">
         Loading social links...
-      </div>
-    );
-  }
-
-  // ✅ Handle empty array safely
-  if (socialLinks.length === 0) {
-    return (
-      <div className="flex justify-center items-center py-8 text-gray-500">
-        No social links found
       </div>
     );
   }

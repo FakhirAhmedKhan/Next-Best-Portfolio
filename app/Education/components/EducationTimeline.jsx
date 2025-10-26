@@ -1,4 +1,5 @@
 import { useAppContext } from '@/Hook/useAppLogic';
+import { cardVariants, containerVariants, dotVariants, iconVariants, itemVariants, lineVariants } from '@/UI/motionConfige';
 import { motion } from 'framer-motion';
 
 export const EducationTimeline = () => {
@@ -11,93 +12,7 @@ export const EducationTimeline = () => {
       </div>
     );
   }
-  // Container animation for staggered children
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  // Individual timeline item animation
-  const itemVariants = {
-    hidden: (index) => ({
-      opacity: 0,
-      x: index % 2 === 0 ? 100 : -100,
-      y: 50
-    }),
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-        duration: 0.8
-      }
-    }
-  };
-
-  // Card hover animation
-  const cardVariants = {
-    rest: {
-      scale: 1,
-      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
-    },
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 25px 50px -12px rgba(168, 85, 247, 0.5)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 25
-      }
-    }
-  };
-
-  // Dot pulse animation
-  const dotVariants = {
-    rest: {
-      scale: 1,
-      boxShadow: "0 0 0 0 rgba(168, 85, 247, 0)"
-    },
-    hover: {
-      scale: 1.5,
-      boxShadow: "0 0 20px 5px rgba(168, 85, 247, 0.6)",
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  // Decorative line animation
-  const lineVariants = {
-    rest: { width: "5rem" },
-    hover: {
-      width: "100%",
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  // Icon rotation on hover
-  const iconVariants = {
-    rest: { rotate: 0 },
-    hover: {
-      rotate: [0, -10, 10, -10, 0],
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
+  
   return (
     <div className="min-h-screen py-16 px-4">
       <div className="max-w-6xl mx-auto">

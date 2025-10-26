@@ -1,37 +1,32 @@
 "use client";
-import { EndMessage } from "./components/EndMessage";
-import { EmailMe } from "./components/EmailMe";
-import { FooterHeading } from "./components/Heading";
-import GitHubCalendarSimple from "@/UI/githubCard";
+import GitHubCalendarSimple from "@/app/footer/components/githubCard";
 import { HeadIng } from "@/UI/Head";
 import { Badge } from "@/UI/Badge";
-import { Zap } from "lucide-react";
+import { BsGithub } from "react-icons/bs";
 import { useState } from "react";
+import { EmailMe } from "./EmailMe";
+import { SectionSTyle } from "@/UI/motionConfige";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
 
   return (
-    <footer className="flex flex-col min-h-screen items-center justify-center px-4 text-center space-y-6">
+    <footer className={SectionSTyle}>
       <HeadIng
-        Tittle="Contribution Activity"
-        Pragaphic="Tracking my creative coding energy across the year"
+        Tittle="Contributions"
+        Pragaphic="Where ideas turn into code designed with React, polished with Tailwind CSS."
       />
 
       {calendarData && (
         <Badge
-          Icon={Zap}
+          Icon={BsGithub}
           BageName="Total Contributions"
           value={calendarData.totalContributions.toLocaleString()}
           className="px-4 py-2 text-sm"
         />
       )}
-
       <GitHubCalendarSimple onDataLoaded={setCalendarData} />
-
-      <FooterHeading />
       <EmailMe />
-      <EndMessage />
     </footer>
   );
 }

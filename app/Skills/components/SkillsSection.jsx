@@ -1,15 +1,16 @@
 'use client';
 import React from "react";
-import { Card } from "./components/SkillsGrid";
-import { Bottomdecoration } from "./components/Bottomdecoration";
+import { Card } from "./SkillsGrid";
+import { Bottomdecoration } from "./Bottomdecoration";
 import { HeadIng } from "@/UI/Head";
 import { Badge } from "@/UI/Badge";
 import { Zap } from "lucide-react";
+import { SectionSTyle } from "@/UI/motionConfige";
 
 export default function SkillsSection() {
 
   return (
-    <section id="skills" className="relative min-h-screen py-20 px-4 overflow-hidden">
+    <section id="skills" className={SectionSTyle}>
 
       <div className="relative max-w-7xl mx-auto">
 

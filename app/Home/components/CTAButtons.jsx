@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 export const CTAButtons = () => {
   return (
@@ -9,8 +10,8 @@ export const CTAButtons = () => {
       transition={{ duration: 0.8, delay: 0.9 }}
       className="flex flex-wrap justify-center gap-4 pt-4"
     >
-      <motion.a
-        href="#projects"
+      <Link
+        href="/projects"
         className="group relative px-8 py-4 rounded-full font-semibold text-white overflow-hidden shadow-xl"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -26,16 +27,16 @@ export const CTAButtons = () => {
             →
           </motion.span>
         </span>
-      </motion.a>
+      </Link>
 
-      <motion.a
-        href="#contact"
+      <Link
+        href="/footer"
         className="px-8 py-4 rounded-full font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 hover:border-fuchsia-600 dark:hover:border-fuchsia-400 transition-colors shadow-lg backdrop-blur-sm"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         Get In Touch
-      </motion.a>
+      </Link>
     </motion.div>
   )
 }

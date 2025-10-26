@@ -1,7 +1,2 @@
-import HomeSection from "./home";
-
-export default function homePage() {
-  return (
-    <HomeSection />
-  );
-}
+import HomeSection from "./components/home";
+export default function homePage() {return (<HomeSection />);}

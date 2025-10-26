@@ -1,41 +1,10 @@
 'use client';
 
 import { useAppContext } from "@/Hook/useAppLogic";
+import { containerVariants, SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-
-// ============================================
-// 🎬 ANIMATION VARIANTS
-// ============================================
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const skillVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    scale: 0.8,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-    },
-  },
-};
+import { useState, useEffect } from "react"
 
 export const Card = () => {
   const { skills, hoveredIndex, setHoveredIndex } = useAppContext();
@@ -77,7 +46,7 @@ export const Card = () => {
 
   return (
     <motion.div
-      variants={containerVariants}
+      variants={SkillcontainerVariants}
       initial="hidden"
       animate="show" // Changed from whileInView to animate
       viewport={{ once: true, amount: 0.1 }}

@@ -1,3 +1,4 @@
+'use client';
 import { motion } from "framer-motion";
 
 export const Badge = ({ Icon, BageName, className = "", value }) => {

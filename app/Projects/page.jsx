@@ -1,7 +1,2 @@
-import ProjectSection from "./Project";
-
-export default function Page() {
-  return (
-    <ProjectSection />
-  );
-}
+import ProjectSection from "./components/Project";
+export default function Page() {return (<ProjectSection />);}

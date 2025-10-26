@@ -1,16 +1,10 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
+import { pulseAnimation } from '@/UI/motionConfige';
 
 export const TypingEffect = () => {
-  const pulseAnimation = {
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
