@@ -1,5 +1,4 @@
 'use client';
-
 import { motion } from "framer-motion";
 import { LogoHeader } from "./components/Logo";
 import { DesktopNavigation } from "./components/DesktopNavigation";

@@ -1,77 +1,6 @@
-// lib/contexts/app-context.tsx
 'use client';
-
-import { createContext, useContext, useState, useEffect, useMemo, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase, Mail } from 'lucide-react';
-
-// ============================================
-// 🔷 TYPES
-// ============================================
-interface Skill {
-  name: string;
-  icon?: string;
-  level?: string;
-}
-
-interface SocialLink {
-  name: string;
-  url: string;
-  icon?: string;
-}
-
-interface Education {
-  id: string;
-  institution: string;
-  degree: string;
-  year: string;
-  description?: string;
-}
-
-interface Project {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  image?: string;
-  tags?: string[];
-  link?: string;
-}
-
-interface AppData {
-  skills: Skill[];
-  socialLinks: SocialLink[];
-  education: Education[];
-  projects: Project[];
-}
-
-interface NavItem {
-  name: string;
-  path: string;
-  id?: string;
-}
-
-interface AppContextType extends AppData {
-  loading: boolean;
-  hoveredIndex: number | null;
-  setHoveredIndex: (index: number | null) => void;
-  iconMap: Record<string, any>;
-
-  // Project filtering
-  activeCategory: string;
-  categories: string[];
-  visibleProjects: Project[];
-  filteredProjects: Project[];
-  showMore: (count?: number) => void;
-  changeCategory: (category: string) => void;
-
-  // Navigation
-  navItems: NavItem[];
-  activeSection: string;
-  isMenuOpen: boolean;
-  scrolled: boolean;
-  setIsMenuOpen: (open: boolean) => void;
-  scrollToSection: (id: string) => void;
-}
 
 // ============================================
 // 🔷 NAVIGATION ITEMS
@@ -81,7 +10,7 @@ export const navItems = [
   { id: "education", label: "Education", href: "/education", icon: User },
   { id: "skills", label: "Skills", href: "/skills", icon: Code },
   { id: "projects", label: "Projects", href: "/projects", icon: Briefcase },
-  { id: "contact", label: "Contact", href: "#contact", icon: Mail }, // ✅ FIXED
+  { id: "contact", label: "Contact", href: "#contact", icon: Mail },
 ];
 
 const iconMap = {
@@ -92,32 +21,30 @@ const iconMap = {
 };
 
 // ============================================
-// 🔷 CONTEXT
+// 🔷 CONTEXT SETUP
 // ============================================
-const AppContext = createContext<AppContextType | null>(null);
+const AppContext = createContext(null);
 
 // ============================================
-// 🔷 DATA FETCHING UTILITIES
+// 🔷 API & CACHING CONFIG
 // ============================================
 const CACHE_KEYS = {
   skills: 'skillsIcons',
   socialLinks: 'socialLinks',
   education: 'educationData',
   projects: 'projectsData',
-} as const;
+};
 
 const API_ENDPOINTS = {
   skills: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/skillsIcons.json',
   socialLinks: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/socialLinks.json',
   education: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/educationData.json',
   projects: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/projectsData.json',
-} as const;
+};
 
-// Check if we're in browser environment
 const isBrowser = typeof window !== 'undefined';
 
-// Cache utilities with error handling
-const getCache = (key: string): any | null => {
+const getCache = (key) => {
   if (!isBrowser) return null;
   try {
     const item = localStorage.getItem(key);
@@ -127,7 +54,7 @@ const getCache = (key: string): any | null => {
   }
 };
 
-const setCache = (key: string, data: any): void => {
+const setCache = (key, data) => {
   if (!isBrowser) return;
   try {
     localStorage.setItem(key, JSON.stringify(data));
@@ -136,15 +63,14 @@ const setCache = (key: string, data: any): void => {
   }
 };
 
-// Fetch with timeout and retry
-const fetchWithTimeout = async (url: string, timeout = 5000): Promise<any> => {
+const fetchWithTimeout = async (url, timeout = 5000) => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
 
   try {
     const response = await fetch(url, {
       signal: controller.signal,
-      next: { revalidate: 3600 } // Cache for 1 hour in Next.js
+      next: { revalidate: 3600 },
     });
     clearTimeout(id);
 
@@ -157,11 +83,10 @@ const fetchWithTimeout = async (url: string, timeout = 5000): Promise<any> => {
 };
 
 // ============================================
-// 🔷 PROVIDER COMPONENT
+// 🔷 PROVIDER
 // ============================================
-export function AppProvider({ children }: { children: ReactNode }) {
-  // State management
-  const [data, setData] = useState<AppData>({
+export function AppProvider({ children }) {
+  const [data, setData] = useState({
     skills: [],
     socialLinks: [],
     education: [],
@@ -173,7 +98,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState(navItems[0]?.id || '');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // ============================================
   // 🔹 DATA FETCHING
@@ -183,7 +108,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
     const fetchAllData = async () => {
       try {
-        // Try cache first
         const cached = {
           skills: getCache(CACHE_KEYS.skills),
           socialLinks: getCache(CACHE_KEYS.socialLinks),
@@ -191,16 +115,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
           projects: getCache(CACHE_KEYS.projects),
         };
 
-        // If all cached, use cache
         if (Object.values(cached).every(Boolean)) {
           if (isMounted) {
-            setData(cached as AppData);
+            setData(cached);
             setLoading(false);
           }
           return;
         }
 
-        // Fetch fresh data in parallel
         const [skillsData, socialData, eduData, projData] = await Promise.allSettled([
           fetchWithTimeout(API_ENDPOINTS.skills),
           fetchWithTimeout(API_ENDPOINTS.socialLinks),
@@ -208,36 +130,28 @@ export function AppProvider({ children }: { children: ReactNode }) {
           fetchWithTimeout(API_ENDPOINTS.projects),
         ]);
 
-        const fresh: AppData = {
+        const fresh = {
           skills: skillsData.status === 'fulfilled' ? skillsData.value.skills ?? [] : cached.skills ?? [],
           socialLinks: socialData.status === 'fulfilled' ? socialData.value.socialLinks ?? [] : cached.socialLinks ?? [],
           education: eduData.status === 'fulfilled' ? eduData.value.educationData ?? [] : cached.education ?? [],
           projects: projData.status === 'fulfilled' ? projData.value.projects ?? [] : cached.projects ?? [],
         };
 
-        // Cache successful fetches
         if (skillsData.status === 'fulfilled') setCache(CACHE_KEYS.skills, fresh.skills);
         if (socialData.status === 'fulfilled') setCache(CACHE_KEYS.socialLinks, fresh.socialLinks);
         if (eduData.status === 'fulfilled') setCache(CACHE_KEYS.education, fresh.education);
         if (projData.status === 'fulfilled') setCache(CACHE_KEYS.projects, fresh.projects);
 
-        if (isMounted) {
-          setData(fresh);
-        }
+        if (isMounted) setData(fresh);
       } catch (err) {
         console.error('❌ Failed to fetch data:', err);
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        if (isMounted) setLoading(false);
       }
     };
 
     fetchAllData();
-
-    return () => {
-      isMounted = false;
-    };
+    return () => { isMounted = false; };
   }, []);
 
   // ============================================
@@ -245,7 +159,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // ============================================
   useEffect(() => {
     if (!isBrowser) return;
-
     let ticking = false;
 
     const handleScroll = () => {
@@ -276,7 +189,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // ============================================
   // 🔹 NAVIGATION
   // ============================================
-  const scrollToSection = useCallback((id: string) => {
+  const scrollToSection = useCallback((id) => {
     setIsMenuOpen(false);
     setTimeout(() => {
       const section = document.getElementById(id);
@@ -298,7 +211,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (data?.projects?.length) {
-      const hasSAAS = data.projects.some(p => p.category === 'SAAS');
+      const hasSAAS = data.projects.some((p) => p.category === 'SAAS');
       setActiveCategory(hasSAAS ? 'SAAS' : 'All');
     }
   }, [data.projects]);
@@ -309,64 +222,57 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return data.projects.filter((p) => p.category === activeCategory);
   }, [data.projects, activeCategory]);
 
-  const visibleProjects = useMemo(() => {
-    return filteredProjects.slice(0, visibleCount);
-  }, [filteredProjects, visibleCount]);
+  const visibleProjects = useMemo(() => filteredProjects.slice(0, visibleCount), [filteredProjects, visibleCount]);
 
   const showMore = useCallback((count = 3) => {
     setVisibleCount((prev) => prev + count);
   }, []);
 
-  const changeCategory = useCallback((category: string) => {
+  const changeCategory = useCallback((category) => {
     setActiveCategory(category);
     setVisibleCount(3);
   }, []);
 
-
   // ============================================
   // 🔹 CONTEXT VALUE
   // ============================================
-  const value = useMemo<AppContextType>(
-    () => ({
-      // Data
-      ...data,
-      loading,
-      hoveredIndex,
-      setHoveredIndex,
-      iconMap,
+  const value = useMemo(() => ({
+    ...data,
+    loading,
+    hoveredIndex,
+    setHoveredIndex,
+    iconMap,
 
-      // Project filtering
-      activeCategory,
-      categories,
-      visibleProjects,
-      filteredProjects,
-      showMore,
-      changeCategory,
+    // Projects
+    activeCategory,
+    categories,
+    visibleProjects,
+    filteredProjects,
+    showMore,
+    changeCategory,
 
-      // Navigation
-      navItems,
-      activeSection,
-      isMenuOpen,
-      scrolled,
-      setIsMenuOpen,
-      scrollToSection,
-    }),
-    [
-      data,
-      loading,
-      hoveredIndex,
-      activeCategory,
-      categories,
-      visibleProjects,
-      filteredProjects,
-      activeSection,
-      isMenuOpen,
-      scrolled,
-      showMore,
-      changeCategory,
-      scrollToSection,
-    ]
-  );
+    // Navigation
+    navItems,
+    activeSection,
+    isMenuOpen,
+    scrolled,
+    setIsMenuOpen,
+    scrollToSection,
+  }), [
+    data,
+    loading,
+    hoveredIndex,
+    activeCategory,
+    categories,
+    visibleProjects,
+    filteredProjects,
+    activeSection,
+    isMenuOpen,
+    scrolled,
+    showMore,
+    changeCategory,
+    scrollToSection,
+  ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
@@ -376,8 +282,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
 // ============================================
 export function useAppContext() {
   const context = useContext(AppContext);
-  if (!context) {
-    throw new Error('useAppContext must be used within AppProvider');
-  }
+  if (!context) throw new Error('useAppContext must be used within AppProvider');
   return context;
 }
