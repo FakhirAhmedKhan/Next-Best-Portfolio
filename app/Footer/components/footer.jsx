@@ -1,5 +1,5 @@
 "use client";
-import GitHubCalendarSimple from "@/app/footer/components/githubCard";
+import GitHubCalendarSimple from "./githubCard";
 import { HeadIng } from "@/UI/Head";
 import { Badge } from "@/UI/Badge";
 import { BsGithub } from "react-icons/bs";
