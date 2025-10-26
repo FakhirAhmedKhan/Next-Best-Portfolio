@@ -1,6 +1,6 @@
 'use client';
 
-import { useAppContext } from "@/Hook/useAppLogic";
+import { useAppContext } from "@/lib/contexts/app-context";
 import { containerVariants, SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
 import { motion } from "framer-motion";
 import Image from "next/image";

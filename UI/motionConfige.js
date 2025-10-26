@@ -15,6 +15,31 @@ export const container = {
   },
 };
 
+export const navItemVariants = {
+  initial: { opacity: 0, y: -20 },
+  animate: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+    },
+  }),
+  hover: { y: -2, transition: { duration: 0.2 } },
+};
+
+export const mobileMenuVariants = {
+  closed: { opacity: 0, height: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+  open: { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeOut", staggerChildren: 0.05 } },
+};
+
+export const mobileItemVariants = {
+  closed: { opacity: 0, x: -20 },
+  open: { opacity: 1, x: 0 },
+};
 export const SkillcontainerVariants = {
   hidden: { opacity: 0 },
   show: {

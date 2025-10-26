@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { AppProvider } from '@/Hook/useAppLogic';
+import { AppProvider } from '@/lib/contexts/app-context';
 import HeadSection from '@/app/header/Navbar';
 import FooterPage from '@/app/footer/components/footer';
 import { Animated } from '@/UI/Animated';

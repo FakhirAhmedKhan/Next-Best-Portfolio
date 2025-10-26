@@ -2,7 +2,7 @@
 import { BsGithub } from "react-icons/bs";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import { useAppContext } from "@/Hook/useAppLogic";
+import { useAppContext } from "@/lib/contexts/app-context";
 import Image from "next/image";
 import { badgeVariants, buttonVariants, cardHoverVariants, cardVariants, containerVariants, imageVariants, overlayVariants } from "@/UI/motionConfige";
 

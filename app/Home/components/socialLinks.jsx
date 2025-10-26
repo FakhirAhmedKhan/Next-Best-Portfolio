@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { useAppContext } from "@/Hook/useAppLogic";
+import { useAppContext } from "@/lib/contexts/app-context";
 
 export const SocialLinks = () => {
   const { socialLinks, loading } = useAppContext();

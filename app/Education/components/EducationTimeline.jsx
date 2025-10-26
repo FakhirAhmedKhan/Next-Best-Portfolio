@@ -1,4 +1,4 @@
-import { useAppContext } from '@/Hook/useAppLogic';
+import { useAppContext } from '@/lib/contexts/app-context';
 import { cardVariants, containerVariants, dotVariants, iconVariants, itemVariants, lineVariants } from '@/UI/motionConfige';
 import { motion } from 'framer-motion';
 

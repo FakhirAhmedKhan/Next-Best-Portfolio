@@ -1,40 +1,30 @@
-import React from 'react'
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from 'lucide-react';
+'use client';
 
-const MobileMenuButton = ({ isMenuOpen, setIsMenuOpen }) => {
+import React from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useAppContext } from "@/lib/contexts/app-context";
+
+export const MobileMenuButton = () => {
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+  } = useAppContext();
+
   return (
     <motion.button
-      onClick={() => setIsMenuOpen((prev) => !prev)}
-      className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      aria-label="Toggle Menu"
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      className="md:hidden p-2.5 rounded-xl bg-slate-800/50 text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all border border-white/10"
+      aria-label="Toggle menu"
     >
-      <AnimatePresence mode="wait">
-        {isMenuOpen ? (
-          <motion.div
-            key="close"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <X className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="menu"
-            initial={{ rotate: 90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        animate={{ rotate: isMenuOpen ? 90 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </motion.div>
     </motion.button>
-  )
-}
-
-export default MobileMenuButton
+  );
+};

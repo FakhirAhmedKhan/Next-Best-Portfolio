@@ -1,5 +1,5 @@
 "use client";
-import { useAppContext } from "@/Hook/useAppLogic";
+import { useAppContext } from "@/lib/contexts/app-context";
 import { motion } from "framer-motion";
 
 export const LoardProject = () => {
