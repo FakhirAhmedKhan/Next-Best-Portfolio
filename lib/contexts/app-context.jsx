@@ -6,11 +6,11 @@ import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase, Mail } 
 // 🔷 NAVIGATION ITEMS
 // ============================================
 export const navItems = [
-  { id: "home", label: "Home", href: "/", icon: Home },
-  { id: "education", label: "Education", href: "/education", icon: User },
-  { id: "skills", label: "Skills", href: "/skills", icon: Code },
-  { id: "projects", label: "Projects", href: "/projects", icon: Briefcase },
-  { id: "contact", label: "Contact", href: "#contact", icon: Mail },
+  { id: "home", label: "Home", href: "/HOMEPage", icon: Home },
+  { id: "education", label: "Education", href: "/EduPage", icon: User },
+  { id: "skills", label: "Skills", href: "/SkillPage", icon: Code },
+  { id: "projects", label: "Projects", href: "/ProjectPage", icon: Briefcase },
+  // { id: "contact", label: "Contact", href: "#contact", icon: Mail },
 ];
 
 const iconMap = {

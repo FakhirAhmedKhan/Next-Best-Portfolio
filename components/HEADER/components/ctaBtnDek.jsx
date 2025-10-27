@@ -11,8 +11,6 @@ export const CtaBtnDek = () => {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.4 }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
     >
       <Link
         href="#contact"
@@ -21,7 +19,6 @@ export const CtaBtnDek = () => {
         <motion.div
           className="absolute inset-0"
           initial={{ x: "100%" }}
-          whileHover={{ x: 0 }}
           transition={{ duration: 0.3 }}
         />
         <span className="relative z-10 flex items-center gap-2">Get In Touch</span>
