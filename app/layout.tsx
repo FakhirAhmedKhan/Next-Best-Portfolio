@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { AppProvider } from '@/lib/contexts/app-context';
 import FooterPage from '@/components/FOOTER/components/footer';
 import { Animated } from '@/UI/Animated';
-import  Navbar  from './header/Navbar';
+import  Navbar  from './header/Navbar.jsx';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
