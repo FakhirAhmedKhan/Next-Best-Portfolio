@@ -8,7 +8,7 @@ import { MobileMenuButton } from "../../components/HEADER/components/MobileMenuB
 import { ProgressBar } from "../../components/HEADER/components/ProgressBar";
 import { useAppContext } from "@/lib/contexts/app-context";
 
-export default function HeaderSection() {
+export default function Navbar() {
   const { scrolled } = useAppContext();
 
   return (
