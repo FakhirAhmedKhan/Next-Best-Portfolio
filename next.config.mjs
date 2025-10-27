@@ -8,6 +8,14 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/home', destination: '/', permanent: true },
+      { source: '/Education', destination: '/education', permanent: true },
+      { source: '/Skills', destination: '/skills', permanent: true },
+      { source: '/Projects', destination: '/projects', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
