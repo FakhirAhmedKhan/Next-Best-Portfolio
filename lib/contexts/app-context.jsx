@@ -6,7 +6,7 @@ import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase, Mail } 
 // 🔷 NAVIGATION ITEMS
 // ============================================
 export const navItems = [
-  { id: "home", label: "Home", href: "/HOMEPage", icon: Home },
+  { id: "home", label: "Home", href: "/", icon: Home },
   { id: "education", label: "Education", href: "/EduPage", icon: User },
   { id: "skills", label: "Skills", href: "/SkillPage", icon: Code },
   { id: "projects", label: "Projects", href: "/ProjectPage", icon: Briefcase },
