@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { AppProvider } from '@/lib/contexts/app-context';
 import FooterPage from '@/components/FOOTER/components/footer';
 import { Animated } from '@/UI/Animated';
-import { Pages as Header } from './header/pages';
+import  Navbar  from './header/Navbar';
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased dark:text-gray-100 bg-purple-400/10 dark:bg-purple-600/10">
         <AppProvider>
-          <Header />
+          <Navbar />
           {children}
           <Animated />
           <footer>
