@@ -5,7 +5,7 @@
   "buildCommand": "next build",
   "outputDirectory": ".next",
   "functions": {
-    "api/**/*.js": {
+    "app/api/**/*.js": {
       "runtime": "vercel-nodejs@20.0.0",
       "maxDuration": 10,
       "memory": 512
