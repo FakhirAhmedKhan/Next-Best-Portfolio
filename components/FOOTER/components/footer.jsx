@@ -1,23 +1,23 @@
 "use client";
 import GitHubCalendarSimple from "./githubCard";
 import { HeadIng } from "@/UI/Head";
-import { Badge } from "@/UI/Badge";
 import { BsGithub } from "react-icons/bs";
-import { useState } from "react";
 import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
+import { useState } from "react";
+import { Badge } from "@/UI/Badge";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
 
   return (
-    <footer className={SectionSTyle}>
+    <footer id="contact" className={SectionSTyle}>
       <HeadIng
-        Tittle="Contributions"
-        Pragaphic="Where ideas turn into code designed with React, polished with Tailwind CSS."
+        Tittle="GitHub Contributions"
+        Pragaphic="Where ideas turn into code — crafted with React, refined with Tailwind, and powered by creativity."
       />
 
-      {calendarData && (
+      {calendarData?.totalContributions && (
         <Badge
           Icon={BsGithub}
           BageName="Total Contributions"
@@ -25,7 +25,9 @@ export default function FooterSection() {
           className="px-4 py-2 text-sm"
         />
       )}
+
       <GitHubCalendarSimple onDataLoaded={setCalendarData} />
+
       <EmailMe />
     </footer>
   );
