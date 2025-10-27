@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // 👈 Enables static HTML export
+  output: 'export', // Enables static HTML export
   images: {
-    unoptimized: true, // 👈 Required for GitHub Pages (no Next Image Optimization)
+    unoptimized: true, // GitHub Pages can't handle Next.js image optimization
     remotePatterns: [
       {
         protocol: 'https',
@@ -10,8 +10,9 @@ const nextConfig = {
       },
     ],
   },
-  basePath: '/Next-Best-Portfolio', // 👈 your repo name
-  assetPrefix: '/Next-Best-Portfolio/', // 👈 same as basePath
+  basePath: '/Next-Best-Portfolio', // ✅ Your GitHub repo name
+  assetPrefix: '/Next-Best-Portfolio/', // ✅ Same as basePath
+  trailingSlash: true, // ✅ Recommended for GitHub Pages to prevent routing 404s
 };
 
 export default nextConfig;

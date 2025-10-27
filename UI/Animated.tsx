@@ -159,7 +159,7 @@ export const Animated = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-400/10 dark:bg-purple-600/10 rounded-full blur-3xl"
+        className="absolute -bottom-40 -right-40 w-96 h-96  rounded-full blur-3xl"
         animate={{ scale: [1, 1.3, 1], x: [0, -50, 0], y: [0, -30, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />

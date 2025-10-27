@@ -1,12 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { AppProvider } from '@/lib/contexts/app-context';
 import HeadSection from '@/app/header/Navbar';
 import FooterPage from '@/components/FOOTER/components/footer';
 import { Animated } from '@/UI/Animated';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -20,11 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased dark:text-gray-100`}>
+      <body className="antialiased dark:text-gray-100 bg-purple-400/10 dark:bg-purple-600/10">
         <AppProvider>
           <HeadSection />
           {children}
-          {/* <Animated /> */}
+          <Animated />
           <footer>
             <FooterPage />
           </footer>
