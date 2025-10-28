@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export const EducationTimeline = () => {
   const { education, loading ,setHoveredIndex, hoveredIndex, iconMap } = useAppContext();
-  if (loading) return null; // or return a skeleton loader
+  if (loading) return null;
   if (loading) {
     return (
       <div className="text-center py-20 text-gray-400">
