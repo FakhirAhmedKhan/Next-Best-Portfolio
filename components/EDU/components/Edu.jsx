@@ -7,7 +7,9 @@ export default function EducationSection() {
   return (
     <section id="about" className={SectionSTyle}>
 
-      <HeadIng Tittle="My Journey" Pragaphic="A timeline of my educational milestones and achievements" />
+      <HeadIng 
+      Tittle="My Journey" 
+      Pragaphic="A timeline of my educational milestones and achievements" />
 
       <EducationTimeline />
     </section>
