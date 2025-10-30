@@ -3,16 +3,8 @@ import { cardVariants, containerVariants, dotVariants, iconVariants, itemVariant
 import { motion } from 'framer-motion';
 
 export const EducationTimeline = () => {
-  const { education, loading ,setHoveredIndex, hoveredIndex, iconMap } = useAppContext();
-  if (loading) return null; // or return a skeleton loader
-  if (loading) {
-    return (
-      <div className="text-center py-20 text-gray-400">
-        Loading education timeline...
-      </div>
-    );
-  }
-  
+  const { educationData, setHoveredIndex, hoveredIndex, iconMap } = useAppContext();
+
   return (
     <div className="min-h-screen py-16 px-4">
       <div className="max-w-6xl mx-auto">
@@ -21,7 +13,7 @@ export const EducationTimeline = () => {
           {/* Central Line with draw animation */}
           <motion.div
             initial={{ height: 0 }}
-            key={education.length} // re-triggers animation when data changes
+            key={educationData.length} // re-triggers animation when data changes
             whileInView={{ height: "100%" }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -36,8 +28,8 @@ export const EducationTimeline = () => {
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-12"
           >
-            {education?.length > 0 ? (
-              education.map((item, index) => (
+            {educationData?.length > 0 ? (
+              educationData.map((item, index) => (
                 <motion.div
                   key={item.id || index}
                   custom={index}

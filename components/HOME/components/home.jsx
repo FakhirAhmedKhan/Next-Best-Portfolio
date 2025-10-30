@@ -6,13 +6,16 @@ import { SocialLinks } from "./socialLinks";
 import { Badge } from "@/UI/Badge";
 import { WandSparkles } from "lucide-react";
 import { SectionSTyle } from "@/UI/motionConfige";
+import { useAppContext } from "@/lib/contexts/app-context";
 
 export default function HomeSection() {
+  const { sectionTitles } = useAppContext();
 
   return (
+
     <section id="home" className={SectionSTyle}>
 
-      <Badge Icon={WandSparkles} BageName="Welcome to my digital space"  className="mb-4"/>
+      <Badge Icon={WandSparkles} BageName={sectionTitles.BageName?.HomeBage} className="mb-4" />
 
       <TypingEffect />
 

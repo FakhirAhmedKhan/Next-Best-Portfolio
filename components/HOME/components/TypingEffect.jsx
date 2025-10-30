@@ -2,8 +2,10 @@ import React from 'react'
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import { pulseAnimation } from '@/UI/motionConfige';
+import { useAppContext } from '@/lib/contexts/app-context';
 
 export const TypingEffect = () => {
+  const { sectionTitles } = useAppContext();
 
   return (
     <motion.div
@@ -15,7 +17,7 @@ export const TypingEffect = () => {
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
         <div className="mb-2">
           <ReactTyped
-            strings={["Hello, I'm"]}
+            strings={[sectionTitles.home?.part1 || ""]}
             typeSpeed={80}
             showCursor={false}
           />
@@ -27,7 +29,7 @@ export const TypingEffect = () => {
           />
           <span className="relative text-gray-100 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 bg-clip-text ">
             <ReactTyped
-              strings={["Fakhir Ahmed Khan"]}
+              strings={[sectionTitles.home?.part2 || ""]}
               typeSpeed={100}
               showCursor={false}
               loop={false}

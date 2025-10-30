@@ -6,16 +6,17 @@ import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
 import { Badge } from "@/UI/Badge";
+import { useAppContext } from "@/lib/contexts/app-context";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
+  const { sectionTitles } = useAppContext();
+
 
   return (
     <footer id="contact" className={SectionSTyle}>
-      <HeadIng
-        Tittle="GitHub Contributions"
-        Pragaphic="Where ideas turn into code — crafted with React, refined with Tailwind, and powered by creativity."
-      />
+      <HeadIng Tittle={sectionTitles.footer?.title} Pragaphic={sectionTitles.footer?.paragraph} />
+
 
       {calendarData?.totalContributions && (
         <Badge

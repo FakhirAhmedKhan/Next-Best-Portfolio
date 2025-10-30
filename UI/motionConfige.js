@@ -3,17 +3,7 @@ const smoothEase = [0.6, 0.05, 0.01, 0.99];
 const bounceEase = [0.68, -0.55, 0.265, 1.55];
 
 // Enhanced container with smoother stagger
-export const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1,
-      ease: smoothEase,
-    },
-  },
-};
+
 
 export const navItemVariants = {
   initial: { opacity: 0, y: -20 },
@@ -51,39 +41,7 @@ export const SkillcontainerVariants = {
   },
 }
 
-// More dynamic child entrance
-export const child = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      damping: 15,
-      stiffness: 120,
-      mass: 0.8,
-    },
-  },
-};
 
-// Enhanced hover with smoother lift
-export const hover = {
-  y: -15,
-  scale: 1.15,
-  color: '#60a5fa',
-  textShadow: '0 5px 30px rgba(96, 165, 250, 0.9)',
-  filter: 'brightness(1.2)',
-  transition: {
-    type: 'spring',
-    damping: 15,
-    stiffness: 400,
-  },
-};
 
 // Refined pulse with organic feel
 export const pulseAnimation = {

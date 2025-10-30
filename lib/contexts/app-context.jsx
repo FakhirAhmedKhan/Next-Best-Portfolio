@@ -1,6 +1,7 @@
 'use client';
 import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
-import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase, Mail } from 'lucide-react';
+import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase } from 'lucide-react';
+import enData from '@/public/Data/en.json';
 
 // ============================================
 // 🔷 NAVIGATION ITEMS
@@ -10,77 +11,11 @@ export const navItems = [
   { id: "education", label: "Education", href: "/EduPage", icon: User },
   { id: "skills", label: "Skills", href: "/SkillPage", icon: Code },
   { id: "projects", label: "Projects", href: "/ProjectPage", icon: Briefcase },
-  // { id: "contact", label: "Contact", href: "#contact", icon: Mail },
 ];
 
-const iconMap = {
-  GraduationCap,
-  BookOpen,
-  Code,
-  Sparkles,
-};
-
-// ============================================
-// 🔷 CONTEXT SETUP
-// ============================================
-const AppContext = createContext(null);
-
-// ============================================
-// 🔷 API & CACHING CONFIG
-// ============================================
-const CACHE_KEYS = {
-  skills: 'skillsIcons',
-  socialLinks: 'socialLinks',
-  education: 'educationData',
-  projects: 'projectsData',
-};
-
-const API_ENDPOINTS = {
-  skills: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/skillsIcons.json',
-  socialLinks: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/socialLinks.json',
-  education: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/educationData.json',
-  projects: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/projectsData.json',
-};
-
+const iconMap = { GraduationCap, BookOpen, Code, Sparkles };
+const AppContext = createContext({});
 const isBrowser = typeof window !== 'undefined';
-
-const getCache = (key) => {
-  if (!isBrowser) return null;
-  try {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : null;
-  } catch {
-    return null;
-  }
-};
-
-const setCache = (key, data) => {
-  if (!isBrowser) return;
-  try {
-    localStorage.setItem(key, JSON.stringify(data));
-  } catch (err) {
-    console.warn(`Failed to cache ${key}:`, err);
-  }
-};
-
-const fetchWithTimeout = async (url, timeout = 5000) => {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      next: { revalidate: 3600 },
-    });
-    clearTimeout(id);
-
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } catch (err) {
-    clearTimeout(id);
-    throw err;
-  }
-};
 
 // ============================================
 // 🔷 PROVIDER
@@ -89,9 +24,10 @@ export function AppProvider({ children }) {
   const [data, setData] = useState({
     skills: [],
     socialLinks: [],
-    education: [],
+    educationData: [],
     projects: [],
   });
+  const [sectionTitles, setSectionTitles] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [visibleCount, setVisibleCount] = useState(3);
@@ -100,63 +36,26 @@ export function AppProvider({ children }) {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // ============================================
-  // 🔹 DATA FETCHING
-  // ============================================
+  // 🔹 Load local JSON data
   useEffect(() => {
-    let isMounted = true;
+    setData({
+      skills: enData.skills || [],
+      socialLinks: enData.socialLinks || [],
+      educationData: enData.educationData || [],
+      projects: enData.projects || [],
+    });
 
-    const fetchAllData = async () => {
-      try {
-        const cached = {
-          skills: getCache(CACHE_KEYS.skills),
-          socialLinks: getCache(CACHE_KEYS.socialLinks),
-          education: getCache(CACHE_KEYS.education),
-          projects: getCache(CACHE_KEYS.projects),
-        };
+    setSectionTitles(enData.sectionTitles || {
+      home: "Home",
+      education: "Education",
+      skills: "Skills",
+      projects: "Projects",
+    });
 
-        if (Object.values(cached).every(Boolean)) {
-          if (isMounted) {
-            setData(cached);
-            setLoading(false);
-          }
-          return;
-        }
-
-        const [skillsData, socialData, eduData, projData] = await Promise.allSettled([
-          fetchWithTimeout(API_ENDPOINTS.skills),
-          fetchWithTimeout(API_ENDPOINTS.socialLinks),
-          fetchWithTimeout(API_ENDPOINTS.education),
-          fetchWithTimeout(API_ENDPOINTS.projects),
-        ]);
-
-        const fresh = {
-          skills: skillsData.status === 'fulfilled' ? skillsData.value.skills ?? [] : cached.skills ?? [],
-          socialLinks: socialData.status === 'fulfilled' ? socialData.value.socialLinks ?? [] : cached.socialLinks ?? [],
-          education: eduData.status === 'fulfilled' ? eduData.value.educationData ?? [] : cached.education ?? [],
-          projects: projData.status === 'fulfilled' ? projData.value.projects ?? [] : cached.projects ?? [],
-        };
-
-        if (skillsData.status === 'fulfilled') setCache(CACHE_KEYS.skills, fresh.skills);
-        if (socialData.status === 'fulfilled') setCache(CACHE_KEYS.socialLinks, fresh.socialLinks);
-        if (eduData.status === 'fulfilled') setCache(CACHE_KEYS.education, fresh.education);
-        if (projData.status === 'fulfilled') setCache(CACHE_KEYS.projects, fresh.projects);
-
-        if (isMounted) setData(fresh);
-      } catch (err) {
-        console.error('❌ Failed to fetch data:', err);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchAllData();
-    return () => { isMounted = false; };
+    setLoading(false);
   }, []);
 
-  // ============================================
-  // 🔹 SCROLL HANDLING
-  // ============================================
+  // 🔹 Scroll Spy
   useEffect(() => {
     if (!isBrowser) return;
     let ticking = false;
@@ -166,12 +65,12 @@ export function AppProvider({ children }) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
           setScrolled(scrollY > 50);
-
           const scrollPosition = scrollY + 200;
+
           for (let i = navItems.length - 1; i >= 0; i--) {
-            const section = document.getElementById(navItems[i].id || '');
+            const section = document.getElementById(navItems[i].id);
             if (section && section.offsetTop <= scrollPosition) {
-              setActiveSection(navItems[i].id || '');
+              setActiveSection(navItems[i].id);
               break;
             }
           }
@@ -186,23 +85,17 @@ export function AppProvider({ children }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ============================================
-  // 🔹 NAVIGATION
-  // ============================================
+  // 🔹 Smooth Scroll
   const scrollToSection = useCallback((id) => {
     setIsMenuOpen(false);
     setTimeout(() => {
       const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActiveSection(id);
-      }
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveSection(id);
     }, 250);
   }, []);
 
-  // ============================================
-  // 🔹 PROJECT FILTERING
-  // ============================================
+  // 🔹 Project Filtering
   const categories = useMemo(() => {
     if (!data?.projects?.length) return ['SAAS'];
     const cats = Array.from(new Set(data.projects.map((p) => p.category)));
@@ -218,14 +111,18 @@ export function AppProvider({ children }) {
 
   const filteredProjects = useMemo(() => {
     if (!data?.projects) return [];
-    if (activeCategory === 'All') return data.projects;
-    return data.projects.filter((p) => p.category === activeCategory);
+    return activeCategory === 'All'
+      ? data.projects
+      : data.projects.filter((p) => p.category === activeCategory);
   }, [data.projects, activeCategory]);
 
-  const visibleProjects = useMemo(() => filteredProjects.slice(0, visibleCount), [filteredProjects, visibleCount]);
+  const visibleProjects = useMemo(
+    () => filteredProjects.slice(0, visibleCount),
+    [filteredProjects, visibleCount]
+  );
 
   const showMore = useCallback((count = 3) => {
-    setVisibleCount((prev) => prev + count);
+    setVisibleCount(prev => prev + count);
   }, []);
 
   const changeCategory = useCallback((category) => {
@@ -233,25 +130,20 @@ export function AppProvider({ children }) {
     setVisibleCount(3);
   }, []);
 
-  // ============================================
-  // 🔹 CONTEXT VALUE
-  // ============================================
+  // 🔹 Context Value
   const value = useMemo(() => ({
     ...data,
     loading,
     hoveredIndex,
     setHoveredIndex,
     iconMap,
-
-    // Projects
+    sectionTitles, // 👈 added here
     activeCategory,
     categories,
     visibleProjects,
     filteredProjects,
     showMore,
     changeCategory,
-
-    // Navigation
     navItems,
     activeSection,
     isMenuOpen,
@@ -262,6 +154,7 @@ export function AppProvider({ children }) {
     data,
     loading,
     hoveredIndex,
+    sectionTitles,
     activeCategory,
     categories,
     visibleProjects,
