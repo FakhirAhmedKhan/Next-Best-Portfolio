@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "npm run build && gh-pages -d out"
+    "deploy": "npm run build && gh-pages -d out",
+    "clean": "rimraf .next && rimraf node_modules/.cache",
+    "build:clean": "npm run clean && next build"
   },
   "dependencies": {
     "axios": "^1.12.2",

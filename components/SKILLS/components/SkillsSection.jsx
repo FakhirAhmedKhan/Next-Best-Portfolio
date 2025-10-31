@@ -10,9 +10,9 @@ import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function SkillsSection() {
   const { data } = useLanguage();
-
   const badgeText = data.BageName?.SkillBade || "Default Badge";
   const Data = data.sectionTitles?.skillsSection || {};
+
   return (
     <section id="skills" className={SectionSTyle}>
 
