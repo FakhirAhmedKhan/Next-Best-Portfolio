@@ -6,16 +6,18 @@ import { SocialLinks } from "./socialLinks";
 import { Badge } from "@/UI/Badge";
 import { WandSparkles } from "lucide-react";
 import { SectionSTyle } from "@/UI/motionConfige";
-import { useAppContext } from "@/lib/contexts/app-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function HomeSection() {
-  const { sectionTitles } = useAppContext();
 
+  const { data } = useLanguage();
+  const badgeText = data.BageName?.HomeBage || "Default Badge";
   return (
 
     <section id="home" className={SectionSTyle}>
 
-      <Badge Icon={WandSparkles} BageName={sectionTitles.BageName?.HomeBage} className="mb-4" />
+      <Badge Icon={WandSparkles} BageName={badgeText} className="mb-4" />
+
 
       <TypingEffect />
 

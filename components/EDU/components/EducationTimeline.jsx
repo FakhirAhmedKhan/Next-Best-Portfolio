@@ -1,26 +1,27 @@
 import { useAppContext } from '@/lib/contexts/app-context';
+import { useLanguage } from '@/lib/contexts/language-context';
 import { cardVariants, containerVariants, dotVariants, iconVariants, itemVariants, lineVariants } from '@/UI/motionConfige';
 import { motion } from 'framer-motion';
 
 export const EducationTimeline = () => {
-  const { educationData, setHoveredIndex, hoveredIndex, iconMap } = useAppContext();
+  const { setHoveredIndex, hoveredIndex, iconMap } = useAppContext()
+
+  const { data } = useLanguage();
+  const eduData = data.sectionTitles.education || data.educationData || [];
 
   return (
     <div className="min-h-screen py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Timeline */}
         <div className="relative">
-          {/* Central Line with draw animation */}
           <motion.div
             initial={{ height: 0 }}
-            key={educationData.length} // re-triggers animation when data changes
-            whileInView={{ height: "100%" }}
+            key={eduData.length}
+            whileInView={{ height: '100%' }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
             className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-transparent"
           />
 
-          {/* Timeline Items */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -28,8 +29,8 @@ export const EducationTimeline = () => {
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-12"
           >
-            {educationData?.length > 0 ? (
-              educationData.map((item, index) => (
+            {eduData?.length > 0 ? (
+              eduData.map((item, index) => (
                 <motion.div
                   key={item.id || index}
                   custom={index}
@@ -39,20 +40,18 @@ export const EducationTimeline = () => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  {/* Content Card */}
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8'}`}>
                     <motion.div
                       variants={cardVariants}
                       initial="rest"
-                      animate={hoveredIndex === index ? "hover" : "rest"}
+                      animate={hoveredIndex === index ? 'hover' : 'rest'}
                       className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
                     >
                       <div className="flex items-start gap-4 mb-4">
-                        {/* Logo */}
                         <motion.div
                           variants={iconVariants}
                           initial="rest"
-                          animate={hoveredIndex === index ? "hover" : "rest"}
+                          animate={hoveredIndex === index ? 'hover' : 'rest'}
                           className={`p-3 rounded-xl bg-gradient-to-br ${item.color} flex-shrink-0`}
                         >
                           <div className="text-white">
@@ -95,27 +94,24 @@ export const EducationTimeline = () => {
                         {item.description}
                       </motion.p>
 
-                      {/* Decorative Element */}
                       <motion.div
                         variants={lineVariants}
                         initial="rest"
-                        animate={hoveredIndex === index ? "hover" : "rest"}
+                        animate={hoveredIndex === index ? 'hover' : 'rest'}
                         className={`mt-4 h-1 rounded-full bg-gradient-to-r ${item.color}`}
                       />
                     </motion.div>
                   </div>
 
-                  {/* Center Dot */}
                   <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 items-center justify-center z-10">
                     <motion.div
                       variants={dotVariants}
                       initial="rest"
-                      animate={hoveredIndex === index ? "hover" : "rest"}
+                      animate={hoveredIndex === index ? 'hover' : 'rest'}
                       className={`w-4 h-4 rounded-full bg-gradient-to-r ${item.color} border-4 border-slate-900`}
                     />
                   </div>
 
-                  {/* Spacer for alignment */}
                   <div className="hidden md:block w-5/12" />
                 </motion.div>
               ))
@@ -127,8 +123,8 @@ export const EducationTimeline = () => {
                 className="text-center text-gray-500"
               >
                 Loading education data...
-              </motion.div>)
-            }
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </div>

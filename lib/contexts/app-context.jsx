@@ -6,11 +6,12 @@ import enData from '@/public/Data/en.json';
 // ============================================
 // 🔷 NAVIGATION ITEMS
 // ============================================
+
 export const navItems = [
-  { id: "home", label: "Home", href: "/", icon: Home },
-  { id: "education", label: "Education", href: "/EduPage", icon: User },
-  { id: "skills", label: "Skills", href: "/SkillPage", icon: Code },
-  { id: "projects", label: "Projects", href: "/ProjectPage", icon: Briefcase },
+  { id: "home", label: enData.navLabels.home, href: "/", icon: Home },
+  { id: "education", label: enData.navLabels.education, href: "/EduPage", icon: User },
+  { id: "skills", label: enData.navLabels.skills, href: "/SkillPage", icon: Code },
+  { id: "projects", label: enData.navLabels.projects, href: "/ProjectPage", icon: Briefcase },
 ];
 
 const iconMap = { GraduationCap, BookOpen, Code, Sparkles };

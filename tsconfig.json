@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/EDU/components/EducationTimeline.jsx", "components/FOOTER/components/githubCard.jsx", "app/EduPage/page.jsx", "app/Header/Navbar.jsx", "lib/contexts/app-context.jsx"  ],
+, "components/EDU/components/EducationTimeline.jsx", "components/FOOTER/components/githubCard.jsx", "app/EduPage/page.jsx", "app/Header/Navbar.jsx", "lib/contexts/app-context.jsx", "app/layout.jsx"  ],
   "exclude": [
     "node_modules"
   ]

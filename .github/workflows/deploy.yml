@@ -1,28 +1,28 @@
-name: 🚀 Deploy to Vercel
+# name: 🚀 Deploy to Vercel
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     # branches:
+#     #   - main
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: 🛎️ Checkout Repository
-        uses: actions/checkout@v4
+#     steps:
+#       - name: 🛎️ Checkout Repository
+#         uses: actions/checkout@v4
 
-      - name: 🧰 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+#       - name: 🧰 Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
 
-      - name: 📦 Install Dependencies
-        run: npm ci
+#       - name: 📦 Install Dependencies
+#         run: npm ci
 
-      - name: 🏗️ Build Next.js App
-        run: npm run build
+#       - name: 🏗️ Build Next.js App
+#         run: npm run build
 
-      - name: 🚀 Deploy to Vercel
-        run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+#       - name: 🚀 Deploy to Vercel
+#         run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

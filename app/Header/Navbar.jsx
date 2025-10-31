@@ -7,6 +7,7 @@ import { CtaBtnDek } from "../../components/HEADER/components/ctaBtnDek";
 import { MobileMenuButton } from "../../components/HEADER/components/MobileMenuButton";
 import { ProgressBar } from "../../components/HEADER/components/ProgressBar";
 import { useAppContext } from "@/lib/contexts/app-context";
+import  LanguageSwitcher  from "@/UI/LanguageSwitcher";
 
 export default function Navbar() {
   const { scrolled } = useAppContext();
@@ -28,11 +29,13 @@ export default function Navbar() {
           <LogoHeader />
           <DesktopNavigation />
           <CtaBtnDek />
+          <LanguageSwitcher />
+
           <MobileMenuButton />
         </div>
         <MobileMenu />
       </nav>
-      <ProgressBar/>
+      <ProgressBar />
     </motion.header>
   );
 }
