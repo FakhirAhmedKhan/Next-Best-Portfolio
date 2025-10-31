@@ -1,0 +1,508 @@
+{
+  "educationData": [
+    {
+      "year": "2026 (قادم)",
+      "title": "الصف 12 - التعليم الثانوي العالي",
+      "description": "التقدم إلى السنة الأخيرة من التعليم الثانوي مع التركيز على مواد العلوم والتكنولوجيا والهندسة والرياضيات مع الاستمرار في تطوير الخبرة في البرمجة والتقنيات الناشئة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-purple-500 to-pink-500"
+    },
+    {
+      "year": "2025 (حالياً)",
+      "title": "الصف 11 - التعليم الثانوي العالي",
+      "description": "أتابع حالياً التعليم الثانوي العالي مع التركيز على المناهج المتقدمة بينما أقوم بتعزيز مهارات التطوير الكامل والممارسات البرمجية الحديثة بنشاط.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "Sparkles",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "year": "2024",
+      "title": "معسكر تطوير البرمجيات الكامل",
+      "description": "أكملت بنجاح برنامجاً مكثفاً شاملاً مدته 6 أشهر متخصصاً في تطوير الويب الكامل، بما في ذلك تقنيات MERN وأطر التطوير الحديثة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-emerald-500 to-teal-500"
+    },
+    {
+      "year": "2024",
+      "title": "تخصص تطوير الويب",
+      "description": "أكملت معسكر تدريبي مكثف مدته 6 أشهر يغطي مفاهيم تطوير الويب المتقدمة، ومبادئ التصميم المتجاوب، وأفضل الممارسات المعتمدة في الصناعة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-orange-500 to-red-500"
+    },
+    {
+      "year": "2024",
+      "title": "الصف 10 - التعليم الثانوي",
+      "description": "أكملت مرحلة التعليم الثانوي بينما كنت أتابع في نفس الوقت التعليم التقني في تطوير البرمجيات وأساسيات البرمجة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "year": "2023",
+      "title": "التعليم الذاتي للبرمجة",
+      "description": "بدأت رحلة التعلم المستقلة في تطوير الويب، وإتقان التقنيات الأساسية بما في ذلك HTML5 و CSS3 و JavaScript من خلال دورات منظمة عبر الإنترنت والوثائق.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/youtubeS.avif",
+      "icon": "BookOpen",
+      "color": "from-amber-500 to-orange-500"
+    },
+    {
+      "year": "2023",
+      "title": "الصف 9 - التعليم الثانوي",
+      "description": "أكملت العام الدراسي بينما كنت أكتشف شغفي بالبرمجة وأبدأ استكشاف المفاهيم الأساسية لعلوم الكمبيوتر وتقنيات الويب.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-rose-500 to-pink-500"
+    }
+  ],
+  "projects": [
+    {
+      "id": 0,
+      "title": "💻 مولد السيرة الذاتية",
+      "link": "https://cv-generator-second-try.vercel.app/",
+      "description": "تطبيق لإنشاء السيرة الذاتية ينشئ سيراً ذاتية متوافقة مع أنظمة تتبع المتقدمين.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/CVGenerator",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/ATS-Calculator.avif",
+      "category": "SAAS"
+    },
+    {
+      "id": 1,
+      "title": "💻 صفحة هبوط لحاسبة ATS",
+      "link": "https://fakhirahmedkhan.github.io/Landing-Page--For-ATS-Calculator/",
+      "description": "صفحة هبوط بسيطة لأدوات ATS الخاصة بي مع واجهة مستخدم/تجربة مستخدم جيدة.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Landing-Page--For-ATS-Calculator",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Landing-page.avif",
+      "category": "Web"
+    },
+    {
+      "id": 2,
+      "title": "💻 حاسبة ATS",
+      "link": "https://fakhirahmedkhan.github.io/ATS-Calculator/",
+      "description": "حاسبة نظام تتبع المتقدمين هي أداة تقيم مدى ملاءمة سيرتك الذاتية",
+      "codeLink": "https://github.com/FakhirAhmedKhan/ATS-Calculator",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Landing-page.avif",
+      "category": "SAAS"
+    },
+    {
+      "id": 3,
+      "title": "🎞️ استنساخ نتفليكس",
+      "link": "https://netflix-clone-jade-beta.vercel.app/",
+      "description": "استنساخ نتفليكس يكرر الميزات الأساسية لمنصة البث الشهيرة.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/NetFlix_Clone",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Netflix.avif",
+      "category": "Web"
+    },
+    {
+      "id": 4,
+      "title": "▶️ استنساخ يوتيوب",
+      "link": "https://youtube-git-main-fakhir-ahmed-khans-projects.vercel.app/",
+      "description": "هذا الاستنساخ ليوتيوب هو صفحة ويب متجاوبة تكرر الميزات الأساسية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/YouTube-clone-in-React",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/YouTube.avif",
+      "category": "Web"
+    },
+    {
+      "id": 5,
+      "title": "✖️ استنساخ تويتر",
+      "link": "https://x-clone-three-alpha.vercel.app/",
+      "description": "هذا الاستنساخ لـ X هو صفحة ويب متجاوبة تكرر الميزات الأساسية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/X_Clone",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/X_Clone.avif",
+      "category": "Web"
+    },
+    {
+      "id": 6,
+      "title": "🧾 محول الوحدات",
+      "link": "https://temperature-converter-by-using-html-css-and-jave-script.vercel.app/",
+      "description": "تحويل بين وحدات مختلفة لدرجة الحرارة والسرعة، مثل سلسيوس وفهرنهايت وكم/ساعة وميل/ساعة.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Temperature-Converter-by-using-HTML--CSS-and-JaveScript",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/UnitConverter.avif",
+      "category": "Tool"
+    },
+    {
+      "id": 7,
+      "title": "⛅ تطبيق الطقس",
+      "link": "https://weather-app-cyan-one-55.vercel.app/",
+      "description": "يوفر تحديثات الطقس في الوقت الفعلي لأي موقع عالمي، بما في ذلك درجة الحرارة والرطوبة وسرعة الرياح.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Weather-App",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Weather.avif",
+      "category": "Tool"
+    },
+    {
+      "id": 8,
+      "title": "🗣️ تحويل النص إلى كلام",
+      "link": "https://text-to-speech-ruby-phi.vercel.app",
+      "description": "يحول النص المكتوب إلى صوت طبيعي على الفور.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/text-to-speech",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Text-to-Speech.avif",
+      "category": "Tool"
+    },
+    {
+      "id": 9,
+      "title": "🛒 استنساخ أمازون",
+      "link": "https://github.com/FakhirAhmedKhan/retry-amazon-clone",
+      "description": "تطبيق ويب بسيط مصنوع بلغة JavaScript. يتيح للمستخدمين عرض المنتجات.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/retry-amazon-clone",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/ammzon.avif",
+      "category": "Web"
+    },
+    {
+      "id": 10,
+      "title": "📝 متتبع المهام",
+      "link": "https://to-do-list-neon-six.vercel.app/",
+      "description": "مدير مهام بسيط وسهل الاستخدام يساعدك على تنظيم مهامك اليومية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/ToDOList",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/TaskTracker.avif",
+      "category": "Tool"
+    },
+    {
+      "id": 11,
+      "title": "🐍 برامج بايثون الأساسية",
+      "link": "https://github.com/FakhirAhmedKhan/Python_Basic_Program-",
+      "description": "مجموعة من برامج بايثون للمبتدئين مصممة لبناء أساس في مفاهيم البرمجة.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Python_Basic_Program-",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Python"
+    },
+    {
+      "id": 12,
+      "title": "🐍 برامج بايثون الأساسية الجزء 3",
+      "link": "https://github.com/FakhirAhmedKhan/Basic_Python_Program_Part_2",
+      "description": "الجزء الثاني من سلسلة بايثون للمبتدئين يركز على المزيد من التمارين مع الوظائف.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Basic_Python_Program_Part_2",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Python"
+    },
+    {
+      "id": 13,
+      "title": "🐍 نظام الدرجات في بايثون",
+      "link": "https://github.com/FakhirAhmedKhan/Grading_System_in_python",
+      "description": "برنامج بايثون بسيط يحسب درجات الطلاب بناءً على علاماتهم باستخدام عبارات if/else.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Grading_System_in_python",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Python"
+    },
+    {
+      "id": 14,
+      "title": "🐍 لعبة في بايثون",
+      "link": "https://github.com/FakhirAhmedKhan/word-guessing-game-in-py",
+      "description": "لعبة طرفية ممتعة حيث يخمن اللاعبون الحروف للعثور على الكلمة المخفية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/word-guessing-game-in-py",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Python"
+    },
+    {
+      "id": 15,
+      "title": "🐍 اختبار في بايثون",
+      "link": "https://github.com/FakhirAhmedKhan/HTML-or-CSS-Quiz-by-using-python",
+      "description": "تطبيق اختبار بسيط يختبر معرفة HTML و CSS و JS. يعمل في الطرفية ويعرض النتيجة النهائية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/HTML-or-CSS-Quiz-by-using-python",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Python"
+    },
+    {
+      "id": 17,
+      "title": "🎮 لعبة حجر، ورقة، مقص",
+      "link": "https://rock-three-umber.vercel.app/",
+      "description": "اللعبة الكلاسيكية تتيح للاعبين اختبار حظهم ضد الكمبيوتر.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/rock",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Rock.avif",
+      "category": "Game"
+    },
+    {
+      "id": 18,
+      "title": "🔳 مولد رمز الاستجابة السريعة",
+      "link": "https://qr-generator-lilac-beta.vercel.app/",
+      "description": "أداة بسيطة تنشئ رموز الاستجابة السريعة من البيانات. يدخل المستخدمون البيانات، ويولد التطبيق رمز QR قابل للمسح.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/QR-Generator",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/qr.avif",
+      "category": "Tool"
+    },
+    {
+      "id": 19,
+      "title": "⚛️ آلة حاسبة في React",
+      "link": "https://calculator-in-react-ten.vercel.app/",
+      "description": "تطبيق بسيط مبني بـ React يقوم بعمليات حسابية أساسية. يستخدم المكونات والحالة لتحديث النتائج.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Calculator-in-React",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Calculator.avif",
+      "category": "React"
+    },
+    {
+      "id": 20,
+      "title": "💻 برنامج JavaScript الأساسي",
+      "link": "https://github.com/FakhirAhmedKhan/Basic-JavaScrip-Program",
+      "description": "مجموعة من برامج JavaScript للمبتدئين لبناء أساس في مفاهيم البرمجة.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Basic-JavaScrip-Program",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "JavaScript"
+    },
+    {
+      "id": 21,
+      "title": "💻 برنامج JavaScript الأساسي الجزء 2",
+      "link": "https://github.com/FakhirAhmedKhan/Basic-Javascript-part-2",
+      "description": "الجزء الثاني من سلسلة JavaScript للمبتدئين، مع التركيز على المزيد من التمارين.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Basic-Javascript-part-2",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "JavaScript"
+    },
+    {
+      "id": 22,
+      "title": "💻 برنامج JavaScript الأساسي الجزء 3",
+      "link": "https://github.com/FakhirAhmedKhan/JavaScript-Basic-Program-Part-4",
+      "description": "الجزء الثاني من سلسلة JavaScript للمبتدئين، مع التركيز على المزيد من التمارين.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/JavaScript-Basic-Program-Part-4",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "JavaScript"
+    },
+    {
+      "id": 23,
+      "title": "💻 اختبار في JavaScript",
+      "link": "https://github.com/FakhirAhmedKhan/Quiz-JavaScript",
+      "description": "تطبيق اختبار بسيط يختبر معرفة HTML و CSS و JS. يعمل في الطرفية ويعرض النتيجة النهائية.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Quiz-JavaScript",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "JavaScript"
+    },
+    {
+      "id": 24,
+      "title": "📝 مصدر تعلم Electron",
+      "link": "https://github.com/FakhirAhmedKhan/Electron-Learning-Resource/blob/main/README.md",
+      "description": "مصدر تعلم Electron بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ HTML و CSS و JavaScript أو مفاهيم Electron.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/Electron-Learning-Resource/blob/main/README.md",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Doc"
+    },
+    {
+      "id": 25,
+      "title": "📝 React Hooks للمطورين",
+      "link": "https://github.com/FakhirAhmedKhan/React_Hooks_For_Dev",
+      "description": "مصدر تعلم React Hooks بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ React.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/React_Hooks_For_Dev",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Doc"
+    },
+    {
+      "id": 26,
+      "title": "📝 دليل تعلم MySQL",
+      "link": "https://github.com/FakhirAhmedKhan/MySQL-Learning-Guide-",
+      "description": "مصدر تعلم MySQL بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ MySQL.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/MySQL-Learning-Guide-",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Doc"
+    },
+    {
+      "id": 27,
+      "title": "📝 ورقة غش HTML-CSS",
+      "link": "https://github.com/FakhirAhmedKhan/HTML-CSS-Cheat-Sheet",
+      "description": "مصدر تعلم HTML/CSS بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ HTML/CSS.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/HTML-CSS-Cheat-Sheet",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Doc"
+    },
+    {
+      "id": 28,
+      "title": "📝 ورقة غش JavaScript",
+      "link": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "description": "مصدر تعلم JavaScript بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ JavaScript.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/jspic.avif",
+      "category": "Doc"
+    },
+    {
+      "id": 29,
+      "title": "🚀 نظام إدارة المخزون",
+      "link": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "description": "مصدر تعلم JavaScript بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ JavaScript.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/StockProImage.avif",
+      "category": "SAAS"
+    },
+    {
+      "id": 30,
+      "title": "🚀 نظام إدارة الفعاليات",
+      "link": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "description": "مصدر تعلم JavaScript بسيط مصمم للمستخدمين ذوي المعرفة الأساسية بـ JavaScript.",
+      "codeLink": "https://github.com/FakhirAhmedKhan/JavaScript-Cheat-Sheet",
+      "imageUrl": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/EMS.avif",
+      "category": "SAAS"
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+    },
+    {
+      "name": "CSS",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    },
+    {
+      "name": "React.js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    },
+    {
+      "name": "React Native",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    },
+    {
+      "name": "Next.js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+    },
+    {
+      "name": "Node.js",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/tailwindcss/tailwindcss-original.svg"
+    },
+    {
+      "name": "Vite",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg"
+    },
+    {
+      "name": "MySQL",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+    },
+    {
+      "name": "Python",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+    },
+    {
+      "name": "Git",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+    },
+    {
+      "name": "GitHub",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/github/github-original.svg"
+    },
+    {
+      "name": "VS Code",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/vscode/vscode-original.svg"
+    },
+    {
+      "name": "PyCharm",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/pycharm/pycharm-original.svg"
+    },
+    {
+      "name": "Expo",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/expo/expo-original.svg"
+    },
+    {
+      "name": "Electron",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/electron/electron-original.svg"
+    }
+  ],
+  "socialLinks": [
+    {
+      "url": "https://github.com/FakhirAhmedKhan",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/github/github-original.svg",
+      "label": "GitHub"
+    },
+    {
+      "url": "https://linkedin.com/in/fakhir-ahmed-3b5537316",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/linkedin/linkedin-original.svg",
+      "label": "LinkedIn"
+    },
+    {
+      "url": "https://twitter.com/FakhirAhme41220",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/twitter/twitter-original.svg",
+      "label": "Twitter"
+    }
+  ],
+  "trainingData": [
+    {
+      "question": "ما الذي تعمل عليه حالياً؟",
+      "answer": "أقوم ببناء مولد سيرة ذاتية مستقبلي ومحلل سيرة ذاتية ATS باستخدام React و Tailwind CSS وأيقونات Lucide. تركيزي على إنشاء تصميم نظيف وعصري وسهل الاستخدام."
+    },
+    {
+      "question": "ما التقنيات التي تستخدمها؟",
+      "answer": "أعمل مع HTML و CSS و JavaScript و React.js و Tailwind CSS و Next.js و Node.js و MySQL، إلى جانب أدوات تطوير الويب الحديثة الأخرى."
+    },
+    {
+      "question": "ما هي أهدافك المستقبلية؟",
+      "answer": "أخطط لدراسة علوم الكمبيوتر في ألمانيا. أثناء الاستعداد لامتحان IELTS، أقوم أيضاً بتحسين مهاراتي في تطوير الويب والبرمجة."
+    },
+    {
+      "question": "ما المشاريع التي قمت ببنائها؟",
+      "answer": "لقد قمت ببناء موقع محفظة شخصي، واستنساخ تويتر، ومولد سيرة ذاتية مستقبلي، وتطبيق مهام متحرك، وواجهة chatbot تفاعلية."
+    },
+    {
+      "question": "هل لديك خبرة في الرسوم المتحركة؟",
+      "answer": "نعم! أستخدم Framer Motion في React لإنشاء رسوم متحركة سلسة مثل بطاقات المهارات المتحركة، والنوافذ المنبثقة التفاعلية، وتأثيرات النص الديناميكية."
+    },
+    {
+      "question": "ما هي مكتبات واجهة المستخدم التي تفضلها؟",
+      "answer": "أفضل استخدام Tailwind CSS للتنسيق، إلى جانب أيقونات Lucide و React Icons للحصول على مظهر عصري ونظيف."
+    },
+    {
+      "question": "هل يمكنك إخباري المزيد عن مشروع chatbot الخاص بك؟",
+      "answer": "بالتأكيد! قمت ببناء chatbot في React يعرض سجل الدردشة، ويتيح للمستخدمين تبديل الرؤية، ويجلب الردود المدعومة بالذكاء الاصطناعي، ويستخدم بيانات التدريب لتوفير إجابات أكثر دقة."
+    },
+    {
+      "question": "ما الألعاب التي تحبها؟",
+      "answer": "أستمتع بلعب Minecraft و Free Fire و PUBG وألعاب الطاولة المختلفة في وقت فراغي."
+    },
+    {
+      "question": "ماذا تتعلم حالياً؟",
+      "answer": "الآن، أتعلم React hooks المتقدمة و Next.js وتطوير chatbot وتحسين الأداء وتجزئة الكود النظيف."
+    },
+    {
+      "question": "ما هو ملفك الشخصي على LinkedIn؟",
+      "answer": "يمكنك التواصل معي على LinkedIn هنا: https://www.linkedin.com/in/fakhir-ahmed-3b5537316/"
+    }
+  ],
+  "sectionTitles": {
+    "education": {
+      "title": "رحلتي",
+      "paragraph": "خط زمني لإنجازاتي التعليمية ومعالمي"
+    },
+    "footer": {
+      "title": "مساهمات GitHub",
+      "paragraph": "حيث تتحول الأفكار إلى كود — صُنعت بـ React، صُقلت بـ Tailwind، ومدعومة بالإبداع."
+    },
+    "project": {
+      "title": "هل رأيت",
+      "paragraph": "استكشف أحدث مشاريعي التي تعرض الإبداع والابتكار والخبرة التقنية"
+    },
+    "skillsSection": {
+      "title": "المهارات وصندوق الأدوات",
+      "paragraph": "التقنيات والأدوات التي أستخدمها لإحياء الأفكار"
+    },
+    "home": {
+      "part1": "مرحباً، أنا",
+      "part2": "فاخر أحمد خان",
+      "part3": "شغوف بـ",
+      "part4": [
+        "تطوير الويب",
+        "تطوير الواجهة الأمامية",
+        "تطوير الواجهة الخلفية",
+        "تصميم الثيمات"
+      ],
+      "part5": "ببناء",
+      "part6": "أفضل التجارب التي تكون مذهلة بصرياً، وعملية للغاية، ومستقبلية."
+    }
+  },
+  "BageName": {
+    "HomeBage": "مرحباً بك في مساحتي الرقمية",
+    "SkillBade": "التعلم دائماً",
+    "ProjectBade": "أنا أعمل دائمًا على مشاريع",
+    "GitBade": "إجمالي المساهمات"
+  },
+  "navLabels": {
+    "home": "الرئيسية",
+    "education": "التعليم",
+    "skills": "المهارات",
+    "projects": "المشاريع"
+  }
+}

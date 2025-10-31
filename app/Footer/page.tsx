@@ -1,2 +1,2 @@
-import FooterSection from "./components/footer";
+import FooterSection from "../../components/FOOTER/components/footer";
 export default function FooterPage() {return <FooterSection />;}

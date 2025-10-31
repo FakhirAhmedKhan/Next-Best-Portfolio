@@ -1,287 +1,284 @@
 'use client';
 import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
-import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase, Mail } from 'lucide-react';
+import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase } from 'lucide-react';
+import enData from '@/public/Data/en.json';
 
 // ============================================
-// 🔷 NAVIGATION ITEMS
+// 🔷 CONSTANTS
 // ============================================
-export const navItems = [
-  { id: "home", label: "Home", href: "/home", icon: Home },
-  { id: "education", label: "Education", href: "/education", icon: User },
-  { id: "skills", label: "Skills", href: "/skills", icon: Code },
-  { id: "projects", label: "Projects", href: "/projects", icon: Briefcase },
-  { id: "contact", label: "Contact", href: "#contact", icon: Mail },
+
+const ICON_MAP = { GraduationCap, BookOpen, Code, Sparkles };
+const IS_BROWSER = typeof window !== 'undefined';
+const INITIAL_VISIBLE_COUNT = 3;
+const SCROLL_THRESHOLD = 50;
+const SCROLL_OFFSET = 200;
+const MENU_CLOSE_DELAY = 250;
+
+// ============================================
+// 🔷 NAVIGATION ITEMS (Dynamic with language support)
+// ============================================
+
+const createNavItems = (labels) => [
+  { id: "home", label: labels?.home || "Home", href: "/", icon: Home },
+  { id: "education", label: labels?.education || "Education", href: "/EduPage", icon: User },
+  { id: "skills", label: labels?.skills || "Skills", href: "/SkillPage", icon: Code },
+  { id: "projects", label: labels?.projects || "Projects", href: "/ProjectPage", icon: Briefcase },
 ];
 
-const iconMap = {
-  GraduationCap,
-  BookOpen,
-  Code,
-  Sparkles,
+// ============================================
+// 🔷 CONTEXT
+// ============================================
+
+const AppContext = createContext(undefined);
+
+// ============================================
+// 🔷 HELPER FUNCTIONS
+// ============================================
+
+const extractCategories = (projects) => {
+  if (!projects?.length) return ['All', 'SAAS'];
+  const uniqueCategories = [...new Set(projects.map(p => p.category).filter(Boolean))];
+  return ['All', ...uniqueCategories.sort()];
 };
 
-// ============================================
-// 🔷 CONTEXT SETUP
-// ============================================
-const AppContext = createContext(null);
-
-// ============================================
-// 🔷 API & CACHING CONFIG
-// ============================================
-const CACHE_KEYS = {
-  skills: 'skillsIcons',
-  socialLinks: 'socialLinks',
-  education: 'educationData',
-  projects: 'projectsData',
+const getInitialCategory = (projects) => {
+  if (!projects?.length) return 'All';
+  return projects.some(p => p.category === 'SAAS') ? 'SAAS' : 'All';
 };
 
-const API_ENDPOINTS = {
-  skills: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/skillsIcons.json',
-  socialLinks: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/socialLinks.json',
-  education: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/main/Data/educationData.json',
-  projects: 'https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Data/projectsData.json',
-};
-
-const isBrowser = typeof window !== 'undefined';
-
-const getCache = (key) => {
-  if (!isBrowser) return null;
-  try {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : null;
-  } catch {
-    return null;
+const findActiveSection = (navItems, scrollPosition) => {
+  for (let i = navItems.length - 1; i >= 0; i--) {
+    const section = document.getElementById(navItems[i].id);
+    if (section && section.offsetTop <= scrollPosition) {
+      return navItems[i].id;
+    }
   }
-};
-
-const setCache = (key, data) => {
-  if (!isBrowser) return;
-  try {
-    localStorage.setItem(key, JSON.stringify(data));
-  } catch (err) {
-    console.warn(`Failed to cache ${key}:`, err);
-  }
-};
-
-const fetchWithTimeout = async (url, timeout = 5000) => {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      next: { revalidate: 3600 },
-    });
-    clearTimeout(id);
-
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } catch (err) {
-    clearTimeout(id);
-    throw err;
-  }
+  return navItems[0]?.id || '';
 };
 
 // ============================================
 // 🔷 PROVIDER
 // ============================================
+
 export function AppProvider({ children }) {
-  const [data, setData] = useState({
-    skills: [],
-    socialLinks: [],
-    education: [],
-    projects: [],
-  });
+  // Navigation Items (memoized)
+  const navItems = useMemo(() => createNavItems(enData.navLabels), []);
+
+  // Core State
+  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Project Filtering State
   const [activeCategory, setActiveCategory] = useState('All');
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  // UI State
   const [activeSection, setActiveSection] = useState(navItems[0]?.id || '');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // ============================================
-  // 🔹 DATA FETCHING
+  // 🔹 LOAD DATA
   // ============================================
+  
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchAllData = async () => {
-      try {
-        const cached = {
-          skills: getCache(CACHE_KEYS.skills),
-          socialLinks: getCache(CACHE_KEYS.socialLinks),
-          education: getCache(CACHE_KEYS.education),
-          projects: getCache(CACHE_KEYS.projects),
-        };
-
-        if (Object.values(cached).every(Boolean)) {
-          if (isMounted) {
-            setData(cached);
-            setLoading(false);
-          }
-          return;
-        }
-
-        const [skillsData, socialData, eduData, projData] = await Promise.allSettled([
-          fetchWithTimeout(API_ENDPOINTS.skills),
-          fetchWithTimeout(API_ENDPOINTS.socialLinks),
-          fetchWithTimeout(API_ENDPOINTS.education),
-          fetchWithTimeout(API_ENDPOINTS.projects),
-        ]);
-
-        const fresh = {
-          skills: skillsData.status === 'fulfilled' ? skillsData.value.skills ?? [] : cached.skills ?? [],
-          socialLinks: socialData.status === 'fulfilled' ? socialData.value.socialLinks ?? [] : cached.socialLinks ?? [],
-          education: eduData.status === 'fulfilled' ? eduData.value.educationData ?? [] : cached.education ?? [],
-          projects: projData.status === 'fulfilled' ? projData.value.projects ?? [] : cached.projects ?? [],
-        };
-
-        if (skillsData.status === 'fulfilled') setCache(CACHE_KEYS.skills, fresh.skills);
-        if (socialData.status === 'fulfilled') setCache(CACHE_KEYS.socialLinks, fresh.socialLinks);
-        if (eduData.status === 'fulfilled') setCache(CACHE_KEYS.education, fresh.education);
-        if (projData.status === 'fulfilled') setCache(CACHE_KEYS.projects, fresh.projects);
-
-        if (isMounted) setData(fresh);
-      } catch (err) {
-        console.error('❌ Failed to fetch data:', err);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchAllData();
-    return () => { isMounted = false; };
+    try {
+      const loadedProjects = enData.projects || [];
+      setProjects(loadedProjects);
+      
+      // Set initial category based on available projects
+      const initialCategory = getInitialCategory(loadedProjects);
+      setActiveCategory(initialCategory);
+    } catch (error) {
+      console.error('Failed to load data:', error);
+      setProjects([]);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   // ============================================
   // 🔹 SCROLL HANDLING
   // ============================================
+  
   useEffect(() => {
-    if (!isBrowser) return;
+    if (!IS_BROWSER) return;
+
     let ticking = false;
 
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          setScrolled(scrollY > 50);
+      if (ticking) return;
 
-          const scrollPosition = scrollY + 200;
-          for (let i = navItems.length - 1; i >= 0; i--) {
-            const section = document.getElementById(navItems[i].id || '');
-            if (section && section.offsetTop <= scrollPosition) {
-              setActiveSection(navItems[i].id || '');
-              break;
-            }
-          }
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        
+        // Update scrolled state
+        setScrolled(scrollY > SCROLL_THRESHOLD);
+        
+        // Update active section
+        const scrollPosition = scrollY + SCROLL_OFFSET;
+        const newActiveSection = findActiveSection(navItems, scrollPosition);
+        setActiveSection(newActiveSection);
 
-          ticking = false;
-        });
-        ticking = true;
-      }
+        ticking = false;
+      });
     };
+
+    // Initial check
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   // ============================================
   // 🔹 NAVIGATION
   // ============================================
+  
   const scrollToSection = useCallback((id) => {
+    if (!IS_BROWSER) return;
+
     setIsMenuOpen(false);
+    
     setTimeout(() => {
       const section = document.getElementById(id);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setActiveSection(id);
       }
-    }, 250);
+    }, MENU_CLOSE_DELAY);
   }, []);
 
   // ============================================
   // 🔹 PROJECT FILTERING
   // ============================================
-  const categories = useMemo(() => {
-    if (!data?.projects?.length) return ['SAAS'];
-    const cats = Array.from(new Set(data.projects.map((p) => p.category)));
-    return ['All', ...cats.sort()];
-  }, [data.projects]);
-
-  useEffect(() => {
-    if (data?.projects?.length) {
-      const hasSAAS = data.projects.some((p) => p.category === 'SAAS');
-      setActiveCategory(hasSAAS ? 'SAAS' : 'All');
-    }
-  }, [data.projects]);
+  
+  const categories = useMemo(() => extractCategories(projects), [projects]);
 
   const filteredProjects = useMemo(() => {
-    if (!data?.projects) return [];
-    if (activeCategory === 'All') return data.projects;
-    return data.projects.filter((p) => p.category === activeCategory);
-  }, [data.projects, activeCategory]);
+    if (!projects.length) return [];
+    return activeCategory === 'All' 
+      ? projects 
+      : projects.filter(p => p.category === activeCategory);
+  }, [projects, activeCategory]);
 
-  const visibleProjects = useMemo(() => filteredProjects.slice(0, visibleCount), [filteredProjects, visibleCount]);
+  const visibleProjects = useMemo(
+    () => filteredProjects.slice(0, visibleCount),
+    [filteredProjects, visibleCount]
+  );
 
-  const showMore = useCallback((count = 3) => {
-    setVisibleCount((prev) => prev + count);
-  }, []);
+  const hasMoreProjects = useMemo(
+    () => visibleCount < filteredProjects.length,
+    [visibleCount, filteredProjects.length]
+  );
 
   const changeCategory = useCallback((category) => {
+    if (category === activeCategory) return;
+    
     setActiveCategory(category);
-    setVisibleCount(3);
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  }, [activeCategory]);
+
+  const showMore = useCallback((count = INITIAL_VISIBLE_COUNT) => {
+    setVisibleCount(prev => Math.min(prev + count, filteredProjects.length));
+  }, [filteredProjects.length]);
+
+  const resetVisibleCount = useCallback(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  }, []);
+
+  // ============================================
+  // 🔹 MENU CONTROL
+  // ============================================
+  
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
   }, []);
 
   // ============================================
   // 🔹 CONTEXT VALUE
   // ============================================
-  const value = useMemo(() => ({
-    ...data,
+  
+  const contextValue = useMemo(() => ({
+    // Data
+    projects,
     loading,
-    hoveredIndex,
-    setHoveredIndex,
-    iconMap,
-
-    // Projects
+    
+    // Icon Map
+    iconMap: ICON_MAP,
+    
+    // Project Filtering
     activeCategory,
     categories,
-    visibleProjects,
     filteredProjects,
-    showMore,
+    visibleProjects,
+    hasMoreProjects,
     changeCategory,
-
+    showMore,
+    resetVisibleCount,
+    
     // Navigation
     navItems,
     activeSection,
+    scrollToSection,
+    
+    // UI State
     isMenuOpen,
     scrolled,
-    setIsMenuOpen,
-    scrollToSection,
-  }), [
-    data,
-    loading,
     hoveredIndex,
+    setHoveredIndex,
+    toggleMenu,
+    closeMenu,
+    setIsMenuOpen,
+  }), [
+    projects,
+    loading,
     activeCategory,
     categories,
-    visibleProjects,
     filteredProjects,
+    visibleProjects,
+    hasMoreProjects,
+    changeCategory,
+    showMore,
+    resetVisibleCount,
+    navItems,
     activeSection,
+    scrollToSection,
     isMenuOpen,
     scrolled,
-    showMore,
-    changeCategory,
-    scrollToSection,
+    hoveredIndex,
+    toggleMenu,
+    closeMenu,
   ]);
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={contextValue}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 // ============================================
 // 🔷 CUSTOM HOOK
 // ============================================
+
 export function useAppContext() {
   const context = useContext(AppContext);
-  if (!context) throw new Error('useAppContext must be used within AppProvider');
+  if (context === undefined) {
+    throw new Error('useAppContext must be used within AppProvider');
+  }
   return context;
 }
+
+// ============================================
+// 🔷 EXPORTS
+// ============================================
+
+export { ICON_MAP as iconMap };
+export const navItems = createNavItems(enData.navLabels);

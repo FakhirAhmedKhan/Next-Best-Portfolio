@@ -1,14 +1,15 @@
 'use client';
 import { motion } from "framer-motion";
-import { LogoHeader } from "./components/Logo";
-import { DesktopNavigation } from "./components/DesktopNavigation";
-import { MobileMenu } from "./components/MobileManu";
-import { CtaBtnDek } from "./components/ctaBtnDek";
-import { MobileMenuButton } from "./components/MobileMenuButton";
-import { ProgressBar } from "./components/ProgressBar";
+import { LogoHeader } from "../../components/HEADER/components/Logo";
+import { DesktopNavigation } from "../../components/HEADER/components/DesktopNavigation";
+import { MobileMenu } from "../../components/HEADER/components/MobileManu";
+import { CtaBtnDek } from "../../components/HEADER/components/ctaBtnDek";
+import { MobileMenuButton } from "../../components/HEADER/components/MobileMenuButton";
+import { ProgressBar } from "../../components/HEADER/components/ProgressBar";
 import { useAppContext } from "@/lib/contexts/app-context";
+import  LanguageSwitcher  from "@/UI/LanguageSwitcher";
 
-export default function HeaderSection() {
+export default function Navbar() {
   const { scrolled } = useAppContext();
 
   return (
@@ -28,11 +29,13 @@ export default function HeaderSection() {
           <LogoHeader />
           <DesktopNavigation />
           <CtaBtnDek />
+          <LanguageSwitcher />
+
           <MobileMenuButton />
         </div>
         <MobileMenu />
       </nav>
-      <ProgressBar/>
+      <ProgressBar />
     </motion.header>
   );
 }
