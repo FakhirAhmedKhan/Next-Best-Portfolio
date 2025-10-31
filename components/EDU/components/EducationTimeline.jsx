@@ -7,7 +7,7 @@ export const EducationTimeline = () => {
   const { setHoveredIndex, hoveredIndex, iconMap } = useAppContext()
 
   const { data } = useLanguage();
-  const eduData = data.sectionTitles.education || data.educationData || [];
+  const eduData = data.educationData || data.educationData || [];
 
   return (
     <div className="min-h-screen py-16 px-4">
@@ -31,7 +31,7 @@ export const EducationTimeline = () => {
           >
             {eduData?.length > 0 ? (
               eduData.map((item, index) => (
-                <motion.div
+                < motion.div
                   key={item.id || index}
                   custom={index}
                   variants={itemVariants}
@@ -128,6 +128,6 @@ export const EducationTimeline = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
