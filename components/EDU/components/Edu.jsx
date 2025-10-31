@@ -6,8 +6,7 @@ import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function EducationSection() { // ✅ prevent crash
 
-  const { data } = useLanguage();
-  const eduData = data.sectionTitles.education;
+  const { eduData } = useLanguage();
   return (
     <section id="education" className={SectionSTyle}>
       <HeadIng

@@ -8,12 +8,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react"
 
 export const Card = () => {
-  const {  hoveredIndex, setHoveredIndex } = useAppContext();
+  const { hoveredIndex, setHoveredIndex } = useAppContext();
   const [isMounted, setIsMounted] = useState(false);
 
-  const { data } = useLanguage();
-  const skills = data.skills || data.skills || [];
-  
+  const { skills } = useLanguage();
+
   useEffect(() => {
     setIsMounted(true);
   }, []);

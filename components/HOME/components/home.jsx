@@ -10,13 +10,13 @@ import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function HomeSection() {
 
-  const { data } = useLanguage();
-  const badgeText = data.BageName?.HomeBage || "Default Badge";
+  const { homeBadgeText } = useLanguage();
+  
   return (
 
     <section id="home" className={SectionSTyle}>
 
-      <Badge Icon={WandSparkles} BageName={badgeText} className="mb-4" />
+      <Badge Icon={WandSparkles} BageName={homeBadgeText} className="mb-4" />
 
 
       <TypingEffect />

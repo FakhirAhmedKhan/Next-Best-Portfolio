@@ -2,9 +2,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useAppContext } from "@/lib/contexts/app-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 
 export const SocialLinks = () => {
-  const { socialLinks, loading } = useAppContext();
+  const {  loading } = useAppContext();
+  const { socialLinks } = useLanguage();
 
   if (loading) {
     return (

@@ -5,8 +5,7 @@ import { pulseAnimation } from '@/UI/motionConfige';
 import { useLanguage } from '@/lib/contexts/language-context';
 
 export const TypingEffect = () => {
-  const { data } = useLanguage();
-  const HomeData = data.sectionTitles?.home || {}; // Home object only
+  const { homeData } = useLanguage();
 
   return (
     <motion.div
@@ -18,7 +17,7 @@ export const TypingEffect = () => {
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
         <div className="mb-2">  
           <ReactTyped
-            strings={[HomeData.part1 || ""]}
+            strings={[homeData.part1 || ""]}
             typeSpeed={80}
             showCursor={false}
           />
@@ -31,7 +30,7 @@ export const TypingEffect = () => {
           />
           <span className="relative text-gray-100 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 bg-clip-text">
             <ReactTyped
-              strings={[HomeData.part2 || ""]}
+              strings={[homeData.part2 || ""]}
               typeSpeed={100}
               showCursor={false}
               loop={false}

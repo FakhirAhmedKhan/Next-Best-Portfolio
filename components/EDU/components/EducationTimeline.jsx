@@ -1,13 +1,11 @@
+import { motion } from 'framer-motion';
 import { useAppContext } from '@/lib/contexts/app-context';
 import { useLanguage } from '@/lib/contexts/language-context';
 import { cardVariants, containerVariants, dotVariants, iconVariants, itemVariants, lineVariants } from '@/UI/motionConfige';
-import { motion } from 'framer-motion';
 
 export const EducationTimeline = () => {
   const { setHoveredIndex, hoveredIndex, iconMap } = useAppContext()
-
-  const { data } = useLanguage();
-  const eduData = data.educationData || data.educationData || [];
+  const { eduDataText } = useLanguage();
 
   return (
     <div className="min-h-screen py-16 px-4">
@@ -15,7 +13,7 @@ export const EducationTimeline = () => {
         <div className="relative">
           <motion.div
             initial={{ height: 0 }}
-            key={eduData.length}
+            key={eduDataText.length}
             whileInView={{ height: '100%' }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
@@ -29,8 +27,8 @@ export const EducationTimeline = () => {
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-12"
           >
-            {eduData?.length > 0 ? (
-              eduData.map((item, index) => (
+            {eduDataText?.length > 0 ? (
+              eduDataText.map((item, index) => (
                 < motion.div
                   key={item.id || index}
                   custom={index}
