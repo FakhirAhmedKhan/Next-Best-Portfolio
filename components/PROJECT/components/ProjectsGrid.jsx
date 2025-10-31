@@ -1,13 +1,14 @@
 "use client";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { BsGithub } from "react-icons/bs";
 import { ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
-import { useAppContext } from "@/lib/contexts/app-context";
-import Image from "next/image";
+import { useLanguage } from "@/lib/contexts/language-context";
 import { badgeVariants, buttonVariants, cardHoverVariants, cardVariants, containerVariants, imageVariants, overlayVariants } from "@/UI/motionConfige";
 
 export const ProjectView = () => {
-  const { visibleProjects } = useAppContext();
+  const { data } = useLanguage();
+  const ProjectData = data.projects || data.projects || [];
 
   return (
     <motion.div
@@ -16,7 +17,7 @@ export const ProjectView = () => {
       initial="hidden"
       animate="visible"
     >
-      {visibleProjects.map((project, index) => (
+      {ProjectData.map((project, index) => (
         <motion.div
           key={project.id}
           variants={cardVariants}
@@ -48,7 +49,7 @@ export const ProjectView = () => {
             <Image
               width={964}
               height={964}
-              variants={imageVariants}              
+              variants={imageVariants}
               src={project.imageUrl}
               alt={project.title}
               className="w-full h-auto rounded-lg object-cover"

@@ -1,21 +1,23 @@
 'use client';
 
 import { useAppContext } from "@/lib/contexts/app-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 import { containerVariants, SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react"
 
 export const Card = () => {
-  const { skills, hoveredIndex, setHoveredIndex } = useAppContext();
+  const {  hoveredIndex, setHoveredIndex } = useAppContext();
   const [isMounted, setIsMounted] = useState(false);
 
-  // Ensure component is mounted before animating
+  const { data } = useLanguage();
+  const skills = data.skills || data.skills || [];
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Don't render animations until mounted
   if (!isMounted) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
