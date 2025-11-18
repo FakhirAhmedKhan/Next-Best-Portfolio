@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
           <LanguageProvider>
             <Navbar />
             {children}
-            <Animated />
+            {/* <Animated /> */}
             <footer>
               <FooterPage />
             </footer>

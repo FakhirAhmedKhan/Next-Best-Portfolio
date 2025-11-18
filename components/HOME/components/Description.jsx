@@ -1,12 +1,8 @@
-"use client";
 import { AnimatedText } from "@/UI/AnimatedText";
 import { motion } from "framer-motion";
-import { ReactTyped } from "react-typed"; // fixed import
-import { useLanguage } from "@/lib/contexts/language-context";
+import { ReactTyped } from "react-typed";
 
-export const Praghrap = () => {
-  const { data } = useLanguage();
-  const HomeData = data.sectionTitles?.home || {}; // just home object
+export const Description = ({ HomeData }) => {
 
   return (
     <div className="mx-auto max-w-4xl text-center">

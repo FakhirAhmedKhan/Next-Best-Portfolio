@@ -2,11 +2,8 @@ import React from 'react'
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import { pulseAnimation } from '@/UI/motionConfige';
-import { useLanguage } from '@/lib/contexts/language-context';
 
-export const TypingEffect = () => {
-  const { data } = useLanguage();
-  const HomeData = data.sectionTitles?.home || {}; // Home object only
+export const TypingEffect = ({ HomeData }) => {
 
   return (
     <motion.div
@@ -16,7 +13,7 @@ export const TypingEffect = () => {
       className="space-y-4"
     >
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
-        <div className="mb-2">  
+        <div className="mb-2">
           <ReactTyped
             strings={[HomeData.part1 || ""]}
             typeSpeed={80}
@@ -26,10 +23,10 @@ export const TypingEffect = () => {
 
         <div className="relative inline-block">
           <motion.div
-            className="absolute -inset-4 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 rounded-2xl blur-2xl opacity-30"
+            className="absolute -inset-4 bg-linear-to-r from-fuchsia-300 via-pink-300 to-violet-300 rounded-2xl blur-2xl opacity-30"
             animate={pulseAnimation}
           />
-          <span className="relative text-gray-100 bg-gradient-to-r from-fuchsia-300 via-pink-300 to-violet-300 bg-clip-text">
+          <span className="relative text-gray-100 bg-linear-to-r from-fuchsia-300 via-pink-300 to-violet-300 bg-clip-text">
             <ReactTyped
               strings={[HomeData.part2 || ""]}
               typeSpeed={100}

@@ -1,18 +1,7 @@
-"use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { useAppContext } from "@/lib/contexts/app-context";
 
-export const SocialLinks = () => {
-  const { socialLinks, loading } = useAppContext();
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center py-8 text-gray-500">
-        Loading social links...
-      </div>
-    );
-  }
+export const SocialLinks = ({ socialLinks }) => {
 
   return (
     <motion.div
@@ -21,7 +10,7 @@ export const SocialLinks = () => {
       transition={{ duration: 0.8, delay: 1.2 }}
       className="flex justify-center items-center gap-4 pt-8"
     >
-      <div className="h-px w-12 bg-gradient-to-r from-transparent to-gray-400 dark:to-gray-600" />
+      <div className="h-px w-12 bg-linear-to-r from-transparent to-gray-400 dark:to-gray-600" />
       <div className="flex gap-4">
         {socialLinks.map(({ url, icon, label }, index) => (
           <motion.a
@@ -37,7 +26,7 @@ export const SocialLinks = () => {
             whileHover={{ scale: 1.1, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-600 opacity-0 group-hover:opacity-10 transition-opacity" />
+            <div className="absolute inset-0 rounded-full bg-linear-to-r from-fuchsia-600 to-pink-600 opacity-0 group-hover:opacity-10 transition-opacity" />
             <img
               src={icon}
               alt={label}
@@ -46,7 +35,7 @@ export const SocialLinks = () => {
           </motion.a>
         ))}
       </div>
-      <div className="h-px w-12 bg-gradient-to-l from-transparent to-gray-400 dark:to-gray-600" />
+      <div className="h-px w-12 bg-linear-to-l from-transparent to-gray-400 dark:to-gray-600" />
     </motion.div>
   );
 };
