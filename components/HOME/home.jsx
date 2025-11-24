@@ -1,31 +1,21 @@
 'use client';
-import { TypingEffect } from "./TypingEffect";
-import { Praghrap } from "./Description";
-import { CTAButtons } from "./CTAButtons";
-import { SocialLinks } from "./socialLinks";
-import { Badge } from "@/UI/Badge";
 import { WandSparkles } from "lucide-react";
-import { SectionSTyle } from "@/UI/motionConfige";
+import { useAppContext } from "@/lib/contexts/app-context";
 import { useLanguage } from "@/lib/contexts/language-context";
+import { TypingEffect, Praghrap, CTAButtons, SocialLinks, Badge } from "@/lib/contexts/DaynamicImport"
 
-export default function HomeSection() {
+const HomeSection = () => {
+  const { HomeData, badgeText } = useLanguage();
+  const { socialLinks, hoveredIndex } = useAppContext();
 
-  const { data } = useLanguage();
-  const badgeText = data.BageName?.HomeBage || "Default Badge";
   return (
-
-    <section id="home" className={SectionSTyle}>
-
+    <section id="home" className="relative flex flex-col items-center justify-center text-center px-6 sm:px-10 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-7xl mx-auto space-y-12 z-10 ">
       <Badge Icon={WandSparkles} BageName={badgeText} className="mb-4" />
-
-
-      <TypingEffect />
-
-      <Praghrap />
-
-      <CTAButtons />
-
-      <SocialLinks />
+      <TypingEffect HomeData={HomeData} />
+      <Praghrap HomeData={HomeData} />
+      <CTAButtons HomeData={HomeData} />
+      <SocialLinks socialLinks={socialLinks} hoveredIndex={hoveredIndex} />
     </section>
   );
 }
+export default HomeSection;

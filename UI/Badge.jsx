@@ -1,7 +1,7 @@
 'use client';
 import { motion } from "framer-motion";
 
-export const Badge = ({ Icon, BageName, className = "", value }) => {
+const Badge = ({ Icon, BageName, className = "", value }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20, scale: 0.9 }}
@@ -22,18 +22,18 @@ export const Badge = ({ Icon, BageName, className = "", value }) => {
 
     >
       {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 transition-all duration-500" />
+      <div className="absolute inset-0 bg-linear-to-r from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/10 group-hover:via-purple-500/10 group-hover:to-pink-500/10 transition-all duration-500" />
 
       {/* Shimmer Effect */}
-      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/20 to-transparent" />
 
       {/* Glow Effect */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-400/0 to-pink-400/0 group-hover:from-fuchsia-400/20 group-hover:to-pink-400/20 blur-xl transition-all duration-500" />
+      <div className="absolute inset-0 rounded-full bg-linear-to-r from-fuchsia-400/0 to-pink-400/0 group-hover:from-fuchsia-400/20 group-hover:to-pink-400/20 blur-xl transition-all duration-500" />
 
       {/* Icon Container with Glow */}
       {Icon && (
         <motion.div
-          className="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-fuchsia-100 to-pink-100 dark:from-fuchsia-900/30 dark:to-pink-900/30 group-hover:from-fuchsia-500 group-hover:to-pink-500 transition-all duration-300"
+          className="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-linear-to-br from-fuchsia-100 to-pink-100 dark:from-fuchsia-900/30 dark:to-pink-900/30 group-hover:from-fuchsia-500 group-hover:to-pink-500 transition-all duration-300"
           whileHover={{ rotate: 360 }}
           transition={{ duration: 0.6 }}
         >
@@ -51,7 +51,7 @@ export const Badge = ({ Icon, BageName, className = "", value }) => {
       )}
 
       {/* Text with Enhanced Gradient */}
-      <span className="relative z-10 text-sm font-bold bg-gradient-to-r from-fuchsia-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-300">
+      <span className="relative z-10 text-sm font-bold bg-linear-to-r from-fuchsia-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-300">
         {BageName}
       </span>
 
@@ -60,3 +60,5 @@ export const Badge = ({ Icon, BageName, className = "", value }) => {
     </motion.div>
   );
 };
+
+export default Badge;

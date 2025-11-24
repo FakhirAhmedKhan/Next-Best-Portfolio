@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
           <LanguageProvider>
             <Navbar />
             {children}
-            <Animated />
+            {/* <Animated /> */}
             <FooterSection />
           </LanguageProvider>
         </AppProvider>

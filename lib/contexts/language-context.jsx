@@ -44,9 +44,11 @@ export const LanguageProvider = ({ children }) => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }));
   };
+  const badgeText = data?.BageName?.HomeBage || "Default Badge";
+  const HomeData = data.sectionTitles?.home || {};
 
   return (
-    <LanguageContext.Provider value={{ language, data, changeLanguage }}>
+    <LanguageContext.Provider value={{ language, data, changeLanguage, badgeText, HomeData }}>
       {children}
     </LanguageContext.Provider>
   );
