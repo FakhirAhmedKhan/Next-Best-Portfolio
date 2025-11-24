@@ -1,11 +1,9 @@
 import './globals.css';
 import { AppProvider } from '@/lib/contexts/app-context';
-// import { LanguageProvider } from '@/lib/contexts/language-context';
-import FooterPage from '@/components/FOOTER/components/footer';
 import { Animated } from '@/UI/Animated';
-import Navbar from './Header/Navbar.jsx';
 import { LanguageProvider } from '@/lib/contexts/language-context';
-
+import Navbar from "@/components/HEADER/Navbar"
+import FooterSection from "@/components/FOOTER/footer"
 export const Metadata = {
   title: 'Portfolio',
   description: 'Modern portfolio website',
@@ -24,9 +22,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Animated />
-            <footer>
-              <FooterPage />
-            </footer>
+            <FooterSection />
           </LanguageProvider>
         </AppProvider>
       </body>

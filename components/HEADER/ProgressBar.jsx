@@ -18,7 +18,7 @@ export const ProgressBar = () => {
 
   return (
     <motion.div
-      className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-fuchsia-600 via-pink-600 to-violet-600"
+      className="absolute bottom-0 left-0 h-1 bg-linear-to-r from-fuchsia-600 via-pink-600 to-violet-600"
       style={{ width: `${width}%` }}
       transition={{ duration: 0.1 }}
     />

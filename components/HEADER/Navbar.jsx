@@ -1,11 +1,10 @@
 'use client';
 import { motion } from "framer-motion";
-import { LogoHeader } from "../../components/HEADER/components/Logo";
-import { DesktopNavigation } from "../../components/HEADER/components/DesktopNavigation";
-import { MobileMenu } from "../../components/HEADER/components/MobileManu";
-import { CtaBtnDek } from "../../components/HEADER/components/ctaBtnDek";
-import { MobileMenuButton } from "../../components/HEADER/components/MobileMenuButton";
-import { ProgressBar } from "../../components/HEADER/components/ProgressBar";
+import { LogoHeader } from "../../components/HEADER/Logo";
+import { DesktopNavigation } from "../../components/HEADER/DesktopNavigation";
+import { MobileMenu } from "../../components/HEADER/MobileManu";
+import { MobileMenuButton } from "../../components/HEADER/MobileMenuButton";
+import { ProgressBar } from "../../components/HEADER/ProgressBar";
 import { useAppContext } from "@/lib/contexts/app-context";
 import  LanguageSwitcher  from "@/UI/LanguageSwitcher";
 
@@ -28,9 +27,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           <LogoHeader />
           <DesktopNavigation />
-          <CtaBtnDek />
           <LanguageSwitcher />
-
           <MobileMenuButton />
         </div>
         <MobileMenu />

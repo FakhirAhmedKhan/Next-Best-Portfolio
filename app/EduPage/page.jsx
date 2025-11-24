@@ -1,2 +1,2 @@
-import EducationSection from "../../components/EDU/components/Edu";
+import EducationSection from "../../components/EDU/Edu";
 export default function Page() {return (<EducationSection />);}
