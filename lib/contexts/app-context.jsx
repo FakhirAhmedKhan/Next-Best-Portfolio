@@ -1,76 +1,100 @@
 'use client';
-import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
-import { GraduationCap, BookOpen, Code, Sparkles, Home, User, Briefcase } from 'lucide-react';
+
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
+
+import {
+  GraduationCap,
+  BookOpen,
+  Code,
+  Sparkles,
+  Home,
+  User,
+  Briefcase,
+} from 'lucide-react';
+
 import enData from '@/public/Data/en.json';
 
 // ============================================
-// 🔷 NAVIGATION ITEMS
+// 🔷 NAV ITEMS
 // ============================================
-
 export const navItems = [
-  { id: "home", label: enData.navLabels.home, href: "/", icon: Home },
-  { id: "education", label: enData.navLabels.education, href: "/EducationTimeline", icon: User },
-  { id: "skills", label: enData.navLabels.skills, href: "/SkillPage", icon: Code },
-  { id: "projects", label: enData.navLabels.projects, href: "/ProjectPage", icon: Briefcase },
+  { id: 'home', label: enData.navLabels.home, href: '/', icon: Home },
+  { id: 'education', label: enData.navLabels.education, href: '/EducationTimeline', icon: User },
+  { id: 'skills', label: enData.navLabels.skills, href: '/SkillPage', icon: Code },
+  { id: 'projects', label: enData.navLabels.projects, href: '/ProjectPage', icon: Briefcase },
 ];
 
 const iconMap = { GraduationCap, BookOpen, Code, Sparkles };
-const AppContext = createContext({});
+const AppContext = createContext(null);
+
 const isBrowser = typeof window !== 'undefined';
 
 // ============================================
 // 🔷 PROVIDER
 // ============================================
 export function AppProvider({ children }) {
-  const [data, setData] = useState({
-    skills: [],
-    socialLinks: [],
-    educationData: [],
-    projects: [],
-  });
-  const [sectionTitles, setSectionTitles] = useState({});
+  // =========================
+  // STATE
+  // =========================
   const [loading, setLoading] = useState(true);
+  const [skillData, setSkillData] = useState([]);
+  const [socialLinks, setSocialLinks] = useState([]);
+  const [educationData, setEducationData] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  const [sectionTitles, setSectionTitles] = useState({});
+
   const [activeCategory, setActiveCategory] = useState('All');
   const [visibleCount, setVisibleCount] = useState(3);
-  const [activeSection, setActiveSection] = useState(navItems[0]?.id || '');
+
+  const [activeSection, setActiveSection] = useState(navItems[0].id);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // 🔹 Load local JSON data
+  // =========================
+  // LOAD JSON DATA ONCE
+  // =========================
   useEffect(() => {
-    setData({
-      skills: enData.skills || [],
-      socialLinks: enData.socialLinks || [],
-      educationData: enData.educationData || [],
-      projects: enData.projects || [],
-    });
+    setSkillData(enData.skills || []);
+    setSocialLinks(enData.socialLinks || []);
+    setEducationData(enData.educationData || []);
+    setProjects(enData.projects || []);
 
-    setSectionTitles(enData.sectionTitles || {
-      home: "Home",
-      education: "Education",
-      skills: "Skills",
-      projects: "Projects",
-    });
-
+    setSectionTitles(enData.sectionTitles || {});
     setLoading(false);
   }, []);
 
-  // 🔹 Scroll Spy
+  // =========================
+  // SCROLL SPY
+  // =========================
   useEffect(() => {
     if (!isBrowser) return;
+
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          setScrolled(scrollY > 50);
-          const scrollPosition = scrollY + 200;
+        ticking = true;
+
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+
+          setScrolled(y > 50);
+
+          const position = y + 200;
 
           for (let i = navItems.length - 1; i >= 0; i--) {
-            const section = document.getElementById(navItems[i].id);
-            if (section && section.offsetTop <= scrollPosition) {
+            const el = document.getElementById(navItems[i].id);
+            if (el && el.offsetTop <= position) {
               setActiveSection(navItems[i].id);
               break;
             }
@@ -78,7 +102,6 @@ export function AppProvider({ children }) {
 
           ticking = false;
         });
-        ticking = true;
       }
     };
 
@@ -86,44 +109,51 @@ export function AppProvider({ children }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 🔹 Smooth Scroll
+  // =========================
+  // SMOOTH SCROLL
+  // =========================
   const scrollToSection = useCallback((id) => {
     setIsMenuOpen(false);
+
     setTimeout(() => {
       const section = document.getElementById(id);
-      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(id);
     }, 250);
   }, []);
 
-  // 🔹 Project Filtering
+  // =========================
+  // PROJECT CATEGORIES
+  // =========================
   const categories = useMemo(() => {
-    if (!data?.projects?.length) return ['SAAS'];
-    const cats = Array.from(new Set(data.projects.map((p) => p.category)));
-    return ['All', ...cats.sort()];
-  }, [data.projects]);
+    if (!projects?.length) return ['All'];
 
+    const unique = Array.from(new Set(projects.map((p) => p.category)));
+
+    return ['All', ...unique.sort()];
+  }, [projects]);
+
+  // Default category logic
   useEffect(() => {
-    if (data?.projects?.length) {
-      const hasSAAS = data.projects.some((p) => p.category === 'SAAS');
+    if (projects.length) {
+      const hasSAAS = projects.some((p) => p.category === 'SAAS');
       setActiveCategory(hasSAAS ? 'SAAS' : 'All');
     }
-  }, [data.projects]);
+  }, [projects]);
 
+  // Filtered projects
   const filteredProjects = useMemo(() => {
-    if (!data?.projects) return [];
-    return activeCategory === 'All'
-      ? data.projects
-      : data.projects.filter((p) => p.category === activeCategory);
-  }, [data.projects, activeCategory]);
+    if (activeCategory === 'All') return projects;
+    return projects.filter((p) => p.category === activeCategory);
+  }, [projects, activeCategory]);
 
   const visibleProjects = useMemo(
     () => filteredProjects.slice(0, visibleCount),
     [filteredProjects, visibleCount]
   );
 
-  const showMore = useCallback((count = 3) => {
-    setVisibleCount(prev => prev + count);
+  const showMore = useCallback(() => {
+    setVisibleCount((prev) => prev + 3);
   }, []);
 
   const changeCategory = useCallback((category) => {
@@ -131,51 +161,77 @@ export function AppProvider({ children }) {
     setVisibleCount(3);
   }, []);
 
-  // 🔹 Context Value
-  const value = useMemo(() => ({
-    ...data,
-    loading,
-    hoveredIndex,
-    setHoveredIndex,
-    iconMap,
-    sectionTitles, // 👈 added here
-    activeCategory,
-    categories,
-    visibleProjects,
-    filteredProjects,
-    showMore,
-    changeCategory,
-    navItems,
-    activeSection,
-    isMenuOpen,
-    scrolled,
-    setIsMenuOpen,
-    scrollToSection,
-  }), [
-    data,
-    loading,
-    hoveredIndex,
-    sectionTitles,
-    activeCategory,
-    categories,
-    visibleProjects,
-    filteredProjects,
-    activeSection,
-    isMenuOpen,
-    scrolled,
-    showMore,
-    changeCategory,
-    scrollToSection,
-  ]);
+  // ============================================
+  // CONTEXT VALUE (memoized)
+  // ============================================
+  const value = useMemo(
+    () => ({
+      // Data
+      skills: skillData,
+      socialLinks,
+      educationData,
+      projects,
+
+      // UI Titles
+      sectionTitles,
+
+      // Loading
+      loading,
+
+      // Nav
+      navItems,
+      activeSection,
+      scrollToSection,
+      isMenuOpen,
+      setIsMenuOpen,
+      scrolled,
+
+      // Icons
+      iconMap,
+
+      // Hovered
+      hoveredIndex,
+      setHoveredIndex,
+
+      // Projects
+      activeCategory,
+      categories,
+      visibleProjects,
+      filteredProjects,
+      showMore,
+      changeCategory,
+    }),
+    [
+      skillData,
+      socialLinks,
+      educationData,
+      projects,
+
+      sectionTitles,
+      loading,
+
+      activeSection,
+      isMenuOpen,
+      scrolled,
+      hoveredIndex,
+
+      activeCategory,
+      categories,
+      visibleProjects,
+      filteredProjects,
+      showMore,
+      changeCategory,
+    ]
+  );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 // ============================================
-// 🔷 CUSTOM HOOK
+// 🔷 HOOK
 // ============================================
 export function useAppContext() {
-  const context = useContext(AppContext);
-  if (!context) throw new Error('useAppContext must be used within AppProvider');
-  return context;
+  const ctx = useContext(AppContext);
+  if (!ctx) throw new Error('useAppContext must be used inside AppProvider');
+  return ctx;
 }

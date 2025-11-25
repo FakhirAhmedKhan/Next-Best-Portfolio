@@ -3,12 +3,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { BsGithub } from "react-icons/bs";
 import { ExternalLink } from "lucide-react";
-import { useLanguage } from "@/lib/contexts/language-context";
 import { badgeVariants, buttonVariants, cardHoverVariants, cardVariants, containerVariants, imageVariants, overlayVariants } from "@/UI/motionConfige";
 
-export const ProjectView = () => {
-  const { data } = useLanguage();
-  const ProjectData = data.projects || data.projects || [];
+const ProjectView = ({ ProjectData }) => {
 
   return (
     <motion.div
@@ -228,3 +225,5 @@ export const ProjectView = () => {
     </motion.div>
   );
 };
+
+export default ProjectView;

@@ -1,9 +1,8 @@
 "use client";
 import { useAppContext } from "@/lib/contexts/app-context";
 
-export const CategoryFilter = () => {
+const CategoryFilter = ({ categories, activeCategory, changeCategory }) => {
 
-  const { categories, activeCategory, changeCategory } = useAppContext();
   return (
     <div className="flex flex-wrap justify-center gap-4 mb-16">
       {categories.map((cat) => {
@@ -52,3 +51,5 @@ export const CategoryFilter = () => {
     </div>
   );
 }
+
+export default CategoryFilter;
