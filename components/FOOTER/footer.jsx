@@ -1,12 +1,11 @@
 "use client";
 import GitHubCalendarSimple from "./githubCard";
-import HeadIng from "@/UI/Head";
 import { BsGithub } from "react-icons/bs";
 import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
-import Badge from "@/UI/Badge";
 import { useLanguage } from "@/lib/contexts/language-context";
+import { Badge, HeadIng } from "@/lib/contexts/DaynamicImport";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
@@ -16,7 +15,7 @@ export default function FooterSection() {
 
   return (
     <footer id="contact" className={SectionSTyle}>
-      <HeadIng Tittle={FooterData.title} Pragaphic={FooterData.paragraph} />
+      <HeadIng title={FooterData.title} subtitle={FooterData.paragraph} />
 
       {calendarData?.totalContributions && (
         <Badge

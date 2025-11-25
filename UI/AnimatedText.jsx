@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-export const AnimatedText = ({ text = "" }) => {
+ const AnimatedText = ({ text = "" }) => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   // Detect if text contains Arabic
@@ -40,7 +40,7 @@ export const AnimatedText = ({ text = "" }) => {
   }, []);
 
   return (
-    <div dir="auto" className="inline-block whitespace-pre">
+    <div dir="auto" className="inline-block whitespace-pre mt-2 mb-1.5">
       {characters.map((char, index) => (
         <span
           key={index}
@@ -65,3 +65,4 @@ export const AnimatedText = ({ text = "" }) => {
     </div>
   );
 };
+export default AnimatedText;

@@ -8,7 +8,8 @@ const LanguageContext = createContext();
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) throw new Error("useLanguage must be used inside LanguageProvider");
+  if (!context)
+    throw new Error('useLanguage must be used inside LanguageProvider');
   return context;
 };
 
@@ -25,8 +26,9 @@ export const LanguageProvider = ({ children }) => {
       applyLanguage(event.detail);
     };
 
-    window.addEventListener("languageChange", handleLangEvent);
-    return () => window.removeEventListener("languageChange", handleLangEvent);
+    window.addEventListener('languageChange', handleLangEvent);
+    return () =>
+      window.removeEventListener('languageChange', handleLangEvent);
   }, []);
 
   const applyLanguage = (lang) => {
@@ -42,18 +44,25 @@ export const LanguageProvider = ({ children }) => {
 
   const changeLanguage = (lang) => {
     applyLanguage(lang);
-    window.dispatchEvent(new CustomEvent("languageChange", { detail: lang }));
+    window.dispatchEvent(
+      new CustomEvent('languageChange', { detail: lang })
+    );
   };
 
-  // Extracted sections to avoid repeating `.data...`
-  const badgeText = data?.BageName?.HomeBage || "";
+  // =========================
+  // Extracted Data Safely
+  // =========================
+  const badgeText = data?.BageName?.HomeBage || '';
   const HomeData = data?.sectionTitles?.home || {};
-  const eduTitles = data.sectionTitles.education;  // ✔️ for Heading
-  const eduData = data.educationData;
-  const SkillbadgeText = data.BageName?.SkillBade || "";
+  const eduTitles = data?.sectionTitles?.education || {};
+  const eduData = data?.educationData || [];
+  const SkillbadgeText = data?.BageName?.SkillBade || '';
   const SkillData = data?.sectionTitles?.skillsSection || {};
   const ProjectData = data?.sectionTitles?.project || {};
-  const ProjectCardData = data.projects || data.projects || [];
+  const ProjectCardData = data?.projects || [];
+  const ProjectbadgeText = data?.BageName?.ProjectBade || '';
+  const EdubadgeText = data?.BageName?.EduBade || '';
+
 
   return (
     <LanguageContext.Provider
@@ -68,7 +77,9 @@ export const LanguageProvider = ({ children }) => {
         SkillbadgeText,
         SkillData,
         ProjectData,
-        ProjectCardData
+        ProjectCardData,
+        ProjectbadgeText,
+        EdubadgeText
       }}
     >
       {children}

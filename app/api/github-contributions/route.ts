@@ -1,67 +1,44 @@
-// app/api/github-contributions/route.ts
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const username = searchParams.get('username') || 'FakhirAhmedKhan';
+const GITHUB_USERNAME = "FakhirAhmedKhan";
 
-  const query = `
-    query($username: String!) {
-      user(login: $username) {
-        contributionsCollection {
-          contributionCalendar {
-            totalContributions
-            weeks {
-              contributionDays {
-                contributionCount
-                date
-                contributionLevel
+export async function GET() {
+  try {
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) throw new Error("Missing GitHub token in environment variables");
+
+    const query = `
+      query {
+        user(login: "${GITHUB_USERNAME}") {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  date
+                  contributionCount
+                  color
+                }
               }
             }
           }
         }
-      }
-    }
-  `;
+      }`;
 
-  try {
-    const response = await fetch('https://api.github.com/graphql', {
-      method: 'POST',
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        query,
-        variables: { username },
-      }),
-      next: { revalidate: 3600 } // Cache for 1 hour
+      body: JSON.stringify({ query }),
     });
 
-    if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status}`);
-    }
+    const { data, errors } = await res.json();
+    if (errors) throw new Error(errors[0].message);
 
-    const data = await response.json();
-
-    if (data.errors) {
-      throw new Error(data.errors[0].message);
-    }
-
-    return NextResponse.json(data.data.user.contributionsCollection.contributionCalendar);
-  } catch (error) {
-    console.error('GitHub API Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch GitHub contributions' },
-      { status: 500 }
-    );
+    return NextResponse.json({ data });
+  } catch (err) {
+    return NextResponse.json({ error: err.message || "Failed to fetch data" }, { status: 500 });
   }
 }
-
-// ============================================
-// 📝 SETUP INSTRUCTIONS:
-// ============================================
-// 1. Create a .env.local file in your project root
-// 2. Add this line (DO NOT commit this file):
-// 3. Add .env.local to your .gitignore
-// 4. Restart your Next.js dev server

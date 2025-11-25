@@ -1,4 +1,5 @@
 'use client';
+import { AnimatedText } from "@/lib/contexts/DaynamicImport";
 import { motion } from "framer-motion";
 
 const Badge = ({ Icon, BageName, className = "", value }) => {
@@ -17,7 +18,7 @@ const Badge = ({ Icon, BageName, className = "", value }) => {
         y: -2
       }}
       whileTap={{ scale: 0.98 }}
-      className={`justify-center flex-row items-center group relative inline-flex gap-2.5 px-5 py-2.5 rounded-full bg-blur dark:bg-gray-900/90 backdrop-blur-md border border-fuchsia-200/50 dark:border-fuchsia-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer ${className || ''} mt-20 mb-0 text-center`}
+      className={`justify-center flex-row items-center group relative inline-flex gap-2.5 px-5 py-2.5 rounded-full bg-blur dark:bg-gray-900/90 backdrop-blur-md border border-fuchsia-200/50 dark:border-fuchsia-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer ${className || ''} mt-12 mb-0 text-center`}
 
 
     >
@@ -52,7 +53,7 @@ const Badge = ({ Icon, BageName, className = "", value }) => {
 
       {/* Text with Enhanced Gradient */}
       <span className="relative z-10 text-sm font-bold bg-linear-to-r from-fuchsia-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:from-fuchsia-500 group-hover:via-purple-500 group-hover:to-pink-500 transition-all duration-300">
-        {BageName}
+        <AnimatedText text={BageName} />
       </span>
 
       {/* Border Glow on Hover */}
