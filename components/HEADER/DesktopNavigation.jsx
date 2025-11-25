@@ -9,7 +9,7 @@ const DesktopNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden md:flex items-center gap-2">
+    <div className="hidden lg:flex items-center gap-2">
       {navItems?.map((item, index) => {
         const Icon = item.icon;
         const isActive = pathname === item.href;

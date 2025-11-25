@@ -17,7 +17,7 @@ const HeaderLogo = () => {
         </div>
 
         <span
-          className="text-2xl font-bold bg-linear-to-r from-fuchsia-600 via-pink-600 to-violet-600
+          className="text-lg sm:text-xl md:text-2xl font-bold bg-linear-to-r from-fuchsia-600 via-pink-600 to-violet-600
           bg-clip-text text-transparent"
         >
           Simple.Dev

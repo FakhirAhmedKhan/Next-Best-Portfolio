@@ -71,7 +71,7 @@ const EducationTimeline = ({ eduData, hoveredIndex, setHoveredIndex, iconMap }) 
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.3 }}
-                          className="text-xl font-bold text-black mb-2"
+                          className="text-xl font-bold text-black dark:text-white mb-2"
                         >
                           {item.title}
                         </motion.h3>
@@ -82,7 +82,7 @@ const EducationTimeline = ({ eduData, hoveredIndex, setHoveredIndex, iconMap }) 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4 }}
-                      className="text-gray-900 text-sm leading-relaxed"
+                      className="text-gray-900 dark:text-gray-300 text-sm leading-relaxed"
                     >
                       {item.description}
                     </motion.p>

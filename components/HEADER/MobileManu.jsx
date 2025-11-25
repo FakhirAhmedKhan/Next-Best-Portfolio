@@ -9,7 +9,7 @@ const MobileMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className={`md:hidden overflow-hidden transition-all duration-500 ${isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+    <div className={`lg:hidden overflow-hidden transition-all duration-500 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl ${isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
       <div className="py-6 space-y-3">
         {navItems?.map((item) => {
           const Icon = item.icon;

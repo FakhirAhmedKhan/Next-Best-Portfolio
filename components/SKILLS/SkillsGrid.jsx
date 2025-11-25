@@ -2,25 +2,25 @@
 
 import { useAppContext } from "@/lib/contexts/app-context";
 import { useLanguage } from "@/lib/contexts/language-context";
-import { containerVariants, SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
+import { SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react"
 
- const Card = () => {
-  const {  hoveredIndex, setHoveredIndex } = useAppContext();
+const Card = () => {
+  const { hoveredIndex, setHoveredIndex } = useAppContext();
   const [isMounted, setIsMounted] = useState(false);
 
   const { data } = useLanguage();
   const skills = data.skills || data.skills || [];
-  
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   if (!isMounted) {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6">
         {skills.map((skill, index) => (
           <div
             key={skill.name || index}
@@ -52,7 +52,7 @@ import { useState, useEffect } from "react"
       initial="hidden"
       animate="show" // Changed from whileInView to animate
       viewport={{ once: true, amount: 0.1 }}
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6"
     >
       {skills.map((skill, index) => (
         <motion.div

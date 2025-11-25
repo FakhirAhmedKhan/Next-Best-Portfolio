@@ -2,11 +2,11 @@
 const SocialLinks = ({ hoveredIndex, socialLinks }) => {
 
   return (
-    <div className="flex justify-center items-center pt-12 pb-8 animate-fadeUp" style={{ animationDelay: "1.2s" }}>
+    <div className="flex flex-wrap justify-center items-center gap-4 pt-12 pb-8 animate-fadeUp" style={{ animationDelay: "1.2s" }}>
       <div className="relative">
         <div className="absolute inset-0 bg-linear-to-r from-fuchsia-500/20 via-pink-500/20 to-violet-500/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full scale-150" />
-        <div className="relative flex items-center gap-6">
-          <div className="relative h-px w-16 overflow-hidden">
+        <div className="relative flex flex-wrap justify-center items-center gap-6">
+          <div className="hidden sm:block relative h-px w-16 overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-r from-transparent via-gray-300 to-gray-400 dark:from-transparent dark:via-gray-600 dark:to-gray-500" />
             <div
               className="absolute inset-0 bg-linear-to-r from-transparent via-fuchsia-400 to-pink-400 opacity-0 animate-shimmer"
@@ -72,7 +72,7 @@ const SocialLinks = ({ hoveredIndex, socialLinks }) => {
             ))}
           </div>
 
-          <div className="relative h-px w-16 overflow-hidden">
+          <div className="hidden sm:block relative h-px w-16 overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-l from-transparent via-gray-300 to-gray-400 dark:from-transparent dark:via-gray-600 dark:to-gray-500" />
             <div
               className="absolute inset-0 bg-linear-to-l from-transparent via-violet-400 to-pink-400 opacity-0 animate-shimmer"
@@ -125,6 +125,8 @@ const SocialLinks = ({ hoveredIndex, socialLinks }) => {
           }
           50% {
             opacity: 1;
+            transform: translateX(100%);
+            opacity: 0;
           }
           100% {
             transform: translateX(100%);

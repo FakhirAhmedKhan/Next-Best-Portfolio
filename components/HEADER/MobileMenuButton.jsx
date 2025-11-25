@@ -9,7 +9,7 @@ const MobileMenuButton = () => {
     <button
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       className="
-        md:hidden p-2.5 rounded-xl bg-slate-800/50 text-slate-300 
+        lg:hidden p-2.5 rounded-xl bg-slate-800/50 text-slate-300 
         hover:text-white hover:bg-slate-700/50 
         transition-all duration-300 border border-white/10 
         hover:scale-105 active:scale-95
