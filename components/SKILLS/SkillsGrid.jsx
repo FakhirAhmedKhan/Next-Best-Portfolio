@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react"
 
-export const Card = () => {
+ const Card = () => {
   const {  hoveredIndex, setHoveredIndex } = useAppContext();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -164,3 +164,5 @@ export const Card = () => {
     </motion.div>
   );
 };
+
+export default Card;

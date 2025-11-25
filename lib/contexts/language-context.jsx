@@ -50,6 +50,8 @@ export const LanguageProvider = ({ children }) => {
   const HomeData = data?.sectionTitles?.home || {};
   const eduTitles = data.sectionTitles.education;  // ✔️ for Heading
   const eduData = data.educationData;
+  const SkillbadgeText = data.BageName?.SkillBade || "";
+  const SkillData = data?.sectionTitles?.skillsSection || {};
   return (
     <LanguageContext.Provider
       value={{
@@ -60,6 +62,8 @@ export const LanguageProvider = ({ children }) => {
         HomeData,
         eduData,
         eduTitles,
+        SkillbadgeText,
+        SkillData
       }}
     >
       {children}
