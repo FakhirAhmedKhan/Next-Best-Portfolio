@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             {/* <Animated /> */}
-            <FooterSection />
+            {/* <FooterSection /> */}
           </LanguageProvider>
         </AppProvider>
       </body>

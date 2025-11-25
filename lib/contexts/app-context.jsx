@@ -9,7 +9,7 @@ import enData from '@/public/Data/en.json';
 
 export const navItems = [
   { id: "home", label: enData.navLabels.home, href: "/", icon: Home },
-  { id: "education", label: enData.navLabels.education, href: "/EduPage", icon: User },
+  { id: "education", label: enData.navLabels.education, href: "/EducationTimeline", icon: User },
   { id: "skills", label: enData.navLabels.skills, href: "/SkillPage", icon: Code },
   { id: "projects", label: enData.navLabels.projects, href: "/ProjectPage", icon: Briefcase },
 ];

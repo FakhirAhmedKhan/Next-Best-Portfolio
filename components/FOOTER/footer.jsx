@@ -1,11 +1,11 @@
 "use client";
 import GitHubCalendarSimple from "./githubCard";
-import { HeadIng } from "@/UI/Head";
+import HeadIng from "@/UI/Head";
 import { BsGithub } from "react-icons/bs";
 import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
-import  Badge  from "@/UI/Badge";
+import Badge from "@/UI/Badge";
 import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function FooterSection() {

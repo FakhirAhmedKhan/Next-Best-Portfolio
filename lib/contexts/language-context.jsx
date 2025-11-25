@@ -1,4 +1,3 @@
-// 1. Create LanguageContext (lib/contexts/language-context.jsx)
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
@@ -9,9 +8,7 @@ const LanguageContext = createContext();
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider');
-  }
+  if (!context) throw new Error("useLanguage must be used inside LanguageProvider");
   return context;
 };
 
@@ -19,36 +16,52 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
   const [data, setData] = useState(enData);
 
+  // Load saved language on mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
-    setLanguage(savedLanguage);
-    setData(savedLanguage === 'ar' ? arData : enData);
-    document.documentElement.lang = savedLanguage;
-    document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+    const savedLang = localStorage.getItem('language') || 'en';
+    applyLanguage(savedLang);
 
-    const handleLanguageChange = (event) => {
-      const newLang = event.detail;
-      setLanguage(newLang);
-      setData(newLang === 'ar' ? arData : enData);
+    const handleLangEvent = (event) => {
+      applyLanguage(event.detail);
     };
 
-    window.addEventListener('languageChange', handleLanguageChange);
-    return () => window.removeEventListener('languageChange', handleLanguageChange);
+    window.addEventListener("languageChange", handleLangEvent);
+    return () => window.removeEventListener("languageChange", handleLangEvent);
   }, []);
 
-  const changeLanguage = (lang) => {
+  const applyLanguage = (lang) => {
+    const selectedData = lang === 'ar' ? arData : enData;
     setLanguage(lang);
-    setData(lang === 'ar' ? arData : enData);
+    setData(selectedData);
+
     localStorage.setItem('language', lang);
+
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }));
   };
-  const badgeText = data?.BageName?.HomeBage || "Default Badge";
-  const HomeData = data.sectionTitles?.home || {};
 
+  const changeLanguage = (lang) => {
+    applyLanguage(lang);
+    window.dispatchEvent(new CustomEvent("languageChange", { detail: lang }));
+  };
+
+  // Extracted sections to avoid repeating `.data...`
+  const badgeText = data?.BageName?.HomeBage || "";
+  const HomeData = data?.sectionTitles?.home || {};
+  const eduTitles = data.sectionTitles.education;  // ✔️ for Heading
+  const eduData = data.educationData;
   return (
-    <LanguageContext.Provider value={{ language, data, changeLanguage, badgeText, HomeData }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        data,
+        changeLanguage,
+        badgeText,
+        HomeData,
+        eduData,
+        eduTitles,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

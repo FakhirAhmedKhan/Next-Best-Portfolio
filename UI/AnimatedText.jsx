@@ -1,8 +1,32 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-export const AnimatedText = ({ text }) => {
-  const characters = (text || "").split("");
+export const AnimatedText = ({ text = "" }) => {
   const [isScrolling, setIsScrolling] = useState(false);
+
+  // Detect if text contains Arabic
+  const isArabic = /[\u0600-\u06FF]/.test(text);
+
+  const characters = useMemo(() => {
+    try {
+      if (typeof Intl !== "undefined" && Intl.Segmenter) {
+
+        // ⭐ If Arabic → segment into words (keeps letters connected)
+        if (isArabic) {
+          const segmenter = new Intl.Segmenter("ar", { granularity: "word" });
+          return [...segmenter.segment(text)].map((s) => s.segment);
+        }
+
+        // ⭐ If NOT Arabic → segment into graphemes (letter-by-letter)
+        const segmenter = new Intl.Segmenter([], { granularity: "grapheme" });
+        return [...segmenter.segment(text)].map((s) => s.segment);
+      }
+    } catch (err) {
+      console.warn("Segmenter failed, using fallback:", err);
+    }
+
+    // Fallback (not perfect for Arabic, but safe for English)
+    return Array.from(text);
+  }, [text, isArabic]);
 
   useEffect(() => {
     let timeout;
@@ -16,19 +40,26 @@ export const AnimatedText = ({ text }) => {
   }, []);
 
   return (
-    <div className="inline-block">
+    <div dir="auto" className="inline-block whitespace-pre">
       {characters.map((char, index) => (
         <span
           key={index}
-          className={`inline-block cursor-pointer transition-all duration-300 ease-in-out 
-          ${!isScrolling && char !== " " ? "hover:-translate-y-2 hover:scale-110 hover:text-sky-400 hover:brightness-125" : ""}
+          className={`
+            inline-block cursor-pointer transition-all duration-300 ease-in-out
+            ${
+              !isScrolling && char.trim() !== ""
+                ? "hover:-translate-y-2 hover:scale-110 hover:text-sky-400 hover:brightness-125"
+                : ""
+            }
           `}
           style={{
-            display: char === " " ? "inline" : "inline-block",
-            textShadow: !isScrolling && char !== " " ? "0 2px 10px rgba(96,165,250,0.4)" : "none",
+            textShadow:
+              !isScrolling && char.trim() !== ""
+                ? "0 2px 10px rgba(96,165,250,0.4)"
+                : "none",
           }}
         >
-          {char === " " ? "\u00A0" : char}
+          {char}
         </span>
       ))}
     </div>
