@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppContext } from "@/lib/contexts/app-context";
+import { useNav } from "@/hooks/useNav";
 
 const DesktopNavigation = () => {
-  const { navItems } = useAppContext();
+  const { navItems } = useNav();
   const pathname = usePathname();
 
   return (

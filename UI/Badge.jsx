@@ -1,5 +1,5 @@
 'use client';
-import { AnimatedText } from "@/lib/contexts/DaynamicImport";
+import { AnimatedText } from "@/hooks/DaynamicImport";
 import { motion } from "framer-motion";
 
 const Badge = ({ Icon, BageName, className = "", value }) => {

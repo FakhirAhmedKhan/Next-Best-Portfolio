@@ -1,0 +1,19 @@
+{
+  "socialLinks": [
+    {
+      "url": "https://github.com/FakhirAhmedKhan",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/github/github-original.svg",
+      "label": "GitHub"
+    },
+    {
+      "url": "https://linkedin.com/in/fakhir-ahmed-3b5537316",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/linkedin/linkedin-original.svg",
+      "label": "LinkedIn"
+    },
+    {
+      "url": "https://twitter.com/FakhirAhme41220",
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/refs/tags/v2.17.0/icons/twitter/twitter-original.svg",
+      "label": "Twitter"
+    }
+  ]
+}

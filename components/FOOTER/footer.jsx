@@ -4,13 +4,13 @@ import { BsGithub } from "react-icons/bs";
 import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
-import { useLanguage } from "@/lib/contexts/language-context";
-import { Badge } from "@/lib/contexts/DaynamicImport";
+import { Badge } from "@/hooks/DaynamicImport";
+import { useAppData } from "@/hooks/useAppData";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
-  const { data } = useLanguage();
-  const badgeText = data.BageName?.GitBade || "Default Badge";
+  const { gitBadgeText } = useAppData();
+  const badgeText = gitBadgeText || "Total Contributions";
 
   return (
     <footer id="contact" className={SectionSTyle}>

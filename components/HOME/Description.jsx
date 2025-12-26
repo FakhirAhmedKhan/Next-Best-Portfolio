@@ -1,5 +1,5 @@
 "use client";
-import { AnimatedText } from "@/lib/contexts/DaynamicImport";
+import { AnimatedText } from "@/hooks/DaynamicImport";
 import { ReactTyped } from "react-typed";
 
 const Praghrap = ({ HomeData }) => {

@@ -1,0 +1,60 @@
+{
+  "educationData": [
+    {
+      "year": "2026 (Upcoming)",
+      "title": "Grade 12 - Higher Secondary Education",
+      "description": "Advancing to final year of secondary education with focus on STEM subjects while continuing to develop expertise in programming and emerging technologies.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-purple-500 to-pink-500"
+    },
+    {
+      "year": "2025 (Present)",
+      "title": "Grade 11 - Higher Secondary Education",
+      "description": "Currently pursuing higher secondary education with emphasis on advanced coursework while actively enhancing full-stack development skills and modern programming practices.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "Sparkles",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "year": "2024",
+      "title": "Full-Stack Development Bootcamp",
+      "description": "Successfully completed comprehensive 6-month intensive program specializing in full-stack web development, including MERN stack technologies and modern development frameworks.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-emerald-500 to-teal-500"
+    },
+    {
+      "year": "2024",
+      "title": "Web Development Specialization",
+      "description": "Completed intensive 6-month bootcamp covering advanced web development concepts, responsive design principles, and industry-standard best practices.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-orange-500 to-red-500"
+    },
+    {
+      "year": "2024",
+      "title": "Grade 10 - Secondary Education",
+      "description": "Completed secondary education milestone while simultaneously pursuing technical education in software development and programming fundamentals.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "year": "2023",
+      "title": "Self-Directed Programming Education",
+      "description": "Initiated independent learning journey in web development, mastering foundational technologies including HTML5, CSS3, and JavaScript through structured online courses and documentation.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/youtubeS.avif",
+      "icon": "BookOpen",
+      "color": "from-amber-500 to-orange-500"
+    },
+    {
+      "year": "2023",
+      "title": "Grade 9 - Secondary Education",
+      "description": "Completed academic year while discovering passion for programming and beginning exploration of core computer science concepts and web technologies.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-rose-500 to-pink-500"
+    }
+  ]
+}

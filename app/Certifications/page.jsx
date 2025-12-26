@@ -1,67 +1,21 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import {
-  ExternalLink,
-  Database,
-  Palette,
-  Code,
-  Terminal,
-  BookOpen,
-  Layout,
-  Monitor,
-  Smartphone,
-  Filter,
-} from "lucide-react";
-import { useLanguage } from "@/lib/contexts/language-context";
-import { Badge, HeadIng } from "@/lib/contexts/DaynamicImport";
+import { ExternalLink, Filter } from "lucide-react";
+import { Badge, HeadIng } from "@/hooks/DaynamicImport";
 import { BsFillAwardFill } from "react-icons/bs";
-
-const iconMap = {
-  Database,
-  Palette,
-  Code,
-  Terminal,
-  BookOpen,
-  Layout,
-  Monitor,
-  Smartphone,
-};
+import useCertifications from "@/hooks/useCertifications";
 
 export default function CertificationsPage() {
-  const { data, language } = useLanguage();
-
-  const [selectedFilter, setSelectedFilter] = useState("all");
-
-  const certificationsData = Array.isArray(data?.certificationsData)
-    ? data.certificationsData
-    : [];
-
-  const certificationsSection = data?.sectionTitles?.certificationsSection ?? {
-    title: "",
-    paragraph: "",
-  };
-
-
-  // ✅ safe badge name
-  const certificateBadge = data?.BageName?.certificateBade ?? "";
-
-  // ✅ build clean issuers list (no undefined / empty)
-  const issuers = useMemo(() => {
-    const list = certificationsData
-      .map((c) => (c?.issuer ?? "").trim())
-      .filter(Boolean);
-
-    return ["all", ...Array.from(new Set(list))];
-  }, [certificationsData]);
-
-  // ✅ filtering is safe
-  const filteredCerts = useMemo(() => {
-    if (selectedFilter === "all") return certificationsData;
-    return certificationsData.filter(
-      (c) => (c?.issuer ?? "").trim() === selectedFilter
-    );
-  }, [selectedFilter, certificationsData]);
-  console.log({ certificationsSection });
+  const {
+    certificationsData,
+    certificationsSection,
+    certificateBadge,
+    issuers,
+    selectedFilter,
+    setSelectedFilter,
+    filteredCerts,
+    iconMap,
+    language,
+  } = useCertifications();
   return (
     <div className="">
       <div className="max-w-7xl mx-auto">

@@ -1,9 +1,9 @@
 "use client";
-import { useAppContext } from "@/lib/contexts/app-context";
-import { LanguageSwitcher, HeaderLogo, DesktopNavigation, MobileMenu, MobileMenuButton, ProgressBar } from "@/lib/contexts/DaynamicImport"
+import { LanguageSwitcher, HeaderLogo, DesktopNavigation, MobileMenu, MobileMenuButton, ProgressBar } from "@/hooks/DaynamicImport"
+import { useNav } from "@/hooks/useNav";
 
 export default function Navbar() {
-  const { scrolled } = useAppContext();
+  const { scrolled } = useNav();
 
   return (
     <header

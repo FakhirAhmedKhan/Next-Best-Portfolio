@@ -1,18 +1,15 @@
 'use client';
 
-import { useAppContext } from "@/lib/contexts/app-context";
-import { useLanguage } from "@/lib/contexts/language-context";
 import { SkillcontainerVariants, skillVariants } from "@/UI/motionConfige";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { useSkills } from "@/hooks/useSkills";
 
 const Card = () => {
-  const { hoveredIndex, setHoveredIndex } = useAppContext();
   const [isMounted, setIsMounted] = useState(false);
-
-  const { data } = useLanguage();
-  const skills = data.skills || data.skills || [];
+  const { skills, hoveredIndex, setHoveredIndex } = useSkills();
+  const skillItems = Array.isArray(skills) ? skills : [];
 
   useEffect(() => {
     setIsMounted(true);
@@ -21,7 +18,7 @@ const Card = () => {
   if (!isMounted) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6">
-        {skills.map((skill, index) => (
+        {skillItems.map((skill, index) => (
           <div
             key={skill.name || index}
             className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg"
@@ -54,7 +51,7 @@ const Card = () => {
       viewport={{ once: true, amount: 0.1 }}
       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6"
     >
-      {skills.map((skill, index) => (
+      {skillItems.map((skill, index) => (
         <motion.div
           key={skill.name || index}
           variants={skillVariants}

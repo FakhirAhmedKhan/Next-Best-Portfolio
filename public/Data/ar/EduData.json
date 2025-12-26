@@ -1,0 +1,60 @@
+{
+  "educationData": [
+    {
+      "year": "2026 (قادم)",
+      "title": "الصف 12 - التعليم الثانوي العالي",
+      "description": "التقدم إلى السنة الأخيرة من التعليم الثانوي مع التركيز على مواد العلوم والتكنولوجيا والهندسة والرياضيات مع الاستمرار في تطوير الخبرة في البرمجة والتقنيات الناشئة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-purple-500 to-pink-500"
+    },
+    {
+      "year": "2025 (حالياً)",
+      "title": "الصف 11 - التعليم الثانوي العالي",
+      "description": "أتابع حالياً التعليم الثانوي العالي مع التركيز على المناهج المتقدمة بينما أقوم بتعزيز مهارات التطوير الكامل والممارسات البرمجية الحديثة بنشاط.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "Sparkles",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "year": "2024",
+      "title": "معسكر تطوير البرمجيات الكامل",
+      "description": "أكملت بنجاح برنامجاً مكثفاً شاملاً مدته 6 أشهر متخصصاً في تطوير الويب الكامل، بما في ذلك تقنيات MERN وأطر التطوير الحديثة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-emerald-500 to-teal-500"
+    },
+    {
+      "year": "2024",
+      "title": "تخصص تطوير الويب",
+      "description": "أكملت معسكر تدريبي مكثف مدته 6 أشهر يغطي مفاهيم تطوير الويب المتقدمة، ومبادئ التصميم المتجاوب، وأفضل الممارسات المعتمدة في الصناعة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-orange-500 to-red-500"
+    },
+    {
+      "year": "2024",
+      "title": "الصف 10 - التعليم الثانوي",
+      "description": "أكملت مرحلة التعليم الثانوي بينما كنت أتابع في نفس الوقت التعليم التقني في تطوير البرمجيات وأساسيات البرمجة.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "year": "2023",
+      "title": "التعليم الذاتي للبرمجة",
+      "description": "بدأت رحلة التعلم المستقلة في تطوير الويب، وإتقان التقنيات الأساسية بما في ذلك HTML5 و CSS3 و JavaScript من خلال دورات منظمة عبر الإنترنت والوثائق.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/youtubeS.avif",
+      "icon": "BookOpen",
+      "color": "from-amber-500 to-orange-500"
+    },
+    {
+      "year": "2023",
+      "title": "الصف 9 - التعليم الثانوي",
+      "description": "أكملت العام الدراسي بينما كنت أكتشف شغفي بالبرمجة وأبدأ استكشاف المفاهيم الأساسية لعلوم الكمبيوتر وتقنيات الويب.",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/InterSchool.avif",
+      "icon": "GraduationCap",
+      "color": "from-rose-500 to-pink-500"
+    }
+  ]
+}

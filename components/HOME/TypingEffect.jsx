@@ -60,7 +60,7 @@ const TypingEffect = ({ HomeData }) => {
               absolute 
               -inset-2 xs:-inset-3 sm:-inset-4 md:-inset-5 lg:-inset-7 
               rounded-[1.2rem] sm:rounded-2xl 
-              bg-gradient-to-r from-fuchsia-400 via-pink-400 to-violet-400
+              bg-gradient-to-r from-fuchsia-200 via-pink-300 to-violet-300
               blur-lg xs:blur-xl sm:blur-2xl md:blur-3xl
               opacity-30 xs:opacity-40 sm:opacity-50 
               transition-all duration-500 

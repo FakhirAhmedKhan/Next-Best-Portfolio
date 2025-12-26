@@ -1,6 +1,4 @@
 "use client";
-import { useAppContext } from "@/lib/contexts/app-context";
-
 const CategoryFilter = ({ categories, activeCategory, changeCategory }) => {
 
   return (

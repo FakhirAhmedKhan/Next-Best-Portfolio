@@ -1,12 +1,13 @@
 "use client";
-import { HeadIng, CategoryFilter, ProjectView, LoardProject, Badge } from "@/lib/contexts/DaynamicImport";
-import { useAppContext } from "@/lib/contexts/app-context";
-import { useLanguage } from "@/lib/contexts/language-context";
+import { HeadIng, CategoryFilter, ProjectView, LoardProject, Badge } from "@/hooks/DaynamicImport";
+
+import { useAppData } from "@/hooks/useAppData";
+import { useProjects } from "@/hooks/useProjects";
 import { DatabaseZapIcon } from "lucide-react";
 
 export default function Page() {
-    const { ProjectData, ProjectbadgeText } = useLanguage();
-    const { categories, activeCategory, changeCategory, visibleProjects, filteredProjects, showMore } = useAppContext();
+    const { ProjectData, ProjectbadgeText } = useAppData();
+    const { categories, activeCategory, changeCategory, visibleProjects, filteredProjects, showMore } = useProjects();
     const hasMore = visibleProjects.length < filteredProjects.length;
 
     return (

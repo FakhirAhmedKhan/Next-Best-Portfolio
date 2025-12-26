@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Activity, Flame, Target, Trophy } from "lucide-react";
-import { useLanguage } from "@/lib/contexts/language-context";
-import { HeadIng } from "@/lib/contexts/DaynamicImport";
+import { HeadIng } from "@/hooks/DaynamicImport";
+import { useAppData } from "@/hooks/useAppData";
 
 export default function GitHubCalendar({ onDataLoaded }) {
   const [calendarData, setCalendarData] = useState(null);
@@ -126,10 +126,10 @@ export default function GitHubCalendar({ onDataLoaded }) {
 
     return maxStreak;
   };
-
+  
   const stats = getStats();
-  const { data } = useLanguage();
-  const FooterData = data.sectionTitles?.footer || {};
+  const { sectionTitles } = useAppData();
+  const FooterData = sectionTitles?.footer || {};
   // UI Components
   return (
     <section className="relative w-full py-8 px-4 sm:py-12 sm:px-6 lg:px-8">

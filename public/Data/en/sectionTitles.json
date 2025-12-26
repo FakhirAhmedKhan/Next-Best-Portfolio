@@ -1,0 +1,38 @@
+{
+  "sectionTitles": {
+    "education": {
+      "title": "My Journey",
+      "paragraph": "A timeline of my educational milestones and achievements"
+    },
+    "footer": {
+      "title": "GitHub Contributions",
+      "paragraph": "Where ideas turn into code — crafted with React, refined with Tailwind, and powered by creativity."
+    },
+    "project": {
+      "title": "Did you See",
+      "paragraph": "Explore my latest projects showcasing creativity, innovation, and technical expertise"
+    },
+    "skillsSection": {
+      "title": "Skills & Toolkit",
+      "paragraph": "Technologies and tools I use to bring ideas to life"
+    },
+    "home": {
+      "part1": "Hello, I'm",
+      "part2": "Fakhir Ahmed Khan",
+      "part3": "A passionate",
+      "part4": [
+        "Web Developer",
+        "Frontend Developer",
+        "Backend Developer",
+        "Theme Designer"
+      ],
+      "part5": "about building",
+      "part6": "best experiences that are visually stunning, highly functional, and futuristic.",
+      "part7": "View My Work"
+    },
+    "certificationsSection": {
+      "title": "Certifications",
+      "paragraph": "Showcasing my dedication to continuous learning and professional growth through recognized certifications"
+    }
+  }
+}

@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
-import { Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useAppContext } from "@/lib/contexts/app-context";
+import { useNav } from "@/hooks/useNav";
 
 const MobileMenu = () => {
-  const { navItems, isMenuOpen, setIsMenuOpen } = useAppContext();
+  const { navItems, isMenuOpen, setIsMenuOpen } = useNav();
   const pathname = usePathname();
 
   return (
@@ -38,20 +37,6 @@ const MobileMenu = () => {
             </div>
           );
         })}
-
-        {/* Contact Button */}
-        <div className="transform transition-all duration-300">
-          <a
-            href="#contact"
-            className="flex items-center justify-center gap-2 px-4 py-3 mt-4 
-            bg-linear-to-r from-pink-500 via-purple-500 to-indigo-500 
-            rounded-xl text-white font-medium active:scale-95"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <Mail className="w-5 h-5" />
-            Get In Touch
-          </a>
-        </div>
       </div>
     </div>
   );
