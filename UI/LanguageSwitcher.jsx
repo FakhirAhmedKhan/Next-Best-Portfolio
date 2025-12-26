@@ -31,14 +31,14 @@ const LanguageSwitcher = () => {
             className={`w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${language === 'en' ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : ''
               }`}
           >
-            🇬🇧 English
+            English
           </button>
           <button
             onClick={() => handleLanguageChange('ar')}
             className={`w-full px-4 py-3 text-left hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${language === 'ar' ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400' : ''
               }`}
           >
-            🇸🇦 العربية
+            Arabic
           </button>
         </div>
       )}

@@ -32,7 +32,7 @@ const TypingEffect = ({ HomeData }) => {
         "
       >
         {/* FIRST LINE */}
-        <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-gray-800 dark:text-gray-100">
+        <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6  text-amber-500  dark:text-gray-700">
           <ReactTyped
             strings={[HomeData?.part1 || "Welcome to"]}
             typeSpeed={80}

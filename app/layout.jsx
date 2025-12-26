@@ -9,7 +9,7 @@ export const metadata = {
   title: 'Portfolio | Modern Web Developer',
   description: 'Modern portfolio website showcasing web development projects and skills',
   keywords: 'portfolio, web developer, Next.js, React, JavaScript',
-  authors: [{ name: 'Your Name' }],
+  authors: [{ name: 'Fakhir Ahmed Khan' }],
   openGraph: {
     title: 'Portfolio | Modern Web Developer',
     description: 'Modern portfolio website showcasing web development projects and skills',
@@ -20,12 +20,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="antialiased dark:text-gray-100">
+      <body className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 px-4">
         <AppProvider>
           <LanguageProvider>
             <Navbar />
             {children}
-            {/* <Animated /> */}
+            <Animated />
             <FooterSection />
           </LanguageProvider>
         </AppProvider>

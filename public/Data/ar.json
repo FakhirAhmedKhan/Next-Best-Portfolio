@@ -492,6 +492,10 @@
       "part5": "ببناء",
       "part6": "أفضل التجارب التي تكون مذهلة بصرياً، وعملية للغاية، ومستقبلية.",
       "part7": "عرض عملي"
+    },
+    "certificationsSection": {
+      "title": "الشهادات",
+      "paragraph": "عرض التزامي بالتعلم المستمر والنمو المهني من خلال الشهادات المعترف بها"
     }
   },
   "BageName": {
@@ -499,12 +503,120 @@
     "SkillBade": "التعلم دائماً",
     "ProjectBade": "المشاركة بنشاط في المشاريع العظيمة وخلق الأفكار",
     "EduBade": "استكشاف كيف يمكن للمشاركة النشطة في البرمجة أن تعزز إبداع الذكاء الاصطناعي",
-    "GitBade": "إجمالي المساهمات"
+    "GitBade": "إجمالي المساهمات",
+    "certificateBade": "الشهادات هي مفتاح النجاح"
   },
   "navLabels": {
     "home": "الرئيسية",
     "education": "التعليم",
     "skills": "المهارات",
-    "projects": "المشاريع"
-  }
+    "projects": "المشاريع",
+    "certifications": "الشهادات"
+  },
+  "certificationsData": [
+    {
+      "year": "2025",
+      "title": "SQL (Basic)",
+      "titleAr": "أساسيات SQL",
+      "issuer": "HackerRank",
+      "description": "Validated fundamental SQL skills including SELECT queries, filtering, sorting, and basic data manipulation.",
+      "descriptionAr": "إثبات إتقان أساسيات لغة SQL مثل أوامر SELECT والتصفية والترتيب والتعامل الأساسي مع البيانات.",
+      "skills": ["SQL", "Databases"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/adc5d0a584b6",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Database",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "year": "2025",
+      "title": "CSS (Basic)",
+      "titleAr": "أساسيات CSS",
+      "issuer": "HackerRank",
+      "description": "Demonstrated core CSS knowledge including layouts, colors, typography, and responsive design basics.",
+      "descriptionAr": "إثبات المعرفة الأساسية في CSS بما يشمل التنسيقات والألوان والخطوط وأساسيات التصميم المتجاوب.",
+      "skills": ["CSS", "Web Design"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/08f859ff530",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Palette",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "year": "2025",
+      "title": "JavaScript (Basic)",
+      "titleAr": "أساسيات JavaScript",
+      "issuer": "HackerRank",
+      "description": "Certified understanding of JavaScript fundamentals such as variables, functions, loops, and basic logic.",
+      "descriptionAr": "شهادة تؤكد فهم أساسيات JavaScript مثل المتغيرات والدوال والحلقات والمنطق البرمجي.",
+      "skills": ["JavaScript"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/0908c18d580",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-yellow-500 to-orange-500"
+    },
+    {
+      "year": "2025",
+      "title": "Python (Basic)",
+      "titleAr": "أساسيات Python",
+      "issuer": "HackerRank",
+      "description": "Covered Python basics including syntax, data types, control flow, and simple problem solving.",
+      "descriptionAr": "تغطية أساسيات لغة Python بما في ذلك الصياغة وأنواع البيانات والتحكم في التدفق وحل المشكلات البسيطة.",
+      "skills": ["Python"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/d597c643113",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Terminal",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "year": "2025",
+      "title": "JavaScript for Beginners",
+      "titleAr": "JavaScript للمبتدئين",
+      "issuer": "Simplilearn",
+      "description": "Introductory course focused on JavaScript fundamentals and real-world web development use cases.",
+      "descriptionAr": "دورة تمهيدية تركز على أساسيات JavaScript وتطبيقاتها العملية في تطوير الويب.",
+      "skills": ["JavaScript", "Web Development"],
+      "credentialUrl": "https://simpli.app.link/javascript-beginners-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "BookOpen",
+      "color": "from-amber-500 to-orange-500"
+    },
+    {
+      "year": "2025",
+      "title": "Introduction to CSS",
+      "titleAr": "مقدمة في CSS",
+      "issuer": "Simplilearn",
+      "description": "Learned styling fundamentals including selectors, layouts, and responsive design techniques.",
+      "descriptionAr": "تعلم أساسيات تنسيق الصفحات باستخدام CSS مثل المحددات والتخطيطات وتقنيات التصميم المتجاوب.",
+      "skills": ["CSS", "Web Development"],
+      "credentialUrl": "https://simpli.app.link/introduction-to-css-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "Layout",
+      "color": "from-sky-500 to-blue-500"
+    },
+    {
+      "year": "2025",
+      "title": "Introduction to Front-End Development",
+      "titleAr": "مقدمة في تطوير الواجهة الأمامية",
+      "issuer": "Simplilearn",
+      "description": "Overview of front-end development using HTML, CSS, and JavaScript to build modern web interfaces.",
+      "descriptionAr": "نظرة عامة على تطوير الواجهة الأمامية باستخدام HTML وCSS وJavaScript لبناء واجهات ويب حديثة.",
+      "skills": ["HTML", "CSS", "JavaScript"],
+      "credentialUrl": "https://simpli.app.link/frontend-development-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "Monitor",
+      "color": "from-pink-500 to-rose-500"
+    },
+    {
+      "year": "2025",
+      "title": "Responsive Web Design",
+      "titleAr": "تصميم الويب المتجاوب",
+      "issuer": "freeCodeCamp",
+      "description": "Built responsive layouts using HTML and CSS with a mobile-first approach and modern design practices.",
+      "descriptionAr": "بناء مواقع ويب متجاوبة باستخدام HTML وCSS مع اعتماد أسلوب التصميم المخصص للأجهزة المحمولة أولاً.",
+      "skills": ["HTML", "CSS", "Responsive Design"],
+      "credentialUrl": "https://www.freecodecamp.org/certification/fakhirahmed/responsive-web-design",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/freeCodeCamp.avif",
+      "icon": "Smartphone",
+      "color": "from-gray-700 to-gray-900"
+    }
+  ]
 }

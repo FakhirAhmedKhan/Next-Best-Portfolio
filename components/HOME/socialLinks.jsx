@@ -1,5 +1,5 @@
 "use client"
-const SocialLinks = ({ hoveredIndex, socialLinks }) => {
+const SocialLinks = ({ socialLinks, hoveredIndex, setHoveredIndex }) => {
 
   return (
     <div className="flex flex-wrap justify-center items-center gap-4 pt-12 pb-8 animate-fadeUp" style={{ animationDelay: "1.2s" }}>
@@ -30,8 +30,8 @@ const SocialLinks = ({ hoveredIndex, socialLinks }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={link.label}
-                onMouseEnter={() => hoveredIndex(index)}
-                onMouseLeave={() => hoveredIndex(null)}
+                onMouseEnter={() => setHoveredIndex?.(index)}
+                onMouseLeave={() => setHoveredIndex?.(null)}
                 className="group relative animate-fadeScale"
                 style={{ animationDelay: `${1.3 + index * 0.1}s` }}
               >

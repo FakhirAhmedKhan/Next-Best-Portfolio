@@ -29,6 +29,7 @@ export const navItems = [
   { id: 'education', label: enData.navLabels.education, href: '/EducationTimeline', icon: User },
   { id: 'skills', label: enData.navLabels.skills, href: '/SkillPage', icon: Code },
   { id: 'projects', label: enData.navLabels.projects, href: '/ProjectPage', icon: Briefcase },
+  { id: 'certifications', label: enData.navLabels.certifications, href: '/Certifications', icon: GraduationCap },
 ];
 
 const iconMap = { GraduationCap, BookOpen, Code, Sparkles };
@@ -69,6 +70,7 @@ export function AppProvider({ children }) {
     setEducationData(enData.educationData || []);
     setProjects(enData.projects || []);
 
+    
     setSectionTitles(enData.sectionTitles || {});
     setLoading(false);
   }, []);

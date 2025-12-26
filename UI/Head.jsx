@@ -38,7 +38,11 @@ export const SectionHeading = ({ title, subtitle, tag }) => {
         </motion.h2>
 
         {/* Subtitle with responsive wrapper */}
-        <div className="text-base sm:text-lg md:text-xl lg:text-2xl">
+        <div className=" text-base xs:text-lg sm:text-xl md:text-2xl 2xl:text-3xl 
+          text-gray-700 dark:text-gray-300 
+          leading-relaxed sm:leading-loose 
+          font-light 
+          animate-fadeUp">
           <AnimatedText text={subtitle} />
         </div>
       </motion.div>

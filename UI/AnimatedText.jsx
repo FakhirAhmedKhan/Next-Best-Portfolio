@@ -49,7 +49,7 @@ import { useState, useEffect, useMemo } from "react";
             inline-block cursor-pointer transition-all duration-300 ease-in-out
             ${
               !isScrolling && char.trim() !== ""
-                ? "hover:-translate-y-2 hover:scale-110 hover:text-sky-400 hover:brightness-125"
+                ? "hover:-translate-y-2 hover:scale-110"
                 : ""
             }
           `}

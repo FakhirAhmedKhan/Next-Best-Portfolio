@@ -492,6 +492,10 @@
       "part5": "about building",
       "part6": "best experiences that are visually stunning, highly functional, and futuristic.",
       "part7": "View My Work"
+    },
+    "certificationsSection": {
+      "title": "Certifications",
+      "paragraph": "Showcasing my dedication to continuous learning and professional growth through recognized certifications"
     }
   },
   "BageName": {
@@ -499,12 +503,104 @@
     "SkillBade": "Always Learning",
     "ProjectBade": "Actively engaged in great projects and ideas creation.",
     "EduBade": "Exploring how active engagement with programming can enhance AI creativity.",
-    "GitBade": "Total Contributions"
+    "GitBade": "Total Contributions",
+    "certificateBade": "Certifications is key to success"
   },
   "navLabels": {
     "home": "Home",
     "education": "Education",
     "skills": "Skills",
-    "projects": "Projects"
-  }
+    "projects": "Projects",
+    "certifications": "Certifications"
+  },
+  "certificationsData": [
+    {
+      "year": "2025",
+      "title": "SQL (Basic)",
+      "issuer": "HackerRank",
+      "description": "Validated fundamental SQL skills including SELECT queries, filtering, sorting, and basic data manipulation.",
+      "skills": ["SQL", "Databases"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/adc5d0a584b6",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Database",
+      "color": "from-green-500 to-emerald-500"
+    },
+    {
+      "year": "2025",
+      "title": "CSS (Basic)",
+      "issuer": "HackerRank",
+      "description": "Demonstrated core CSS knowledge including layouts, colors, typography, and responsive design basics.",
+      "skills": ["CSS", "Web Design"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/08f859ff530",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Palette",
+      "color": "from-blue-500 to-cyan-500"
+    },
+    {
+      "year": "2025",
+      "title": "JavaScript (Basic)",
+      "issuer": "HackerRank",
+      "description": "Certified understanding of JavaScript fundamentals such as variables, functions, loops, and basic logic.",
+      "skills": ["JavaScript"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/0908c18d580",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Code",
+      "color": "from-yellow-500 to-orange-500"
+    },
+    {
+      "year": "2025",
+      "title": "Python (Basic)",
+      "issuer": "HackerRank",
+      "description": "Covered Python basics including syntax, data types, control flow, and simple problem solving.",
+      "skills": ["Python"],
+      "credentialUrl": "https://www.hackerrank.com/certificates/d597c643113",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/HackerRank.avif",
+      "icon": "Terminal",
+      "color": "from-indigo-500 to-purple-500"
+    },
+    {
+      "year": "2025",
+      "title": "JavaScript for Beginners",
+      "issuer": "Simplilearn",
+      "description": "Introductory course focused on JavaScript fundamentals and real-world web development use cases.",
+      "skills": ["JavaScript", "Web Development"],
+      "credentialUrl": "https://simpli.app.link/javascript-beginners-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "BookOpen",
+      "color": "from-amber-500 to-orange-500"
+    },
+    {
+      "year": "2025",
+      "title": "Introduction to CSS",
+      "issuer": "Simplilearn",
+      "description": "Learned styling fundamentals including selectors, layouts, and responsive design techniques.",
+      "skills": ["CSS", "Web Development"],
+      "credentialUrl": "https://simpli.app.link/introduction-to-css-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "Layout",
+      "color": "from-sky-500 to-blue-500"
+    },
+    {
+      "year": "2025",
+      "title": "Introduction to Front-End Development",
+      "issuer": "Simplilearn",
+      "description": "Overview of front-end development using HTML, CSS, and JavaScript to build modern web interfaces.",
+      "skills": ["HTML", "CSS", "JavaScript"],
+      "credentialUrl": "https://simpli.app.link/frontend-development-certificate",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/Simplilearn.avif",
+      "icon": "Monitor",
+      "color": "from-pink-500 to-rose-500"
+    },
+    {
+      "year": "2025",
+      "title": "Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "description": "Built responsive layouts using HTML and CSS with a mobile-first approach and modern design practices.",
+      "skills": ["HTML", "CSS", "Responsive Design"],
+      "credentialUrl": "https://www.freecodecamp.org/certification/fakhirahmed/responsive-web-design",
+      "logo": "https://raw.githubusercontent.com/FakhirAhmedKhan/DataApi-main/refs/heads/main/freeCodeCamp.avif",
+      "icon": "Smartphone",
+      "color": "from-gray-700 to-gray-900"
+    }
+  ]
 }

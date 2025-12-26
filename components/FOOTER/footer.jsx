@@ -5,17 +5,15 @@ import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
 import { useLanguage } from "@/lib/contexts/language-context";
-import { Badge, HeadIng } from "@/lib/contexts/DaynamicImport";
+import { Badge } from "@/lib/contexts/DaynamicImport";
 
 export default function FooterSection() {
   const [calendarData, setCalendarData] = useState(null);
   const { data } = useLanguage();
   const badgeText = data.BageName?.GitBade || "Default Badge";
-  const FooterData = data.sectionTitles?.footer || {};
 
   return (
     <footer id="contact" className={SectionSTyle}>
-      <HeadIng title={FooterData.title} subtitle={FooterData.paragraph} />
 
       {calendarData?.totalContributions && (
         <Badge

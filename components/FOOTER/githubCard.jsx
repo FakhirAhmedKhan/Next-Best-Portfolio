@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Activity, Flame, Target, Trophy } from "lucide-react";
+import { useLanguage } from "@/lib/contexts/language-context";
+import { HeadIng } from "@/lib/contexts/DaynamicImport";
 
 export default function GitHubCalendar({ onDataLoaded }) {
   const [calendarData, setCalendarData] = useState(null);
@@ -8,8 +11,6 @@ export default function GitHubCalendar({ onDataLoaded }) {
   const [error, setError] = useState(null);
   const [hoveredDay, setHoveredDay] = useState(null);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-
-  const GITHUB_USERNAME = "FakhirAhmedKhan";
 
   // Enhanced color scale with modern gradient approach
   const getLevelColor = (count) => {
@@ -61,40 +62,13 @@ export default function GitHubCalendar({ onDataLoaded }) {
   useEffect(() => {
     const fetchContributions = async () => {
       try {
-        const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
-        if (!token) throw new Error("Missing GitHub token in environment variables");
+        const res = await fetch("/api/github-contributions");
+        const payload = await res.json();
 
-        const query = `
-          query {
-            user(login: "${GITHUB_USERNAME}") {
-              contributionsCollection {
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      date
-                      contributionCount
-                      color
-                    }
-                  }
-                }
-              }
-            }
-          }`;
+        if (!res.ok) throw new Error(payload?.error || "Failed to load contributions");
+        if (payload?.error) throw new Error(payload.error);
 
-        const res = await fetch("https://api.github.com/graphql", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ query }),
-        });
-
-        const { data, errors } = await res.json();
-        if (errors) throw new Error(errors[0].message);
-
-        const calendar = data?.user?.contributionsCollection?.contributionCalendar;
+        const calendar = payload?.data?.user?.contributionsCollection?.contributionCalendar;
         if (!calendar) throw new Error("Invalid GitHub response");
 
         const flattened = calendar.weeks.flatMap((w) => w.contributionDays);
@@ -109,7 +83,7 @@ export default function GitHubCalendar({ onDataLoaded }) {
         setCalendarData(transformed);
         onDataLoaded?.(transformed);
       } catch (err) {
-        console.error("GitHub GraphQL error:", err);
+        console.error("GitHub data error:", err);
         setError(err.message || "Failed to load contributions");
       } finally {
         setLoading(false);
@@ -154,25 +128,15 @@ export default function GitHubCalendar({ onDataLoaded }) {
   };
 
   const stats = getStats();
-
+  const { data } = useLanguage();
+  const FooterData = data.sectionTitles?.footer || {};
   // UI Components
   return (
     <section className="relative w-full py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8 sm:mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent mb-3">
-            GitHub Activity
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-            Contributions in the last year
-          </p>
-        </motion.div>
+        <HeadIng title={FooterData.title} subtitle={FooterData.paragraph} />
+
 
         {/* Loading State */}
         <AnimatePresence mode="wait">
@@ -236,10 +200,10 @@ export default function GitHubCalendar({ onDataLoaded }) {
               {stats && (
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
                   {[
-                    { label: "Total", value: stats.total, icon: "🎯", color: "emerald" },
-                    { label: "Longest Streak", value: `${stats.maxStreak} days`, icon: "🔥", color: "orange" },
-                    { label: "Daily Average", value: stats.avgContributions, icon: "📊", color: "blue" },
-                    { label: "Best Day", value: stats.maxDay, icon: "⭐", color: "purple" }
+                    { label: "Total", value: stats.total, Icon: Trophy, color: "emerald" },
+                    { label: "Longest Streak", value: `${stats.maxStreak} days`, Icon: Flame, color: "orange" },
+                    { label: "Daily Average", value: stats.avgContributions, Icon: Activity, color: "blue" },
+                    { label: "Best Day", value: stats.maxDay, Icon: Target, color: "purple" }
                   ].map((stat, i) => (
                     <motion.div
                       key={stat.label}
@@ -250,7 +214,9 @@ export default function GitHubCalendar({ onDataLoaded }) {
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-800/80 dark:to-gray-900/40 rounded-xl sm:rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                       <div className="relative backdrop-blur-xl bg-white/60 dark:bg-gray-800/60 border border-gray-200/50 dark:border-gray-700/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl sm:text-3xl mb-2">{stat.icon}</div>
+                        <div className="text-2xl sm:text-3xl mb-2 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                          {stat.Icon ? <stat.Icon className="w-6 h-6" aria-hidden="true" /> : null}
+                        </div>
                         <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-1">
                           {stat.value}
                         </div>
@@ -382,3 +348,5 @@ export default function GitHubCalendar({ onDataLoaded }) {
     </section>
   );
 }
+
+

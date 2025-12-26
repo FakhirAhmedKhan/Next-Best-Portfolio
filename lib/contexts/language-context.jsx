@@ -62,12 +62,14 @@ export const LanguageProvider = ({ children }) => {
   const ProjectCardData = data?.projects || [];
   const ProjectbadgeText = data?.BageName?.ProjectBade || '';
   const EdubadgeText = data?.BageName?.EduBade || '';
+  const certificationsData = data?.certificationsData || [];
 
 
   return (
     <LanguageContext.Provider
       value={{
         language,
+        certificationsData,
         data,
         changeLanguage,
         badgeText,

@@ -6,7 +6,7 @@ const LoadProject = ({ showMore, hasMore }) => {
   return (
     <div className="flex justify-center mt-10">
       <button
-        onClick={() => showMore(3)}
+        onClick={() => showMore()}
         className="
           relative px-8 py-4 rounded-full font-bold text-white
           overflow-hidden shadow-xl hover:shadow-2xl
@@ -18,7 +18,7 @@ const LoadProject = ({ showMore, hasMore }) => {
 
         <span className="relative flex items-center gap-2">
           Load More Projects
-          <span className="animate-bounce">↓</span>
+          <span className="animate-bounce">-&gt;</span>
         </span>
       </button>
     </div>
@@ -26,3 +26,4 @@ const LoadProject = ({ showMore, hasMore }) => {
 };
 
 export default LoadProject;
+
