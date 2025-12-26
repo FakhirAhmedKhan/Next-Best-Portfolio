@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const GITHUB_USERNAME = "FakhirAhmedKhan";
-export const revalidate = 60 * 60 * 6; // cache for 6 hours
+export const revalidate = 21600; // cache for 6 hours
 
 export async function GET() {
   try {
