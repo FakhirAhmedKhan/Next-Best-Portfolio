@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
       <body className=" no-scrollbar overflow-y-auto min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 px-4">
         <Navbar navLabels={navLabels} />
         {children}
-        {/* <Animated /> */}
+        <Animated />
         <FooterSection gitBadgeText={gitBadgeText} FooterData={footerData} />
       </body>
     </html>
