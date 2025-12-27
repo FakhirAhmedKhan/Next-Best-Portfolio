@@ -1,10 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useNav } from "@/hooks/useNav";
-
-const DesktopNavigation = () => {
-  const { navItems } = useNav();
+const DesktopNavigation = ({ navItems }) => {
   const pathname = usePathname();
 
   return (

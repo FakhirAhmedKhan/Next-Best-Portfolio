@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { Globe } from 'lucide-react';
-import { useAppData } from '@/hooks/useAppData';
+import { useLanguage } from '@/hooks/useLanguage';
 
 const LanguageSwitcher = () => {
-  const { language, changeLanguage } = useAppData();
+  const { language, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLanguageChange = (lang) => {

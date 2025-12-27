@@ -11,15 +11,7 @@ import {
   Smartphone,
   Terminal,
 } from "lucide-react";
-import { useAppData } from "./useAppData";
-
-export default function useCertifications() {
-  const {
-    certificationsData,
-    certificationsSection,
-    certificateBadge,
-    language,
-  } = useAppData();
+export default function useCertifications({ certificationsData = [], certificationsSection = {}, certificateBadge = "", language = "en" } = {}) {
 
   const iconMap = useMemo(
     () => ({

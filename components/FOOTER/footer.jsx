@@ -5,11 +5,8 @@ import { EmailMe } from "./EmailMe";
 import { SectionSTyle } from "@/UI/motionConfige";
 import { useState } from "react";
 import Badge from "@/UI/Badge";
-import { useAppData } from "@/hooks/useAppData";
-
-export default function FooterSection() {
+export default function FooterSection({ gitBadgeText, FooterData = {} }) {
   const [calendarData, setCalendarData] = useState(null);
-  const { gitBadgeText } = useAppData();
   const badgeText = gitBadgeText || "Total Contributions";
 
   return (
@@ -27,7 +24,7 @@ export default function FooterSection() {
         )}
       </div>
 
-      <GitHubCalendarSimple onDataLoaded={setCalendarData} />
+      <GitHubCalendarSimple onDataLoaded={setCalendarData} FooterData={FooterData} />
 
       <EmailMe />
     </footer>

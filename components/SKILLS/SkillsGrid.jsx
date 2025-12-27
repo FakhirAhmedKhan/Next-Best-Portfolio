@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSkills } from "@/hooks/useSkills";
 
-const Card = () => {
+const Card = ({ skills }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const { skills, hoveredIndex, setHoveredIndex } = useSkills();
+  const { hoveredIndex, setHoveredIndex } = useSkills(skills);
   const skillItems = Array.isArray(skills) ? skills : [];
 
   useEffect(() => {

@@ -18,10 +18,10 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/home", destination: "/", permanent: true },
-      { source: "/Education", destination: "/education", permanent: true },
-      { source: "/Skills", destination: "/skills", permanent: true },
-      { source: "/Projects", destination: "/projects", permanent: true },
-      {source:"/certifications",destination:"/certifications",permanent:true},
+      { source: "/EducationTimeline", destination: "/education", permanent: true },
+      { source: "/SkillPage", destination: "/skills", permanent: true },
+      { source: "/ProjectPage", destination: "/projects", permanent: true },
+      { source: "/Certifications", destination: "/certifications", permanent: true },
     ];
   },
 };

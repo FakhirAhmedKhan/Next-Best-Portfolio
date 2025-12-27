@@ -1,9 +1,6 @@
 "use client";
 import { Menu, X } from "lucide-react";
-import { useNav } from "@/hooks/useNav";
-
-const MobileMenuButton = () => {
-  const { isMenuOpen, setIsMenuOpen } = useNav();
+const MobileMenuButton = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <button

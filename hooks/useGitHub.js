@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useAppData } from "./useAppData";
+
 export const useGitHub = (onDataLoaded) => {
   const [calendarData, setCalendarData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -133,8 +133,7 @@ export const useGitHub = (onDataLoaded) => {
   };
 
   const stats = getStats();
-  const { sectionTitles } = useAppData();
-  const FooterData = sectionTitles?.footer || {};
+  
   return {
     calendarData,
     loading,
@@ -146,6 +145,5 @@ export const useGitHub = (onDataLoaded) => {
     getLevelColor,
     getLevel,
     stats,
-    FooterData,
   };
 };

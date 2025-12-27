@@ -1,22 +1,22 @@
 "use client";
+import badge from "@/UI/Badge"; // Use "badge" from UI/Badge? check import in original page
+// Original: import Badge from '@/UI/Badge'; import HeadIng from '@/UI/SectionHeading';
 import Badge from "@/UI/Badge";
 import HeadIng from "@/UI/SectionHeading";
 import CategoryFilter from "@/components/PROJECT/CategoryFilters";
 import ProjectView from "@/components/PROJECT/ProjectsGrid";
 import LoardProject from "@/components/PROJECT/LoadMoreButton";
-import { useAppData } from "@/hooks/useAppData";
 import { useProjects } from "@/hooks/useProjects";
 import { DatabaseZapIcon } from "lucide-react";
 
-export default function Page() {
-    const { ProjectData, ProjectbadgeText } = useAppData();
-    const { categories, activeCategory, changeCategory, visibleProjects, filteredProjects, showMore } = useProjects();
+export default function ProjectContent({ ProjectData, ProjectBadgeText, projects }) {
+    const { categories, activeCategory, changeCategory, visibleProjects, filteredProjects, showMore } = useProjects(projects);
     const hasMore = visibleProjects.length < filteredProjects.length;
 
     return (
         <section id="projects" className="relative flex flex-col items-center justify-center text-center px-6 sm:px-10 lg:px-16 py-20 sm:py-28 lg:py-36 max-w-7xl mx-auto space-y-12 z-10">
             <div className="flex justify-center items-center mb-2">
-                <Badge Icon={DatabaseZapIcon} BageName={ProjectbadgeText} className="px-4 py-2 text-sm" />
+                <Badge Icon={DatabaseZapIcon} BageName={ProjectBadgeText} className="px-4 py-2 text-sm" />
             </div>
             <HeadIng title={ProjectData.title} subtitle={ProjectData.paragraph} />
             <CategoryFilter categories={categories} activeCategory={activeCategory} changeCategory={changeCategory} />
@@ -24,4 +24,4 @@ export default function Page() {
             <LoardProject showMore={showMore} hasMore={hasMore} />
         </section>
     )
-};
+}

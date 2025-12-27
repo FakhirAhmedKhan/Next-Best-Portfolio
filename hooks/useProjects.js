@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState, useCallback } from "react";
-import { useAppData } from "./useAppData";
+import { useMemo, useState, useCallback, useEffect } from "react";
 
-export function useProjects() {
-  const { projects, loading } = useAppData();
-
+export function useProjects(projects = []) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(3);
 
@@ -41,7 +38,6 @@ export function useProjects() {
   const hasMore = visibleProjects.length < filteredProjects.length;
 
   return {
-    loading,
     projects,
     activeCategory,
     categories,

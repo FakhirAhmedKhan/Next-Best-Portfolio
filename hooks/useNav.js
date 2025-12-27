@@ -2,18 +2,14 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { Home, User, Code, Briefcase, GraduationCap } from 'lucide-react';
-import { useAppData } from './useAppData';
-
-export function useNav() {
-  const { navLabels } = useAppData();
-
+export function useNav(navLabels = {}) {
   const navItems = useMemo(
     () => [
       { id: 'home', label: navLabels.home || 'Home', href: '/', icon: Home },
-      { id: 'education', label: navLabels.education || 'Education', href: '/EducationTimeline', icon: User },
-      { id: 'skills', label: navLabels.skills || 'Skills', href: '/SkillPage', icon: Code },
-      { id: 'projects', label: navLabels.projects || 'Projects', href: '/ProjectPage', icon: Briefcase },
-      { id: 'certifications', label: navLabels.certifications || 'Certifications', href: '/Certifications', icon: GraduationCap },
+      { id: 'education', label: navLabels.education || 'Education', href: '/education', icon: User },
+      { id: 'skills', label: navLabels.skills || 'Skills', href: '/skills', icon: Code },
+      { id: 'projects', label: navLabels.projects || 'Projects', href: '/projects', icon: Briefcase },
+      { id: 'certifications', label: navLabels.certifications || 'Certifications', href: '/certifications', icon: GraduationCap },
     ],
     [navLabels]
   );

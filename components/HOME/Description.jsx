@@ -1,7 +1,7 @@
 "use client";
 import { ReactTyped } from "react-typed";
 import AnimatedText from "@/UI/AnimatedText";
-const Praghrap = ({ HomeData }) => {
+const Paragraph = ({ HomeData }) => {
   return (
     <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 mx-auto max-w-4xl 2xl:max-w-5xl text-center">
       <p
@@ -57,4 +57,4 @@ const Praghrap = ({ HomeData }) => {
   );
 };
 
-export default Praghrap;
+export default Paragraph;

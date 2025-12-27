@@ -14,14 +14,25 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+import { getPageData } from "@/lib/data";
+
+export default async function RootLayout({ children }) {
+  const [navLabels, sectionTitles, pageNameData] = await Promise.all([
+    getPageData('en', 'navLabels'),
+    getPageData('en', 'sectionTitles'),
+    getPageData('en', 'pageName')
+  ]);
+
+  const footerData = sectionTitles?.footer ?? {};
+  const gitBadgeText = pageNameData?.GitBade ?? "";
+
   return (
     <html lang="en">
       <body className=" no-scrollbar overflow-y-auto min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 px-4">
-        <Navbar />
+        <Navbar navLabels={navLabels} />
         {children}
         {/* <Animated /> */}
-        <FooterSection />
+        <FooterSection gitBadgeText={gitBadgeText} FooterData={footerData} />
       </body>
     </html>
   );

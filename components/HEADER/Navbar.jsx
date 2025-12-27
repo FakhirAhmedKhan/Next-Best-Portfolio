@@ -6,8 +6,8 @@ import LanguageSwitcher from "@/UI/LanguageSwitcher";
 import MobileMenuButton from "@/components/HEADER/MobileMenuButton";
 import MobileMenu from "@/components/HEADER/MobileManu";
 import ProgressBar from "@/components/HEADER/ProgressBar";
-export default function Navbar() {
-  const { scrolled } = useNav();
+export default function Navbar({ navLabels }) {
+  const { scrolled, navItems, isMenuOpen, setIsMenuOpen } = useNav(navLabels);
 
   return (
     <header
@@ -26,7 +26,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation - Hidden on mobile/tablet */}
           <div className="hidden lg:flex flex-1 justify-center px-4">
-            <DesktopNavigation />
+            <DesktopNavigation navItems={navItems} />
           </div>
 
           {/* Right Side Actions */}
@@ -38,14 +38,14 @@ export default function Navbar() {
 
             {/* Mobile Menu Button - Hidden on desktop */}
             <div className="lg:hidden">
-              <MobileMenuButton />
+              <MobileMenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             </div>
           </div>
         </div>
 
         {/* Mobile Menu - Hidden on desktop */}
         <div className="lg:hidden">
-          <MobileMenu />
+          <MobileMenu navItems={navItems} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
       </nav>
 

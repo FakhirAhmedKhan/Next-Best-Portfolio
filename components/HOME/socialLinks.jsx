@@ -1,5 +1,9 @@
-"use client"
-const SocialLinks = ({ socialLinks, hoveredIndex, setHoveredIndex }) => {
+"use client";
+
+import { useSocialLinks } from "@/hooks/useSocialLinks";
+
+const SocialLinks = ({ socialLinks }) => {
+  const { hoveredIndex, setHoveredIndex } = useSocialLinks();
 
   return (
     <div className="flex flex-wrap justify-center items-center gap-4 pt-12 pb-8 animate-fadeUp" style={{ animationDelay: "1.2s" }}>

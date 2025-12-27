@@ -1,10 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useNav } from "@/hooks/useNav";
-
-const MobileMenu = () => {
-  const { navItems, isMenuOpen, setIsMenuOpen } = useNav();
+const MobileMenu = ({ navItems, isMenuOpen, setIsMenuOpen }) => {
   const pathname = usePathname();
 
   return (

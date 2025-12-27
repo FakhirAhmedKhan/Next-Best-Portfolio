@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import { isValidElement, cloneElement } from "react";
 import AnimatedText from "@/UI/AnimatedText";
 import { motion } from "framer-motion";
 
@@ -36,7 +37,13 @@ const Badge = ({ Icon, BageName, className = "", value }) => {
           whileHover={{ rotate: 360 }}
           transition={{ duration: 0.6 }}
         >
-          <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-fuchsia-600 dark:text-fuchsia-400 group-hover:text-white transition-colors duration-300" />
+          {isValidElement(Icon) ? (
+            cloneElement(Icon, {
+              className: `w-3 h-3 sm:w-4 sm:h-4 text-fuchsia-600 dark:text-fuchsia-400 group-hover:text-white transition-colors duration-300 ${Icon.props.className || ''}`
+            })
+          ) : (
+            <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-fuchsia-600 dark:text-fuchsia-400 group-hover:text-white transition-colors duration-300" />
+          )}
 
           {/* Icon Glow */}
           <div className="absolute inset-0 rounded-full bg-fuchsia-500/0 group-hover:bg-fuchsia-500/30 blur-md transition-all duration-300" />
