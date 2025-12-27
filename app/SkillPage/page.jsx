@@ -1,7 +1,10 @@
 'use client';
 import { Zap } from "lucide-react";
-import { HeadIng, Badge, Bottomdecoration, Card } from "@/hooks/DaynamicImport";
+import HeadIng from "@/UI/SectionHeading";
 import { useAppData } from "@/hooks/useAppData";
+import Badge from "@/UI/Badge";
+import Card from "@/components/SKILLS/SkillsGrid";
+import Bottomdecoration from "@/components/SKILLS/Bottomdecoration";
 
 export default function Page() {
     const { SkillbadgeText, SkillData } = useAppData();

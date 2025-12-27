@@ -1,8 +1,9 @@
 "use client";
 import { ExternalLink, Filter } from "lucide-react";
-import { Badge, HeadIng } from "@/hooks/DaynamicImport";
 import { BsFillAwardFill } from "react-icons/bs";
 import useCertifications from "@/hooks/useCertifications";
+import SectionHeading from "@/UI/SectionHeading";
+import Badge from "@/UI/Badge";
 
 export default function CertificationsPage() {
   const {
@@ -19,7 +20,7 @@ export default function CertificationsPage() {
   return (
     <div className="">
       <div className="max-w-7xl mx-auto">
-        <HeadIng
+        <SectionHeading
           title={certificationsSection?.title ?? ""}
           subtitle={certificationsSection?.paragraph ?? ""}
         />

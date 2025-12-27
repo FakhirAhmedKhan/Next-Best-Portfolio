@@ -1,7 +1,11 @@
 "use client";
-import { LanguageSwitcher, HeaderLogo, DesktopNavigation, MobileMenu, MobileMenuButton, ProgressBar } from "@/hooks/DaynamicImport"
 import { useNav } from "@/hooks/useNav";
-
+import HeaderLogo from "@/components/HEADER/Logo";
+import DesktopNavigation from "@/components/HEADER/DesktopNavigation";
+import LanguageSwitcher from "@/UI/LanguageSwitcher";
+import MobileMenuButton from "@/components/HEADER/MobileMenuButton";
+import MobileMenu from "@/components/HEADER/MobileManu";
+import ProgressBar from "@/components/HEADER/ProgressBar";
 export default function Navbar() {
   const { scrolled } = useNav();
 

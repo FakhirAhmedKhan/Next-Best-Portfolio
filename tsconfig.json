@@ -35,7 +35,7 @@
     "**/*.ts",
     "**/*.tsx",
     "components/EDU/EducationTimeline.jsx",
-    "components/FOOTER/components/githubCard.jsx",
+    "components/footer/components/githubCard.jsx",
     "app/EducationTimeline/page.jsx",
     "app/Header/Navbar.jsx",
     "lib/contexts/app-context.jsx",

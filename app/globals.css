@@ -147,3 +147,12 @@
     );
   animation: pulse-glow 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

@@ -1,8 +1,12 @@
 'use client';
 import { WandSparkles } from "lucide-react";
-import { TypingEffect, Praghrap, CTAButtons, SocialLinks, Badge } from "@/hooks/DaynamicImport"
 import { useAppData } from "@/hooks/useAppData";
 import { useSocialLinks } from "@/hooks/useSocialLinks";
+import Badge from "@/UI/Badge";
+import TypingEffect from "@/components/HOME/TypingEffect";
+import Praghrap from "@/components/HOME/Description";
+import CTAButtons from "@/components/HOME/CTAButtons";
+import SocialLinks from "@/components/HOME/socialLinks";
 
 const Page = () => {
 

@@ -1,8 +1,10 @@
 'use client';
-import { Badge, EducationTimeline, HeadIng } from '@/hooks/DaynamicImport'
 import { FaBookReader } from "react-icons/fa";
 import { useAppData } from "@/hooks/useAppData";
 import { useEducation } from "@/hooks/useEducation";
+import EducationTimeline from "@/components/EDU/EducationTimeline";
+import HeadIng from "@/UI/SectionHeading";
+import Badge from "@/UI/Badge";
 
 export default function Page() {
     const { eduTitles, eduData, EdubadgeText } = useAppData();

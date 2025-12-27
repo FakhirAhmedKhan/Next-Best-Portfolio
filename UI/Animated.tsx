@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { OrbitParticle } from "@/UI/OrbitParticle";
 import { useAnimation } from "@/hooks/useAnimation";
-
+import { OrbitParticle } from "@/UI/OrbitParticle";
 // 💫 Main Animated Background Component
 export const Animated = () => {
   const { windowSize, particles, radius1, radius2 } = useAnimation();

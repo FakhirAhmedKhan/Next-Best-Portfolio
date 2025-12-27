@@ -1,6 +1,9 @@
 "use client";
-import { HeadIng, CategoryFilter, ProjectView, LoardProject, Badge } from "@/hooks/DaynamicImport";
-
+import Badge from "@/UI/Badge";
+import HeadIng from "@/UI/SectionHeading";
+import CategoryFilter from "@/components/PROJECT/CategoryFilters";
+import ProjectView from "@/components/PROJECT/ProjectsGrid";
+import LoardProject from "@/components/PROJECT/LoadMoreButton";
 import { useAppData } from "@/hooks/useAppData";
 import { useProjects } from "@/hooks/useProjects";
 import { DatabaseZapIcon } from "lucide-react";
