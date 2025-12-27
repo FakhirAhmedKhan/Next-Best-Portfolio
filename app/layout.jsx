@@ -1,7 +1,7 @@
 import './globals.css';
 import { Animated } from '@/UI/Animated';
 import Navbar from "@/components/HEADER/Navbar"
-import FooterSection from '@/components/footer/footer';
+import FooterSection from '@/components/footer/footerSection';
 export const metadata = {
   title: 'Portfolio | Modern Web Developer',
   description: 'Modern portfolio website showcasing web development projects and skills',
