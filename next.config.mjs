@@ -13,9 +13,11 @@ const nextConfig = {
       { source: "/ProjectPage", destination: "/projects", permanent: true },
       {
         source: "/Certifications",
+        has: [{ type: "query", key: "fix", value: "1", optional: true }],
         destination: "/certifications",
         permanent: true,
       }
+
     ];
   },
 };
