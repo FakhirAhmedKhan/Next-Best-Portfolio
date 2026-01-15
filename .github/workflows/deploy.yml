@@ -1,37 +1,51 @@
-name: Deploy Next.js to GitHub Pages
+name: 🚀 Deploy Next.js to Vercel
 
 on:
   push:
-    branches: ["master"]
+    branches:
+      - master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Setup Node
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Cache Node modules for faster builds
+      - name: 📦 Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 3️⃣ Setup Node.js
+      - name: 🧰 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: "npm"
 
-      - name: Install
-        run: npm install
+      # 4️⃣ Install dependencies
+      - name: 📥 Install Dependencies
+        run: npm ci
 
-      - name: Build
+      # 5️⃣ Clean build cache to ensure Tailwind CSS purge works
+      - name: 🧹 Clean Build Cache
+        run: rm -rf .next && rm -rf node_modules/.cache
+
+      # 6️⃣ Build Next.js app (Tailwind CSS will be purged and minified automatically)
+      - name: 🏗️ Build Next.js App
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: out/
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      # 7️⃣ Deploy to Vercel
+      - name: 🚀 Deploy to Vercel
+        run: npx vercel --prod --yes \
+          --token=${{ secrets.VERCEL_TOKEN }} \
+          --org-id=${{ secrets.VERCEL_ORG_ID }} \
+          --project-id=${{ secrets.VERCEL_PROJECT_ID }} \
+          --confirm
