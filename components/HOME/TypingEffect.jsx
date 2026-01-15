@@ -36,8 +36,8 @@ const TypingEffect = ({ HomeData }) => {
           <ReactTyped
             strings={[HomeData?.part1 || "Welcome to"]}
             typeSpeed={80}
-            showCursor={true}
-            cursorChar="|"
+            showCursor={false}
+            // cursorChar="|"
             fadeOut={true}
             fadeOutDelay={500}
           />
@@ -121,28 +121,7 @@ const TypingEffect = ({ HomeData }) => {
             ></div>
           </span>
         </div>
-      </h1>
-
-      {/* FLOATING PARTICLES */}
-      <div className="relative h-0 overflow-visible pointer-events-none">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="
-              absolute 
-              w-1 h-1 xs:w-1.5 xs:h-1.5 sm:w-2 sm:h-2 
-              rounded-full 
-              bg-gradient-to-r from-fuchsia-400 to-pink-400 
-              opacity-0 animate-float
-            "
-            style={{
-              left: `${20 + i * 30}%`,
-              animationDelay: `${i * 0.7}s`,
-              animationDuration: "4s",
-            }}
-          ></div>
-        ))}
-      </div>
+      </h1>      
     </div>
   );
 };

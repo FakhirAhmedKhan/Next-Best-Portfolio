@@ -13,7 +13,7 @@ export function useNav(navLabels = {}) {
     ],
     [navLabels]
   );
-
+  // console.log("REDIRECT FROM", pathname)
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

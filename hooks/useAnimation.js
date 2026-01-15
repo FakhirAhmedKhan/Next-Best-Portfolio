@@ -28,7 +28,7 @@ export const useAnimation = () => {
   }, []);
 
   // 📏 Radii (computed only when client width > 0)
-  const radius1 = Math.min(windowSize.width, windowSize.height) * 0.35;
-  const radius2 = Math.min(windowSize.width, windowSize.height) * 0.42;
+  const radius1 = Math.min(windowSize.width, windowSize.height) * 0.22;
+  const radius2 = Math.min(windowSize.width, windowSize.height) * 0.33;
   return { windowSize, particles, radius1, radius2 };
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const DesktopNavigation = ({ navItems }) => {
   const pathname = usePathname();
-
+console.log("REDIRECT FROM", pathname)
   return (
     <div className="hidden lg:flex items-center gap-2">
       {navItems?.map((item, index) => {
