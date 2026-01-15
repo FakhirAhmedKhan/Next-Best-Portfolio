@@ -2,8 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "framework": "nextjs",
-  "buildCommand": "next build",
-  "outputDirectory": ".next",
   "functions": {
     "app/api/**/*.js": {
       "runtime": "vercel-nodejs@20.0.0",
