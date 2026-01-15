@@ -1,19 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // Helps catch bugs early
-  compress: true, // Enables gzip compression
-  poweredByHeader: false, // Removes "X-Powered-By" header for security
-  productionBrowserSourceMaps: false, // Skip source maps in production (smaller build)
+  reactStrictMode: true,
+  compress: true,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: false,
 
-  images: {
-    formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "raw.githubusercontent.com",
-      },
-    ],
-  },
+  // Required for GitHub Pages
+  output: "export",
+  basePath: "/Next-Best-Portfolio",
+  images: { unoptimized: true },
 
   async redirects() {
     return [
@@ -27,7 +22,6 @@ const nextConfig = {
         destination: "/certifications",
         permanent: true,
       }
-
     ];
   },
 };
